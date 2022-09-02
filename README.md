@@ -6,4 +6,6 @@
 
 A brief introduction to ideas of functional programming in the context of scalable statistical computing, illustrated with hands-on examples in Scala, Haskell, Python+JAX and Dex.
 
+The first iteration of this course will be delivered to [StatML](https://statml.io/) students on 2023-02-16.
+
 

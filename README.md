@@ -10,4 +10,12 @@ The first iteration of this course will be delivered to [StatML](https://statml.
 
 *Please note that you need to install some software on your system **in advance** of the course.* See the [Setup](Setup.md) guide for details.
 
+You will also need a copy of this repo. If you know git, clone it ASAP, and then do a pull the day before the course. If you don't know git, click on the green "Code" button and download a zip file, but do (or re-do) this the day before the course to make sure you have an up-to-date version.
+
+
+* [Introduction](Intro/)
+* [Scala](Scala/)
+* [Haskell](Haskell/)
+* [JAX](JAX/)
+* [Dex](Dex/)
 

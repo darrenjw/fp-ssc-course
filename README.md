@@ -12,6 +12,8 @@ The first iteration of this course will be delivered to [StatML](https://statml.
 
 You will also need a copy of this repo. If you know git, clone it ASAP, and then do a pull the day before the course. If you don't know git, click on the green "Code" button and download a zip file, but do (or re-do) this the day before the course to make sure you have an up-to-date version.
 
+It would also be useful to have a copy of my [logreg](https://github.com/darrenjw/logreg) repo, which explores MCMC algorithms in a variety of (functional) languages.
+
 
 * [Introduction](Intro/)
 * [Scala](Scala/)

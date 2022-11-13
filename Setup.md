@@ -4,7 +4,7 @@
 
 **In order to get the most benefit from the course, it is necessary to install some software in advance**
 
-The languages that will be covered in the course are Scala, Haskell, JAX and Dex. Ideally, you will install all of these on your laptop in advance of the course. However, it is not necessary to install/use all of these languages for the couse to be useful. Installing, say, Scala and at least one other (depending on your interests), will be fine.
+The languages that will be covered in the course are Scala, Haskell, JAX and Dex. Ideally, you will install all of these on your laptop in advance of the course. However, it is *not necessary* to install/use *all* of these languages for the couse to be useful. Installing, say, Scala and at least one other (depending on your interests), will be fine.
 
 ### Scala
 
@@ -22,6 +22,6 @@ The [Haskell](https://www.haskell.org/) website has information on installing va
 
 ### Dex
 
-[Dex](https://github.com/google-research/dex-lang) is an experimental new language which currently needs to be built from source. This is relatively straightforward on Macs and most Linux distros, but is likely to be impractical on Windows.
+[Dex](https://github.com/google-research/dex-lang) is an experimental new language (written in Haskell) which currently needs to be built from source. This is relatively straightforward on Macs and most Linux distros, but is likely to be impractical on Windows.
 
-If you know `git`, clone the Dex repo, and if not, click on the green "Code" button, and download the repo as a zip file, and uncompress on your system. Then follow the [Installing](https://github.com/google-research/dex-lang#Installing) instructions. Note that I have some additional [installation](https://github.com/darrenjw/djwhacks/blob/master/dex/Reminders.md#Installation) instructions for Ubuntu and Fedora.
+If you know `git`, clone the Dex repo, and if not, click on the green "Code" button, and download the repo as a zip file, and uncompress on your system. Then follow the [Installing](https://github.com/google-research/dex-lang#Installing) instructions. Note that I have some additional [installation](https://github.com/darrenjw/djwhacks/blob/master/dex/Reminders.md#Installation) instructions for Ubuntu and Fedora which will probably be useful for anyone using those distros.

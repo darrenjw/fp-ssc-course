@@ -13,3 +13,14 @@
 * Introduction to Dex
 * Dex hands-on
 
+
+
+
+For each of the four languages, do:
+
+* Introduction
+* Example
+* Exercise
+* Further information
+
+

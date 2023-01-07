@@ -56,6 +56,7 @@ The resources below use Haskell to illustrate the ideas, but are of generic inte
 * [JAX](https://jax.readthedocs.io/en/latest/)
     * [github](https://github.com/google/jax)
 	* [Tutorial: JAX 101](https://jax.readthedocs.io/en/latest/jax-101/)
+	    * [Random numbers](https://jax.readthedocs.io/en/latest/jax-101/05-random-numbers.html)
 	* [Autodiff cookbook](https://jax.readthedocs.io/en/latest/notebooks/autodiff_cookbook.html)
 
 

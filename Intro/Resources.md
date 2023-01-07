@@ -8,6 +8,7 @@ Below are some links for further information about the languages and libraries b
     * [Learning resources](https://docs.scala-lang.org/)
 	* [Scastie](https://scastie.scala-lang.org/) - try Scala in the browser
 * [Scala exercises](https://www.scala-exercises.org/) - learn Scala in the browswer
+* [sbt](https://www.scala-sbt.org/) - the Scala build tool
 * [Functional Programming in Scala](https://www.manning.com/books/functional-programming-in-scala) - unfortunately this book is not free, but remains one of the best introductions to functional programming (in any language)
     * [Chapter notes](https://github.com/fpinscala/fpinscala)
 * [Typelevel](https://typelevel.org/) - libraries for functional programming in Scala
@@ -33,6 +34,7 @@ Below are some links for further information about the languages and libraries b
 * [lyahfgg](http://learnyouahaskell.com/) - introductory book
 * [Haskell wiki](https://wiki.haskell.org/Haskell)
     * [Typeclassopedia](https://wiki.haskell.org/Typeclassopedia)
+* [dataHaskell](https://www.datahaskell.org/) - a project for data science with Haskell
 
 ### Category theory for FP (and Haskell)
 
@@ -51,6 +53,7 @@ The resources below use Haskell to illustrate the ideas, but are of generic inte
 
 ## JAX
 
+* [Python](https://www.python.org/) - JAX is embedded in Python
 * [JAX](https://jax.readthedocs.io/en/latest/)
     * [github](https://github.com/google/jax)
 	* [Quickstart](https://jax.readthedocs.io/en/latest/notebooks/quickstart.html)
@@ -68,4 +71,18 @@ The resources below use Haskell to illustrate the ideas, but are of generic inte
 	* [InDex](https://google-research.github.io/dex-lang/index.html)
 	    * [Stats library](https://google-research.github.io/dex-lang/lib/stats.html)
 * [My Dex reminders](https://github.com/darrenjw/djwhacks/blob/master/dex/Reminders.md)
+
+
+## Misc
+
+### Reading
+
+* [Purely functional data structures](https://doc.lagout.org/programmation/Functional%20Programming/Chris_Okasaki-Purely_Functional_Data_Structures-Cambridge_University_Press%281998%29.pdf) - book on data structures, with examples in OCaml and Haskell
+
+### Other interesting languages
+
+* [OCaml](https://ocaml.org/) - nice strongly typed and fairly functional language
+* [Flix](https://flix.dev/) - a new strongly typed and fairly functional language
+* [Futhark](https://futhark-lang.org/) - a language for GPU programming
+* [Rust](https://www.rust-lang.org/) - not really functional, but a good, safe, modern typed language, increasingly popular for systems programming
 

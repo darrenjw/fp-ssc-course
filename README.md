@@ -1,6 +1,6 @@
 # fp-ssc-course
 
-### An introduction to functional programming for scalable statistical computing
+### An introduction to functional programming for scalable statistical computing and machine learning
 
 ## A half-day short-course
 

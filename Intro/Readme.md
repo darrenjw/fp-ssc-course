@@ -7,7 +7,7 @@
 
 ### Learning resources
 
-Below are some links for further information about the languages and libraries briefly introduced in this course.
+Below are some links for further information about the languages and libraries briefly introduced in this course. See my [logreg repo](https://github.com/darrenjw/logreg) for more example (MCMC) code using these languages and libraries.
 
 #### Scala
 
@@ -27,7 +27,17 @@ Below are some links for further information about the languages and libraries b
 
 #### Haskell
 
-
+* [Haskell](https://www.haskell.org/) - main web site
+    * [Documentation](https://www.haskell.org/documentation/)
+* [Cabal](https://www.haskell.org/cabal/) - a build tool
+    * [Hackage](https://hackage.haskell.org/) - a package repository
+* [Stack](https://docs.haskellstack.org/en/stable/) - a newer build tool
+    * [Stackage](https://www.stackage.org/) - alternative repository
+    * [Hoogle](https://hoogle.haskell.org/) - Haskell search engine
+* [lyahfgg](http://learnyouahaskell.com/) - introductory book
+* [Haskell wiki](https://wiki.haskell.org/Haskell)
+    * [Typeclassopedia](https://wiki.haskell.org/Typeclassopedia)
+	
 * Category theory for programmers, by [Bartosz Milewski](https://bartoszmilewski.com/)
     * [Blog post series](https://bartoszmilewski.com/2014/10/28/category-theory-for-programmers-the-preface/)
     * [Book](https://github.com/hmemcpy/milewski-ctfp-pdf/)
@@ -41,9 +51,21 @@ Below are some links for further information about the languages and libraries b
 
 #### JAX
 
+* [JAX](https://jax.readthedocs.io/en/latest/)
+    * [github](https://github.com/google/jax)
+	* [Tutorial: JAX 101](https://jax.readthedocs.io/en/latest/jax-101/)
+	* [Autodiff cookbook](https://jax.readthedocs.io/en/latest/notebooks/autodiff_cookbook.html)
 
 
 #### Dex
+
+* [Dex](https://github.com/google-research/dex-lang)
+    * [Tutorial](https://google-research.github.io/dex-lang/examples/tutorial.html)
+	* [Paper](https://arxiv.org/abs/2104.05372)
+	* [Prelude](https://google-research.github.io/dex-lang/prelude.html)
+	* [InDex](https://google-research.github.io/dex-lang/index.html)
+	    * [Stats library](https://google-research.github.io/dex-lang/lib/stats.html)
+* [My Dex reminders](https://github.com/darrenjw/djwhacks/blob/master/dex/Reminders.md)
 
 
 

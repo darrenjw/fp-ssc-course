@@ -5,6 +5,14 @@
 
 
 
+
+
+
+
+
+
+
+
 ### Learning resources
 
 Below are some links for further information about the languages and libraries briefly introduced in this course. See my [logreg repo](https://github.com/darrenjw/logreg) for more example (MCMC) code using these languages and libraries.
@@ -55,6 +63,7 @@ The resources below use Haskell to illustrate the ideas, but are of generic inte
 
 * [JAX](https://jax.readthedocs.io/en/latest/)
     * [github](https://github.com/google/jax)
+	* [Quickstart](https://jax.readthedocs.io/en/latest/notebooks/quickstart.html)
 	* [Tutorial: JAX 101](https://jax.readthedocs.io/en/latest/jax-101/)
 	    * [Random numbers](https://jax.readthedocs.io/en/latest/jax-101/05-random-numbers.html)
 	* [Autodiff cookbook](https://jax.readthedocs.io/en/latest/notebooks/autodiff_cookbook.html)

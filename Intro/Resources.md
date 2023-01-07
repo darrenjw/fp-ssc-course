@@ -75,7 +75,7 @@ These resources are of generic interest for any serious functional programmer. H
 	
 ### Data structures
 	
-* [Purely functional data structures](https://books.google.co.uk/books/about/Purely_Functional_Data_Structures.html?id=SxPzSTcTalAC) - book on data structures, with examples in SML (and Haskell) ([PDF](https://doc.lagout.org/programmation/Functional%20Programming/Chris_Okasaki-Purely_Functional_Data_Structures-Cambridge_University_Press%281998%29.pdf))
+* [Purely functional data structures](https://books.google.co.uk/books?id=IV8hAwAAQBAJ) - book on data structures, with examples in SML (and Haskell) ([PDF](https://doc.lagout.org/programmation/Functional%20Programming/Chris_Okasaki-Purely_Functional_Data_Structures-Cambridge_University_Press%281998%29.pdf))
 
 ### Other interesting languages
 

@@ -36,20 +36,6 @@ Below are some links for further information about the languages and libraries b
     * [Typeclassopedia](https://wiki.haskell.org/Typeclassopedia)
 * [dataHaskell](https://www.datahaskell.org/) - a project for data science with Haskell
 
-### Category theory for FP (and Haskell)
-
-The resources below use Haskell to illustrate the ideas, but are of generic interest for any serious functional programmer.
-
-* Category theory for programmers, by [Bartosz Milewski](https://bartoszmilewski.com/)
-    * [Blog post series](https://bartoszmilewski.com/2014/10/28/category-theory-for-programmers-the-preface/)
-    * [Book](https://github.com/hmemcpy/milewski-ctfp-pdf/) - the blog posts were turned into a book
-	    * [Scala edition](https://github.com/hmemcpy/milewski-ctfp-pdf/releases/tag/v1.3.0) - a Scala edition of the book was produced
-    * [YouTube](https://www.youtube.com/channel/UC8BtBl8PNgd3vWKtm2yJ7aA) - Video lectures accompany the blog posts (and book)
-	    * [Series 1](https://www.youtube.com/playlist?list=PLbgaMIhjbmEnaH_LTkxLI7FMa2HsnawM_)
-	    * [Series 2](https://www.youtube.com/playlist?list=PLbgaMIhjbmElia1eCEZNvsVscFef9m0dm)
-	    * [Series 3](https://www.youtube.com/playlist?list=PLbgaMIhjbmEn64WVX4B08B4h2rOtueWIL)
-    * **New book!**: [The Dao of FP](https://github.com/BartoszMilewski/Publications/raw/master/TheDaoOfFP/DaoFP.pdf) - Bartosz decided to write a proper book - this is probably the best introduction to category theory in the context of functional programming
-
 
 ## JAX
 
@@ -75,8 +61,22 @@ The resources below use Haskell to illustrate the ideas, but are of generic inte
 
 ## Misc
 
-### Reading
+### Category theory for FP
 
+These resources are of generic interest for any serious functional programmer. Haskell is often used to illustrate the ideas.
+
+* Category theory for programmers, by [Bartosz Milewski](https://bartoszmilewski.com/)
+    * [Blog post series](https://bartoszmilewski.com/2014/10/28/category-theory-for-programmers-the-preface/)
+    * [Book](https://github.com/hmemcpy/milewski-ctfp-pdf/) - the blog posts were turned into a book
+	    * [Scala edition](https://github.com/hmemcpy/milewski-ctfp-pdf/releases/tag/v1.3.0) - a Scala edition of the book was produced
+    * [YouTube](https://www.youtube.com/channel/UC8BtBl8PNgd3vWKtm2yJ7aA) - Video lectures accompany the blog posts (and book)
+	    * [Series 1](https://www.youtube.com/playlist?list=PLbgaMIhjbmEnaH_LTkxLI7FMa2HsnawM_)
+	    * [Series 2](https://www.youtube.com/playlist?list=PLbgaMIhjbmElia1eCEZNvsVscFef9m0dm)
+	    * [Series 3](https://www.youtube.com/playlist?list=PLbgaMIhjbmEn64WVX4B08B4h2rOtueWIL)
+    * **New book!**: [The Dao of FP](https://github.com/BartoszMilewski/Publications/raw/master/TheDaoOfFP/DaoFP.pdf) - Bartosz decided to write a proper book - this is probably the best introduction to category theory in the context of functional programming
+	
+### Data structures
+	
 * [Purely functional data structures](https://doc.lagout.org/programmation/Functional%20Programming/Chris_Okasaki-Purely_Functional_Data_Structures-Cambridge_University_Press%281998%29.pdf) - book on data structures, with examples in OCaml and Haskell
 
 ### Other interesting languages

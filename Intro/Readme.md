@@ -37,7 +37,9 @@ Below are some links for further information about the languages and libraries b
 * [lyahfgg](http://learnyouahaskell.com/) - introductory book
 * [Haskell wiki](https://wiki.haskell.org/Haskell)
     * [Typeclassopedia](https://wiki.haskell.org/Typeclassopedia)
-	
+
+The resources below use Haskell to illustrate the ideas, but are of generic interest for any serious functional programmer.
+
 * Category theory for programmers, by [Bartosz Milewski](https://bartoszmilewski.com/)
     * [Blog post series](https://bartoszmilewski.com/2014/10/28/category-theory-for-programmers-the-preface/)
     * [Book](https://github.com/hmemcpy/milewski-ctfp-pdf/)

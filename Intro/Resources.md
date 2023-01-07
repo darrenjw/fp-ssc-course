@@ -1,5 +1,3 @@
-
-
 # Learning resources
 
 Below are some links for further information about the languages and libraries briefly introduced in this course. See my [logreg repo](https://github.com/darrenjw/logreg) for more example (MCMC) code using these languages and libraries.
@@ -8,6 +6,8 @@ Below are some links for further information about the languages and libraries b
 
 * [Scala programming language](https://www.scala-lang.org/) - main web site
     * [Learning resources](https://docs.scala-lang.org/)
+	* [Scastie](https://scastie.scala-lang.org/) - try Scala in the browser
+* [Scala exercises](https://www.scala-exercises.org/) - learn Scala in the browswer
 * [Functional Programming in Scala](https://www.manning.com/books/functional-programming-in-scala) - unfortunately this book is not free, but remains one of the best introductions to functional programming (in any language)
     * [Chapter notes](https://github.com/fpinscala/fpinscala)
 * [Typelevel](https://typelevel.org/) - libraries for functional programming in Scala
@@ -18,6 +18,7 @@ Below are some links for further information about the languages and libraries b
 * [Breeze](https://github.com/scalanlp/breeze/) - numerical linear algebra and scientific computing (like numpy/scipy for Scala)
 * [Smile](https://haifengl.github.io/) - Statistical machine learning library (like scikit-learn for Scala)
 * [Apache Spark](https://spark.apache.org/) - library for parallel and distributed big data processing
+* [Scala for statistical computing and data science](https://github.com/darrenjw/scala-course/blob/master/StartHere.md) - materials for my short course (not yet updated for Scala 3)
 
 
 ## Haskell
@@ -39,13 +40,13 @@ The resources below use Haskell to illustrate the ideas, but are of generic inte
 
 * Category theory for programmers, by [Bartosz Milewski](https://bartoszmilewski.com/)
     * [Blog post series](https://bartoszmilewski.com/2014/10/28/category-theory-for-programmers-the-preface/)
-    * [Book](https://github.com/hmemcpy/milewski-ctfp-pdf/)
-	    * [Scala edition](https://github.com/hmemcpy/milewski-ctfp-pdf/releases/tag/v1.3.0)
-    * [YouTube](https://www.youtube.com/channel/UC8BtBl8PNgd3vWKtm2yJ7aA)
+    * [Book](https://github.com/hmemcpy/milewski-ctfp-pdf/) - the blog posts were turned into a book
+	    * [Scala edition](https://github.com/hmemcpy/milewski-ctfp-pdf/releases/tag/v1.3.0) - a Scala edition of the book was produced
+    * [YouTube](https://www.youtube.com/channel/UC8BtBl8PNgd3vWKtm2yJ7aA) - Video lectures accompany the blog posts (and book)
 	    * [Series 1](https://www.youtube.com/playlist?list=PLbgaMIhjbmEnaH_LTkxLI7FMa2HsnawM_)
 	    * [Series 2](https://www.youtube.com/playlist?list=PLbgaMIhjbmElia1eCEZNvsVscFef9m0dm)
 	    * [Series 3](https://www.youtube.com/playlist?list=PLbgaMIhjbmEn64WVX4B08B4h2rOtueWIL)
-    * **New book!**: [The Dao of FP](https://github.com/BartoszMilewski/Publications/raw/master/TheDaoOfFP/DaoFP.pdf) - this is now possibly the best introduction to the ideas of category theory in the context of functional programming
+    * **New book!**: [The Dao of FP](https://github.com/BartoszMilewski/Publications/raw/master/TheDaoOfFP/DaoFP.pdf) - Bartosz decided to write a proper book - this is probably the best introduction to category theory in the context of functional programming
 
 
 ## JAX

@@ -9,7 +9,7 @@
 
 -   All of the languages commonly used for this purpose are very old, dating back to the
     dawn of the computing age, and are quite unsuitable for scalable and
-    efficient Bayesian computation
+    efficient statistical computation
 
 -   Interpreted dynamic languages such as R, Python and Matlab are far
     too slow, among many other things
@@ -65,7 +65,7 @@
 ### Concurrency, parallelism, distribution, state
 
 -   Modern computing platforms feature processors with many cores, and
-    possibly many such processors --- parallel programming is required
+    possibly many such processors - parallel programming is required
     to properly exploit these
 
 -   Most of the notorious difficulties associated with parallel
@@ -76,7 +76,7 @@
 
 -   Consequently, most of the difficulties typically associated with
     parallel, distributed, and concurrent programming simply don't exist
-    in FP --- parallelism in FP is so easy and natural that it is
+    in FP - parallelism in FP is so easy and natural that it is
     sometimes completely automatic
 
 -   This natural scalability of FP languages is one reason for their
@@ -103,7 +103,7 @@
 -   Category theory is in many ways the mathematical study of
     (associative) composition, and this leads to useful insights
 
-### Bayesian computation
+### Statistical computing
 
 -   *map-reduce* operations on *functorial* data
     collections can trivially parallelise (and distribute):
@@ -124,12 +124,11 @@
     conjunction with *probability monads*
 
 -   *Automatic differentiation* (AD) is natural and convenient
-    in functional languages, facilitating gradient-based algorithms such
-    as MALA, HMC and PDMP
+    in functional languages, facilitating gradient-based algorithms
 
 ### Monoids and parallel "map--reduce"
 
--   A [monoid]{.alert} is a very important concept in FP
+-   A *monoid* is a very important concept in FP
 
 -   For now we will think of a monoid as a *set* of elements
     with a *binary relation* $\star$ which is *closed*
@@ -238,7 +237,7 @@
 -   This motivates the development of a JAX-like array processing DSL in
     a strongly typed functional programming language
 
--   [DEX]([github.com/google-research/dex-lang](github.com/google-research/dex-lang))
+-   [Dex]([github.com/google-research/dex-lang](github.com/google-research/dex-lang))
     is a new experimental (Haskell-like) language in this space with a
     number of interesting and desirable features
 	

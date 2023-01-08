@@ -126,7 +126,7 @@
 -   *Automatic differentiation* (AD) is natural and convenient
     in functional languages, facilitating gradient-based algorithms
 
-### Monoids and parallel "map--reduce"
+### Monoids and parallel "map-reduce"
 
 -   A *monoid* is a very important concept in FP
 
@@ -230,7 +230,7 @@
     interpreted, imperative language such as Python has a number of
     limitations and drawbacks
 
--   A similar issue arises with Spark -- although it is possible to
+-   A similar issue arises with Spark - although it is possible to
     develop Spark applications in Python using PySpark, in practice most
     non-trivial applications are developed in Scala, for good reason
 
@@ -239,7 +239,7 @@
 
 -   [Dex]([github.com/google-research/dex-lang](github.com/google-research/dex-lang))
     is a new experimental (Haskell-like) language in this space with a
-    number of interesting and desirable features
+    number of interesting and desirable features...
 	
 	
 

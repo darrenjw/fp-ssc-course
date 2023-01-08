@@ -220,7 +220,7 @@
     auto-diff) using *BlackJAX* ([blackjax-devs.github.io/blackjax/](blackjax-devs.github.io/blackjax/))
 
 -   The original Pyro uses PyTorch as a back-end, but the popular
-    [NumPyro]{.alert} (<https://github.com/pyro-ppl/numpyro>) fork uses
+    *NumPyro* (<https://github.com/pyro-ppl/numpyro>) fork uses
     JAX for a back-end, leading to significant performance improvements
 
 -   The PyMC4 project intended to use TensorFlow for a back-end, but

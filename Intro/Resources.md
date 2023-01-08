@@ -20,7 +20,8 @@ Below are some links for further information about the languages and libraries b
 * [Smile](https://haifengl.github.io/) - Statistical machine learning library (like scikit-learn for Scala)
 * [Apache Spark](https://spark.apache.org/) - library for parallel and distributed big data processing
 * [Scala for statistical computing and data science](https://github.com/darrenjw/scala-course/blob/master/StartHere.md) - materials for my short course (not yet updated for Scala 3)
-
+    * [scala-glm](https://github.com/darrenjw/scala-glm) - my library for regression modelling
+	* [scala-smfsb](https://github.com/darrenjw/scala-smfsb) - my library for simulation and inference for stochastic biochemical network models
 
 ## Haskell
 

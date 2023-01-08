@@ -6,7 +6,7 @@
 
 A brief introduction to ideas of functional programming in the context
 of scalable statistical computing, illustrated with hands-on examples
-in Scala, Haskell, Python+JAX and
+in Scala, Haskell, (Python+)JAX and
 Dex. [Scala](https://www.scala-lang.org/) and
 [Haskell](https://www.haskell.org/) are general purpose strongly typed
 functional programming
@@ -44,7 +44,7 @@ modern computing hardware.
 This short course will provide a brief introduction to ideas of
 functional programming in the context of scalable statistical
 computing, illustrated with hands-on examples in Scala, Haskell,
-Python+JAX and Dex. Scala and Haskell are general purpose strongly
+(Python+)JAX and Dex. Scala and Haskell are general purpose strongly
 typed functional programming languages. JAX is a functional language
 for differentiable array programming embedded in Python, and Dex is a
 new experimental strongly typed functional language for differentiable
@@ -56,7 +56,7 @@ array processing.
 * Scala crash-course
 * Scala hands-on
 * Running example
-* Example in Scala and hands-on
+* Scala example and hands-on
 * Haskell crash-course
 * Haskell example and hands-on
 * JAX crash-course

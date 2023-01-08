@@ -9,7 +9,7 @@
 * Example in Scala then Run example in Scala (15)
 * Quick intro to Haskell (10)
 * Example in Haskell then Hands-on with Haskell (15)
-* BREAK?
+* (BREAK?)
 * JAX for Python (10)
 * Example in JAX then JAX hands-on (15)
 * Introduction to Dex (10)
@@ -17,12 +17,7 @@
 * Functional and parallel random numbers (10)
 * Hands-on with splittable random numbers (choice of language) (15)
 * Wrap-up and next steps (logreg repo and learning resources) (5)
-* (180)
-
-## Thoughts...
-
-Around 3-4 hours, max. Probably aim for around 3 hours (180 mins) active work? eg. 1.30-5.00 with a 30 minute break?
-
+* (180 minutes, excluding Break)
 
 ## Abstract
 

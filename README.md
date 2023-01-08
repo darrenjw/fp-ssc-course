@@ -4,7 +4,13 @@
 
 ## A half-day short-course
 
-A brief introduction to ideas of functional programming in the context of scalable statistical computing, illustrated with hands-on examples in Scala, Haskell, Python+JAX and Dex.
+A brief introduction to ideas of functional programming in the context
+of scalable statistical computing, illustrated with hands-on examples
+in Scala, Haskell, Python+JAX and Dex. Scala and Haskell are general
+purpose strongly typed functional programming languages. JAX is a
+functional language for differentiable array programming embedded in
+Python, and Dex is a new experimental strongly typed functional
+language for differentiable array processing.
 
 The first iteration of this course will be delivered to [StatML](https://statml.io/) students on 2023-02-16.
 

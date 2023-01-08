@@ -1,7 +1,7 @@
 # Makefile
 
 
-TARGETS=Readme.pdf
+TARGETS=Readme.pdf Example.pdf
 
 FORCE:
 	make $(TARGETS)

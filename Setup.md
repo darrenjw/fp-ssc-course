@@ -18,7 +18,7 @@ The [Haskell](https://www.haskell.org/) website has information on installing va
 
 ### JAX (and Python)
 
-[JAX](https://jax.readthedocs.io/en/latest/) is a library for [Python](https://www.python.org/) which can be installed with `pip`. You first need to make sure that you have python and pip installed on your system. Then see the [installation instructions](https://github.com/google/jax#installation) which are a bit system dependent. The CPU-only version of JAX is fine for this course. Note that if you know about Python "environments", it might be better to install JAX in a new environment.
+[JAX](https://jax.readthedocs.io/en/latest/) is a library for [Python](https://www.python.org/) which can be installed with `pip`. You first need to make sure that you have python and pip installed on your system. Then see the [installation instructions](https://github.com/google/jax#installation) which are a bit system dependent. The CPU-only version of JAX is fine for this course. Note that if you know about Python "virtual environments", it might be better to install JAX in a new environment.
 
 ### Dex
 

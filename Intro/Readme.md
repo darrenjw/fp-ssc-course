@@ -4,14 +4,10 @@
 
 ### Background
 
--   For non-trivial problems, Bayesian computation typically relies on
-    computationally intensive methods, such as MCMC, SMC or ABC ---
-    similar structure to stochastic simulation models
-
--   These often require a custom implementation in some programming
+-   Non-trivial research problems in statistical computing and machine learning are often complex and computationally intensive, requiring a custom implementation in some programming
     language
 
--   All of the languages commonly used are very old, dating back to the
+-   All of the languages commonly used for this purpose are very old, dating back to the
     dawn of the computing age, and are quite unsuitable for scalable and
     efficient Bayesian computation
 

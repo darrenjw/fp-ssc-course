@@ -14,13 +14,15 @@
 * Dex hands-on
 
 
-
-
 For each of the four languages, do:
 
 * Introduction
 * Example
 * Exercise
 * Further information
+
+# Thoughts...
+
+Around 3-4 hours, max. Probably aim for around 3 hours active work? eg. 1.30-5.00 with a 30 minute break?
 
 

@@ -31,7 +31,7 @@ Below are some links for further information about the languages and libraries b
 * [Stack](https://docs.haskellstack.org/en/stable/) - a newer build tool
     * [Stackage](https://www.stackage.org/) - alternative repository
     * [Hoogle](https://hoogle.haskell.org/) - Haskell search engine
-* [lyahfgg](http://learnyouahaskell.com/) - introductory book
+* [lyahfgg](http://learnyouahaskell.com/) - good introductory book
 * [Haskell wiki](https://wiki.haskell.org/Haskell)
     * [Typeclassopedia](https://wiki.haskell.org/Typeclassopedia)
 * [dataHaskell](https://www.datahaskell.org/) - a project for data science with Haskell
@@ -59,7 +59,7 @@ Below are some links for further information about the languages and libraries b
 * [My Dex reminders](https://github.com/darrenjw/djwhacks/blob/master/dex/Reminders.md)
 
 
-## Misc
+## General
 
 ### Category theory for FP
 

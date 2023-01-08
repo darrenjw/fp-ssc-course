@@ -52,6 +52,24 @@ array processing.
 
 ### Materials
 
+* [Introduction to FP](Intro/Readme.md)
+* Scala crash-course
+* Scala hands-on
+* Running example
+* Example in Scala and hands-on
+* Haskell crash-course
+* Haskell example and hands-on
+* JAX crash-course
+* JAX example and hands-on
+* Dex crash-course
+* Dex example and hands-on
+* [Functional and parallel random numbers](Intro/Random.md)
+* Splittable random numbers hands-on
+* [Wrap-up and next steps](Intro/Resources.md)
+
+
+#### Directories
+
 * [Introduction](Intro/)
 * [Scala](Scala/)
 * [Haskell](Haskell/)

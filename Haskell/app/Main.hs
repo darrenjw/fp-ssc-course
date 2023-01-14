@@ -5,12 +5,14 @@
 
 module Main (main) where
 
-import Lib
+--import GHC.Prim
+--import Control.Monad
 import Frames
 import Frames.TH (rowGen, RowGen(..))
 import Pipes hiding (Proxy)
 import Numeric.LinearAlgebra
-
+import qualified Data.Foldable as F
+import Lens.Micro.Extras
 
 -- template Haskell to create the Person type, and personParser
 tableTypes' (rowGen "../pima.data")
@@ -56,4 +58,13 @@ main :: IO ()
 main = do
   putStrLn "Gradient ascent for a log likelihood"
   dat <- loadData
+  let yl = (\x -> if x then 1.0 else 0.0) <$> F.toList (view yy <$> dat)
+  let xl = rec2l <$> F.toList dat
+  print $ head xl
+  let y = vector yl
+  print y
+  let x = fromLists xl 
+  disp 2 x
   putStrLn "Goodbye."
+
+

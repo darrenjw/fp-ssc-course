@@ -21,6 +21,11 @@ description:         Please see the README on GitHub at <https://github.com/gith
 
 dependencies:
 - base >= 4.7 && < 5
+- Frames >= 0.7 && < 1
+- pipes >= 4.3 && < 5
+- microlens >= 0.4 && < 1
+- hmatrix >= 0.20 && < 1
+
 
 ghc-options:
 - -Wall

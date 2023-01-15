@@ -10,14 +10,15 @@
 #
 # resolver: lts-3.5
 # resolver: nightly-2015-09-21
-resolver: ghc-8.8.4
+resolver: ghc-8.10.7
+#resolver: ghc-9.2.5
 #
 # The location of a snapshot can be provided as a file or url. Stack assumes
 # a snapshot provided as a file might change, whereas a url resource does not.
 #
 # resolver: ./custom-snapshot.yaml
 # resolver: https://example.com/snapshots/2018-01-01.yaml
-resolver: lts-20.6
+#resolver: lts-20.6
 
 # User packages to be built.
 # Various formats can be used as shown in the example below.
@@ -36,7 +37,49 @@ packages:
 #
 extra-deps:
   - Frames-0.7.3
+  - hmatrix-0.20.2
+  - microlens-0.4.13.1
+  - pipes-4.3.16
+  - contravariant-1.5.5
+  - discrimination-0.5
+  - hashable-1.4.2.0
+  - mmorph-1.2.0
+  - pipes-bytestring-2.1.7
+  - pipes-group-1.0.12
+  - pipes-parse-3.0.9
+  - pipes-safe-2.3.4
+  - primitive-0.7.4.0
+  - random-1.2.1.1
   - readable-0.3.1
+  - semigroups-0.20
+  - split-0.2.3.5
+  - storable-complex-0.2.3.0
+  - vector-0.13.0.0
+  - vector-th-unbox-0.2.2
+  - vinyl-0.14.3
+  - void-0.7.3
+  - StateVar-1.2.2
+  - base-orphans-0.8.7
+  - data-array-byte-0.1.0.1
+  - free-5.1.10
+  - monad-control-1.0.3.1
+  - promises-0.3
+  - splitmix-0.1.0.4
+  - stringsearch-0.3.6.6
+  - transformers-base-0.4.6
+  - transformers-compat-0.7.2
+  - vector-stream-0.1.0.0
+  - comonad-5.0.8
+  - distributive-0.6.2.1
+  - indexed-traversable-0.1.2
+  - profunctors-5.6.2
+  - semigroupoids-5.3.7
+  - th-abstraction-0.4.5.0
+  - bifunctors-5.5.14
+  - tagged-0.8.6.1
+  - unordered-containers-0.2.19.1
+
+
 # - acme-missiles-0.3
 # - git: https://github.com/commercialhaskell/stack.git
 #   commit: e7b331f14bcffb8367cd58fbfc8b40ec7642100a
@@ -50,7 +93,7 @@ extra-deps:
 # extra-package-dbs: []
 
 # Control whether we use the GHC we find on the path
-system-ghc: true
+system-ghc: false
 #
 # Require a specific version of stack, using version ranges
 # require-stack-version: -any # Default

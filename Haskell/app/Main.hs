@@ -54,13 +54,13 @@ oneStep :: Matrix Double -> Vector Double -> Double -> Vector Double -> Vector D
 oneStep x y lrate b0 = b0 + (scalar lrate) * (gll x y b0)
 
 -- function for ascent
-ascend :: Matrix Double -> Vector Double -> (Vector Double -> Vector Double) ->
+ascend :: (Vector Double -> Vector Double) ->
   Vector Double -> Int -> Double -> Vector Double
-ascend x y step init maxIts tol =
-    go init maxIts
+ascend astep init0 maxIts tol =
+    go init0 maxIts
   where 
     go b0 itsLeft =
-      let b1 = step b0
+      let b1 = astep b0
           d = norm_2 $ b1 - b0
           in if ((d < tol)||(itsLeft < 1)) then b1
                 else go b1 (itsLeft - 1)
@@ -79,10 +79,10 @@ main = do
   disp 2 x
   putStrLn "Now run the gradient ascent"
   -- choose reasonable init, since gradient ascent is terrible...
-  let init = fromList [-9.8, 0.1, 0, 0, 0, 0, 1.8, 0] :: Vector Double
-  print init
-  print $ ll x y init
-  let opt = ascend x y (oneStep x y 1.0e-6) init 10000 1.0e-5
+  let init0 = fromList [-9.8, 0.1, 0, 0, 0, 0, 1.8, 0] :: Vector Double
+  print init0
+  print $ ll x y init0
+  let opt = ascend (oneStep x y 1.0e-6) init0 10000 1.0e-5
   print opt
   print $ ll x y opt
   putStrLn "Goodbye."

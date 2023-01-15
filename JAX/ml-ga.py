@@ -40,7 +40,7 @@ gll = jit(grad(ll)) # use auto-diff for the gradient
 def one_step(b0, learning_rate=1e-6):
     return b0 + learning_rate*gll(b0)
 
-def ascend(step, init, max_its=10000, tol=1e-8):
+def ascend(step, init, max_its=10000, tol=1e-5, verb=True):
     def term(state):
         x1, x0, its = state
         return ((its > 0) & jnp.logical_not(jnp.allclose(x1, x0, tol)))
@@ -48,7 +48,10 @@ def ascend(step, init, max_its=10000, tol=1e-8):
         x1, x0, its = state
         x2 = step(x1)
         return [x2, x1, its - 1]
-    b_opt, _, its_remaining = jax.lax.while_loop(term, step_state, [init, -init, max_its])
+    b_opt, _, its_remaining = jax.lax.while_loop(
+        term, step_state, [init, -init, max_its])
+    if (verb):
+        print(str(its_remaining) + " iterations remaining")
     return(b_opt)
 
 init = jnp.array([-9.8, 0.1, 0, 0, 0, 0, 1.8, 0]).astype(jnp.float32)
@@ -58,6 +61,7 @@ opt = ascend(one_step, init)
 print(opt)
 print(ll(opt))
 print("Goodbye.")
+
 
 # eof
 

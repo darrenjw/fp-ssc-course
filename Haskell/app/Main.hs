@@ -82,7 +82,7 @@ main = do
   let init = fromList [-9.8, 0.1, 0, 0, 0, 0, 1.8, 0] :: Vector Double
   print init
   print $ ll x y init
-  let opt = ascend x y (oneStep x y 1.0e-6) init 10000 0.0001
+  let opt = ascend x y (oneStep x y 1.0e-6) init 10000 1.0e-5
   print opt
   print $ ll x y opt
   putStrLn "Goodbye."

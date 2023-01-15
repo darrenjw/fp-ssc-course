@@ -35,7 +35,9 @@ def ascend (step: (Fin 8)=>Float -> (Fin 8)=>Float) (init: (Fin 8)=>Float) (max_
     while do
       (b0, its) = get state
       b1 = step b0
-      if (its > 0)
+      diff = b1-b0
+      sz = sqrt $ sum $ diff*diff
+      if ((its > 0) && (sz > 1.0e-8))
         then
           state := (b1, its - 1)
           True

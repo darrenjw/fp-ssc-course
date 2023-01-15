@@ -2,6 +2,7 @@
 
 
 FORCE:
+	stack clean
 	make build
 	make run
 

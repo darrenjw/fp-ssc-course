@@ -14,7 +14,7 @@ run:
 	stack exec ml-ga-exe
 
 edit:
-	emacs Makefile *.yaml lib/*.hs app/*.hs &
+	emacs Makefile *.yaml *.md lib/*.hs app/*.hs &
 
 
 # eof

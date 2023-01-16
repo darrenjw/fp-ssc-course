@@ -60,7 +60,7 @@ array processing.
 * Haskell crash-course
 * [Haskell example and hands-on](Haskell/Example.md)
 * JAX crash-course
-* JAX example and hands-on
+* [JAX example and hands-on](JAX/Example.md)
 * Dex crash-course
 * Dex example and hands-on
 * [Functional and parallel random numbers](Intro/Random.md)

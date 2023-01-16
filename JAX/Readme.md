@@ -1,4 +1,7 @@
-# JAX for Python
+# JAX for Python (crash course)
+
+
+
 
 
 

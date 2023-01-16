@@ -8,7 +8,7 @@ A Dex implementation of our running example can be found in the file [ml-ga.dx](
 
 If you have installed Dex the script should run with something like
 ```bash
-dex --lib-path $(LIBPATH) script ml-ga.dx
+dex --lib-path BUILTIN_LIBRARIES:. script ml-ga.dx
 ```
 Note that there is a [Makefile](Makefile) in the directory that you might want to take a quick look at. Make sure that you can build and run the application before proceeding.
 

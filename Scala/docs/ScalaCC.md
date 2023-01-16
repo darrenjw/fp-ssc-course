@@ -70,8 +70,9 @@ logFactR(3)
 logFactR(10)
 ```
 This function is recursive, but not tail-recursive since the result of the recursive call (`logFactR(n - 1)`) is modified before the correct value is returned. So, although it doesn't consume heap space, it consumes stack space, which is worse. That is, this function will stack-overflow if evaluated at a large enough input value.
-```scala mdoc:crash
+```scala
 logFactR(100000)
+// java.lang.StackOverflowError
 ```
 
 ## Tail-recursive functions

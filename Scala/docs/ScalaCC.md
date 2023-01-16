@@ -42,7 +42,7 @@ vi.foldLeft(0)(_+_)
 vi.reduce(_+_)
 vi.sum
 ```
-Note that `map` is a higher-order function (HoF), since it accepts a function as an argument.
+Note that `map` and `reduce` are higher-order functions (HoFs), since they accept a function as an argument.
 
 ## Writing functions
 

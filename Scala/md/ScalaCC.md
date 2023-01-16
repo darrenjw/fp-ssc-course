@@ -58,7 +58,7 @@ vi.reduce(_+_)
 vi.sum
 // res10: Int = 15
 ```
-Note that `map` is a higher-order function (HoF), since it accepts a function as an argument.
+Note that `map` and `reduce` are higher-order functions (HoFs), since they accept a function as an argument.
 
 ## Writing functions
 
@@ -139,7 +139,7 @@ def linFun(m: Double, c: Double)(x: Double): Double =
   m*x + c
 
 val f = linFun(2, 3)
-// f: Function1[Double, Double] = repl.MdocSession$MdocApp$$Lambda$8023/0x0000000841f5b040@15de73ed
+// f: Function1[Double, Double] = repl.MdocSession$MdocApp$$Lambda$7980/0x0000000842113040@3131bf49
 
 f(0)
 // res22: Double = 3.0

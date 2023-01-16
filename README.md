@@ -52,10 +52,10 @@ array processing.
 
 ### Materials
 
-* [Introduction to FP](Intro/Readme.md)
-* [Scala crash-course](Scala/md/ScalaCC.md)
+* [*Introduction to FP*](Intro/Readme.md)
+* [*Scala crash-course*](Scala/md/ScalaCC.md)
 * Scala hands-on
-* [Running example](Intro/Example.md)
+* [*Running example*](Intro/Example.md)
 * [Scala example and hands-on](Scala/md/Example.md)
 * Haskell crash-course
 * [Haskell example and hands-on](Haskell/Example.md)

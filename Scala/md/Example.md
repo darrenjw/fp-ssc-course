@@ -2,6 +2,8 @@
 
 ## ML for a logistic regression model using gradient ascent
 
+### An interactive session
+
 Here we will present an interactive Scala session for conducting maximum likelihood inference for our simple logistic regression model using a very naive gradient ascent algorithm. We will need to use the [Breeze](https://github.com/scalanlp/breeze/) library for numerical linear algebra, and we will also use [Smile](https://haifengl.github.io/) for a data frame object and CSV parser. The [sbt](https://www.scala-sbt.org/) project in the [Scala](../) directory has these dependencies (and a few others) preconfigured, so running `sbt console` from the Scala directory will give a REPL into which the following commands can be pasted.
 
 We start with a few imports and a shorthand type declaration.
@@ -154,9 +156,6 @@ def ll(beta: DVD): Double =
 def gll(beta: DVD): DVD =
   (X.t)*(y - ones/:/(ones + exp(-X*beta)))
 
-println("Now define a functions for gradient ascent")
-// Now define a functions for gradient ascent
-
 def oneStep(learningRate: Double)(b0: DVD): DVD =
   b0 + learningRate*gll(b0)
 
@@ -180,11 +179,19 @@ Now let's run the gradient ascent algorithm, starting from a reasonable initial 
 val init = DenseVector(-9.8, 0.1, 0, 0, 0, 0, 1.8, 0)
 // init: DenseVector[Double] = DenseVector(-9.8, 0.1, 0.0, 0.0, 0.0, 0.0, 1.8, 0.0)
 ll(init)
-// res1: Double = -566.3903911564223
+// res0: Double = -566.3903911564223
 val opt = ascend(oneStep(1e-6), init, verb=false)
 // opt: DenseVector[Double] = DenseVector(-9.798616371360632, 0.10314432881260363, 0.032145673085756866, -0.00452855938919666, -0.001984121863541414, 0.08411858929117885, 1.801384805815113, 0.04114190402348266)
 ll(opt)
-// res2: Double = -89.19598966159712
+// res1: Double = -89.19598966159712
 ```
 Note how much the likelihood has improved relative to our initial guess.
+
+
+### A standalone application
+
+We can package the code above into a standalone Scala application, and this is available in the file [ML-GA.scala](../src/main/scala/ML-GA.scala). We can compile and run this application by typing `sbt run` from the Scala directory. Make sure that you can run the application before proceding to the exercises.
+
+### Hands-on exercise
+
 

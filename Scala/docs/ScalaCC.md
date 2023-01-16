@@ -42,7 +42,7 @@ vi.foldLeft(0)(_+_)
 vi.reduce(_+_)
 vi.sum
 ```
-Note that `map` is a higher-order function, since it accepts a function as an argument.
+Note that `map` is a higher-order function (HoF), since it accepts a function as an argument.
 
 ## Writing functions
 
@@ -80,7 +80,7 @@ logFactR(100000)
 ```scala mdoc
 @annotation.tailrec
 final def logFactTR(n: Int, acc: Double = 0.0): Double =
-  if (n <=1) acc else
+  if (n <= 1) acc else
   logFactTR(n - 1, math.log(n) + acc)
   
 logFactTR(3)
@@ -91,11 +91,11 @@ This version consumes neither heap nor stack space. The `tailrec` annotation is 
 
 ## Helper functions
 
-The previous example made use of the fact that Scala has optional arguments with default values. Even if this wasn't the case, we could acheive the same thing by embedding the two-argument version as a private function embedded inside the one-argument version.
+The previous example made use of the fact that Scala has optional arguments with default values. Even if this wasn't the case, we could acheive the same thing by embedding the two-argument version as a private function inside the one-argument version.
 ```scala mdoc
 def logFactTRH(n: Int): Double =
   def go(n: Int, acc: Double): Double =
-    if (n <=1) acc else
+    if (n <= 1) acc else
     go(n - 1, math.log(n) + acc)
   go(n, 0.0)
   
@@ -103,3 +103,18 @@ logFactTRH(3)
 logFactTRH(10)
 logFactTRH(100000)
 ```
+
+## Curried functions
+
+Sometimes we want to partially apply a function by providing some of the arguments. We can flag this by grouping them.
+```scala mdoc
+def linFun(m: Double, c: Double)(x: Double): Double =
+  m*x + c
+
+val f = linFun(2, 3)
+
+f(0)
+f(1)
+f(2)
+```
+Since the output of the partial call is a function, this is another example of a HoF.

@@ -17,8 +17,8 @@ val x = 5
 x = x + 1
 // error:
 // Reassignment to val x
-//   if (n <=1) acc else
-//             ^
+// def linFun(m: Double, c: Double)(x: Double): Double =
+//                                    ^
 ```
 
 ## Immutable collections
@@ -58,7 +58,7 @@ vi.reduce(_+_)
 vi.sum
 // res10: Int = 15
 ```
-Note that `map` is a higher-order function, since it accepts a function as an argument.
+Note that `map` is a higher-order function (HoF), since it accepts a function as an argument.
 
 ## Writing functions
 
@@ -101,7 +101,7 @@ logFactR(100000)
 ```scala
 @annotation.tailrec
 final def logFactTR(n: Int, acc: Double = 0.0): Double =
-  if (n <=1) acc else
+  if (n <= 1) acc else
   logFactTR(n - 1, math.log(n) + acc)
   
 logFactTR(3)
@@ -115,11 +115,11 @@ This version consumes neither heap nor stack space. The `tailrec` annotation is 
 
 ## Helper functions
 
-The previous example made use of the fact that Scala has optional arguments with default values. Even if this wasn't the case, we could acheive the same thing by embedding the two-argument version as a private function embedded inside the one-argument version.
+The previous example made use of the fact that Scala has optional arguments with default values. Even if this wasn't the case, we could acheive the same thing by embedding the two-argument version as a private function inside the one-argument version.
 ```scala
 def logFactTRH(n: Int): Double =
   def go(n: Int, acc: Double): Double =
-    if (n <=1) acc else
+    if (n <= 1) acc else
     go(n - 1, math.log(n) + acc)
   go(n, 0.0)
   
@@ -130,3 +130,22 @@ logFactTRH(10)
 logFactTRH(100000)
 // res21: Double = 1051299.221899134
 ```
+
+## Curried functions
+
+Sometimes we want to partially apply a function by providing some of the arguments. We can flag this by grouping them.
+```scala
+def linFun(m: Double, c: Double)(x: Double): Double =
+  m*x + c
+
+val f = linFun(2, 3)
+// f: Function1[Double, Double] = repl.MdocSession$MdocApp$$Lambda$8023/0x0000000841f5b040@15de73ed
+
+f(0)
+// res22: Double = 3.0
+f(1)
+// res23: Double = 5.0
+f(2)
+// res24: Double = 7.0
+```
+Since the output of the partial call is a function, this is another example of a HoF.

@@ -53,7 +53,7 @@ array processing.
 ### Materials
 
 * [Introduction to FP](Intro/Readme.md)
-* Scala crash-course
+* [Scala crash-course](Scala/md/ScalaCC.md)
 * Scala hands-on
 * [Running example](Intro/Example.md)
 * [Scala example and hands-on](Scala/md/Example.md)

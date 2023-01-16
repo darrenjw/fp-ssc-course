@@ -24,6 +24,6 @@ For our running example we will use a very simple gradient ascent algorithm in o
 
 ## The data
 
-We will be analysing the "Pima" training dataset, with 200 observations and 7 predictors. Including an intercept as the first covariate gives a parameter vector of length $p=8$.
+We will be analysing the ["Pima" training dataset](../pima.data), with 200 observations and 7 predictors. Including an intercept as the first covariate gives a parameter vector of length $p=8$.
 
 For a small dataset like this, there is no problem using the gradient of the full likelihood in a simple [**steepest ascent**](https://en.wikipedia.org/wiki/Gradient_descent) algorithm, so that's what we'll start with. But if you are interested in optimisation, you can then go on to experiement with adapting the learning rate, accelerated learning algorithms,  using [**stochastic gradient ascent**](https://en.wikipedia.org/wiki/Stochastic_gradient_descent), etc., according to your interests.

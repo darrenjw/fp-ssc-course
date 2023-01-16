@@ -56,7 +56,7 @@ array processing.
 * Scala crash-course
 * Scala hands-on
 * [Running example](Intro/Example.md)
-* Scala example and hands-on
+* [Scala example and hands-on](Scala/md/Example.md)
 * Haskell crash-course
 * Haskell example and hands-on
 * JAX crash-course

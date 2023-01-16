@@ -2,7 +2,9 @@
 
 ## ML for a logistic regression model using gradient ascent
 
-Some imports and a type declaration.
+Here we will present an interactive Scala session for conducting maximum likelihood inference for our simple logistic regression model using a very naive gradient ascent algorithm. We will need to use the [Breeze](https://github.com/scalanlp/breeze/) library for numerical linear algebra, and we will also use [Smile](https://haifengl.github.io/) for a data frame object and CSV parser. The [sbt](https://www.scala-sbt.org/) project in the [Scala](../) directory has these dependencies (and a few others) preconfigured, so running `sbt console` from the Scala directory will give a REPL into which the following commands can be pasted.
+
+We start with a few imports and a shorthand type declaration.
 ```scala
 import breeze.linalg.*
 import breeze.numerics.*
@@ -11,7 +13,8 @@ import annotation.tailrec
 
 type DVD = DenseVector[Double]
 ```
-Next read and process the data.
+
+Next we use Smile to read and process the data.
 ```scala
 val df = smile.read.csv("../pima.data", delimiter=" ", header=false)
 // df: DataFrame = [V1: int, V2: int, V3: int, V4: int, V5: double, V6: double, V7: int, V8: String]
@@ -142,7 +145,8 @@ val X = DenseMatrix.horzcat(ones.toDenseMatrix.t, x)
 val p = X.cols
 // p: Int = 8
 ```
-Now define the likelihood and some functions for gradient ascent.
+
+Now `y` is our response variable and `X` is our covariate matrix, including an intercept column. Now we define the likelihood and some functions for gradient ascent. Note that the `ascend` function contains a tail-recursive function `go` that avoids the need for mutable variables and a "while loop", but is effectively equivalent.
 ```scala
 def ll(beta: DVD): Double =
   sum(-log(ones + exp(-1.0*(2.0*y - ones)*:*(X * beta))))
@@ -170,12 +174,17 @@ def ascend(step: DVD => DVD, init: DVD, maxIts: Int = 10000,
 	}
   go(init, ll(init), maxIts)
 ```
-Now let's run the gradient ascent algorithm.
+
+Now let's run the gradient ascent algorithm, starting from a reasonable initial guess, since naive gradient ascent is terrible.
 ```scala
 val init = DenseVector(-9.8, 0.1, 0, 0, 0, 0, 1.8, 0)
 // init: DenseVector[Double] = DenseVector(-9.8, 0.1, 0.0, 0.0, 0.0, 0.0, 1.8, 0.0)
+ll(init)
+// res1: Double = -566.3903911564223
 val opt = ascend(oneStep(1e-6), init, verb=false)
 // opt: DenseVector[Double] = DenseVector(-9.798616371360632, 0.10314432881260363, 0.032145673085756866, -0.00452855938919666, -0.001984121863541414, 0.08411858929117885, 1.801384805815113, 0.04114190402348266)
 ll(opt)
-// res1: Double = -89.19598966159712
+// res2: Double = -89.19598966159712
 ```
+Note how much the likelihood has improved relative to our initial guess.
+

@@ -54,7 +54,7 @@ array processing.
 
 * [*Introduction to FP*](Intro/Readme.md)
 * [*Scala crash-course*](Scala/md/ScalaCC.md)
-* Scala hands-on
+* [Scala hands-on](Scala/md/ScalaHO.md)
 * [*Running example*](Intro/Example.md)
 * [Scala example and hands-on](Scala/md/Example.md)
 * Haskell crash-course

@@ -190,7 +190,7 @@ Note how much the likelihood has improved relative to our initial guess.
 
 ### A standalone application
 
-We can package the code above into a standalone Scala application, and this is available in the file [ML-GA.scala](../src/main/scala/ML-GA.scala). We can compile and run this application by typing `sbt run` from the Scala directory. Make sure that you can run the application before proceding to the exercises.
+We can package the code above into a standalone Scala application, and this is available in the file [ML-GA.scala](../src/main/scala/ML-GA.scala). We can compile and run this application by typing `sbt run` from the Scala directory. Note that you must run `sbt` from the directory containing the [build.sbt](../build.sbt) file, not from the subdirectory containing the actual source code files. Make sure that you can run the application before proceding to the exercises.
 
 ### Hands-on exercise
 

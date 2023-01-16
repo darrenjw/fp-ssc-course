@@ -17,8 +17,8 @@ val x = 5
 x = x + 1
 // error:
 // Reassignment to val x
-// def logFactR(n: Int): Double =
-//                      ^
+//   if (n <=1) acc else
+//             ^
 ```
 
 ## Immutable collections
@@ -58,6 +58,7 @@ vi.reduce(_+_)
 vi.sum
 // res10: Int = 15
 ```
+Note that `map` is a higher-order function, since it accepts a function as an argument.
 
 ## Writing functions
 
@@ -76,7 +77,6 @@ logFact(100000)
 This requires creating a collection of size `n`, which might not be desirable.
 
 We will use the log-factorial function to explore the use of recursion instead of more imperative looping constructs.
-
 
 ## Recursive functions
 
@@ -1136,3 +1136,21 @@ logFactTR(100000)
 // res18: Double = 1051299.221899134
 ```
 This version consumes neither heap nor stack space. The `tailrec` annotation is optional, but is useful, since it forces the compiler to flag an error if there is some reason why the tail call elimination can not be performed (eg. here, the method needed to be decalared `final` so it could not be over-ridden).
+
+## Helper functions
+
+The previous example made use of the fact that Scala has optional arguments with default values. Even if this wasn't the case, we could acheive the same thing by embedding the two-argument version as a private function embedded inside the one-argument version.
+```scala
+def logFactTRH(n: Int): Double =
+  def go(n: Int, acc: Double): Double =
+    if (n <=1) acc else
+    go(n - 1, math.log(n) + acc)
+  go(n, 0.0)
+  
+logFactTRH(3)
+// res19: Double = 1.791759469228055
+logFactTRH(10)
+// res20: Double = 15.104412573075514
+logFactTRH(100000)
+// res21: Double = 1051299.221899134
+```

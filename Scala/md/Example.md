@@ -197,6 +197,6 @@ We can package the code above into a standalone Scala application, and this is a
 Do some or all these exercises (or go back to previous exercises) as your interests dictate and time permits.
 
 * Try manually tweaking the initial guess, the learning rate, the convergence tolerance and the maximum number of iterations to see how robust (or otherwise) this naive gradient ascent algorithm is to these tuning parameters.
-* Improve on the naive descent algorithm somewhow, perhaps by implementing [line search](https://en.wikipedia.org/wiki/Line_search) for choosing the step size.
-* Note that Breeze has a bunch of utilities for optimisation, in the [breeze.optimise](https://github.com/scalanlp/breeze/wiki/Quickstart#breezeoptimize) package. See if you can figure out how it works by messing around in the REPL. Then see if you can adapt the running example to use it. The [ScalaDoc](http://www.scalanlp.org/api/breeze/#breeze.optimize.package) may be useful.
+* Improve on the naive ascent algorithm somewhow, perhaps by implementing [line search](https://en.wikipedia.org/wiki/Line_search) for choosing the step size.
+* Note that Breeze has a bunch of utilities for optimisation, in the [breeze.optimise](https://github.com/scalanlp/breeze/wiki/Quickstart#breezeoptimize) package. See if you can figure out how to use them by messing around in the REPL. Then see if you can adapt the running example to use one of the methods. The [ScalaDoc](http://www.scalanlp.org/api/breeze/#breeze.optimize.package) may be useful.
 

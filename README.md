@@ -68,11 +68,3 @@ array processing.
 * [Wrap-up and next steps](Intro/Resources.md)
 
 
-#### Directories
-
-* [Introduction](Intro/)
-* [Scala](Scala/)
-* [Haskell](Haskell/)
-* [JAX](JAX/)
-* [Dex](Dex/)
-

@@ -62,7 +62,7 @@ array processing.
 * JAX crash-course
 * [JAX example and hands-on](JAX/Example.md)
 * Dex crash-course
-* Dex example and hands-on
+* [Dex example and hands-on](Dex/Example.md)
 * [Functional and parallel random numbers](Intro/Random.md)
 * Splittable random numbers hands-on
 * [Wrap-up and next steps](Intro/Resources.md)

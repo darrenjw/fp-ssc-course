@@ -29,14 +29,27 @@ I prefer the new braceless syntax, but a lot of existing tooling works better wi
 
 If you have `sbt` installed, you can use this to create, build and run Scala projects.
 
+### Using an existing project
+
 There is an `sbt` project in the [Scala](../) directory of this code repository. This is indicated by the presence of a [build.sbt](../build.sbt) file, which contains most of the configuration info related to the project.
 
 From the directory containing the build file, running `sbt console` will give a Scala REPL.
 
 Try pasting one of the above snippets into the REPL and make sure it works.
 
+Exit the console (Ctrl-D), and type `sbt run` to build and run the application assocaited with the project. We will study this application later.
 
+Note that `sbt` is really designed to be run interactively. So, just typing `sbt` will lead to an `sbt` prompt (which is different from a Scala REPL prompt). Then, typing `console` from the `sbt` prompt will give a Scala REPL, `compile` will compile the project, `run` will compile and run the project, etc. Also note that `sbt` can "watch" the project directory for file changes. Use a `~` as a prefix to watch for changes. eg. typing `~compile` will watch for file changes and recompile the application (incrementally) whenever a file is saved.
 
+### Creating a new project
 
+`sbt` expects projects to be configured in a particular way, with certain files in certain directories. `sbt` can itself be used to construct project templates with the correct structure. Different templates are suitable for different kinds of projects. eg.
+```bash
+sbt new darrenjw/breeze.g8
+```
+will create a new project in a new directory inside the current directory, using the template provided in the `breeze.g8` repo in the GitHub account of `darrenjw`. This is a template for a project with fairly minimal dependencies on the [Breeze](https://github.com/scalanlp/breeze) library for numerical computing. I have some other templates. eg. `fps.g8` contains dependencies on libraries commonly used for pure functional programming in Scala, `scala-glm.g8` has a dependency on my regression modelling library, etc.
 
+Create a new project using one of the templates mentioned, and explore it.
+
+Create an application that prints to the console the log-factorial of 10000.
 

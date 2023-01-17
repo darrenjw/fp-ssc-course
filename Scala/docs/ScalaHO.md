@@ -39,7 +39,7 @@ Try pasting one of the above snippets into the REPL and make sure it works.
 
 Exit the console (Ctrl-D), and type `sbt run` to build and run the application assocaited with the project. We will study this application later.
 
-Note that `sbt` is really designed to be run interactively. So, just typing `sbt` will lead to an `sbt` prompt (which is different from a Scala REPL prompt). Then, typing `console` from the `sbt` prompt will give a Scala REPL, `compile` will compile the project, `run` will compile and run the project, etc. Also note that `sbt` can "watch" the project directory for file changes. Use a `~` as a prefix to watch for changes. eg. typing `~compile` will watch for file changes and recompile the application (incrementally) whenever a file is saved.
+Note that `sbt` is really designed to be run interactively. So, just typing `sbt` will lead to an `sbt` prompt (which is different from a Scala REPL prompt). Then, typing `console` from the `sbt` prompt will give a Scala REPL, `compile` will compile the project, `run` will compile and run the project, `test` will run any test suites, etc. Also note that `sbt` can "watch" the project directory for file changes. Use a `~` as a prefix to watch for changes. eg. typing `~compile` will watch for file changes and recompile the application (incrementally) whenever a file is saved.
 
 ### Creating a new project
 

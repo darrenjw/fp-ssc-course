@@ -52,6 +52,7 @@ array processing.
 
 ### Materials
 
+* [Laptop setup](Setup.md) - to be completed *in advance* of the course
 * [*Introduction to FP*](Intro/Readme.md)
 * [*Scala crash-course*](Scala/md/ScalaCC.md)
 * [Scala hands-on](Scala/md/ScalaHO.md)

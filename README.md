@@ -65,6 +65,8 @@ array processing.
 * [Dex example and hands-on](Dex/Example.md)
 * [Functional and parallel random numbers](Intro/Random.md)
 * Splittable random numbers hands-on
-* [Wrap-up and next steps](Intro/Resources.md)
+* [Wrap-up and next steps](Intro/Resources.md) (including additional learning resources)
+
+
 
 

@@ -54,7 +54,7 @@ foldr (+) 0 l -- right fold
 
 ## Writing functions
 
-We will again use the log-factorial function as our illustrative example. Note that for declaring functions, you probably want to turn on multi-line mode in the GHCi REPL with `:set +m`. A simple example which consumes heap can be written as follows.
+We will again use the log-factorial function as our illustrative example. Note that for declaring functions, you probably want to turn on multi-line mode in the GHCi REPL with `:set +m`. A simple example can be written as follows.
 ```haskell
 logFact :: Int -> Double
 logFact n = sum (log <$> [1..n])

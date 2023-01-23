@@ -23,6 +23,7 @@ Below are some links for further information about the languages and libraries b
     * [storch](https://storch.dev/) - Scala 3 bindings for Torch
 	* [scala_torch](https://github.com/microsoft/scala_torch) - Microsoft's Torch bindings
 	* [tensorflow_scala](http://platanios.org/tensorflow_scala/) - TensorFlow bindings for Scala (possibly abandoned?)
+* [GeoTrellis](https://geotrellis.io/) - Geographic data processing library for Scala
 * [Scala for statistical computing and data science](https://github.com/darrenjw/scala-course/blob/master/StartHere.md) - materials for my short course (not yet updated for Scala 3)
     * [scala-glm](https://github.com/darrenjw/scala-glm) - my library for regression modelling
 	* [scala-smfsb](https://github.com/darrenjw/scala-smfsb) - my library for simulation and inference for stochastic biochemical network models
@@ -40,6 +41,7 @@ Below are some links for further information about the languages and libraries b
 * [Haskell wiki](https://wiki.haskell.org/Haskell)
     * [Typeclassopedia](https://wiki.haskell.org/Typeclassopedia)
 * [dataHaskell](https://www.datahaskell.org/) - a project for data science with Haskell
+* [Hasktorch](http://hasktorch.org/) - Torch bindings for Haskell
 
 
 ## JAX

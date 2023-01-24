@@ -13,6 +13,7 @@ import jax
 from jax import grad, jit
 import jax.numpy as jnp
 import jax.scipy as jsp
+import jax.lax as jl
 ```
 For most numpy and scipy functions, there is a JAX equivalent, so with the above imports, translating from regular python to JAX often involves replacing a call to `np.X` (for some `X`) with a call to `jnp.X`, and `sp.X` with `jsp.X`. But there are other issues to confront, due to the fact that JAX is a pure functional language and python most definitely isn't!
 
@@ -30,11 +31,11 @@ v
 ```
 We can map JAX arrays.
 ```python
-jax.lax.map(lambda x: 2*x, v)
+jl.map(lambda x: 2*x, v)
 ```
 We can also reduce them.
 ```python
-jax.lax.reduce(v, 0.0, lambda x,y: x+y, [0])
+jl.reduce(v, 0.0, lambda x,y: x+y, [0])
 
 jnp.sum(v)
 ```
@@ -46,7 +47,7 @@ Functions are written like regular python functions. But if they are to be part 
 ```python
 @jit
 def sumArray1d(v):
-  return jax.lax.reduce(v, 0.0, lambda x,y: x+y, [0])
+  return jl.reduce(v, 0.0, lambda x,y: x+y, [0])
 
 float(sumArray1d(v))
 ```
@@ -56,7 +57,7 @@ We have seen that functional languages often exploit recursion, either explicitl
 
 ```python
 def logFactF(n):
-  return float(jax.lax.fori_loop(1, n+1,
+  return float(jl.fori_loop(1, n+1,
     lambda i,acc: acc + jnp.log(i), 0.0))
 
 logFactF(3)
@@ -71,7 +72,7 @@ def logFactW(n):
   def advance(state):
     [i, acc] = state
     return [i + 1, acc + jnp.log(i)]
-  return float(jax.lax.while_loop(cont, advance, [1, 0.0])[1])
+  return float(jl.while_loop(cont, advance, [1, 0.0])[1])
 
 logFactW(3)
 logFactW(100000)

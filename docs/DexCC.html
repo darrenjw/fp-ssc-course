@@ -1,0 +1,416 @@
+<!DOCTYPE HTML>
+<html><head><meta charset="UTF-8"><style type="text/css">/* Copyright 2019 Google LLC                              */
+/*                                                        */
+/* Use of this source code is governed by a BSD-style     */
+/* license that can be found in the LICENSE file or at    */
+/* https://developers.google.com/open-source/licenses/bsd */
+
+body {
+  font-family: Helvetica, sans-serif;
+  font-size: 100%;
+  color: #333;
+  display: flex;
+  justify-content: space-between;
+  overflow-x: hidden;
+
+  --main-width: 50rem;
+  --nav-width: 20rem;
+}
+
+@media (max-width: 70rem) {
+    /*For narrow screens hide nav and enable horizontal scrolling */
+    nav {display: none;}
+    body {overflow-x: auto;}
+}
+
+nav {/* this actually just holds space for #navbar, which is fixed */
+  min-width: var(--nav-width);
+  max-width: var(--nav-width);
+}
+#navbar {
+  position: fixed;
+  height: 100vh;
+  width: var(--nav-width);
+  overflow-y: scroll;
+  border-right: 1px solid firebrick;
+}
+#navbar:before {
+  content: "Contents";
+  font-weight: bold;
+}
+nav ol {
+  list-style-type:none;
+  padding-left: 1rem;
+}
+
+#main-output {
+  max-width: var(--main-width);
+  margin: auto;
+}
+
+.cell {
+}
+
+.code-block, .err-block, .result-block {
+  padding: 0em 0em 0em 2em;
+  display: block;
+  font-family: monospace;
+  white-space: pre;
+}
+
+code {
+  background-color: #F0F0F0;
+}
+
+.result-block {
+  border-left: 3px solid  #87CEFA;
+}
+
+.prose-block {
+  line-height: 140%;
+}
+
+.err-block {
+  font-weight: bold;
+  color: #B22222;
+  border-left: 3px solid #B22222;
+}
+
+.plot {
+  padding: 5em;
+}
+
+.plot-img {
+  width: 80%;
+}
+
+.comment {
+  color: #808080;
+}
+
+.keyword {
+  color: #0000DD;
+}
+
+.command {
+  color: #A80000;
+}
+
+.symbol {
+  color: #E07000;
+}
+
+.type-name {
+  color: #A80000;
+}
+
+.iso-sugar {
+  color: #25BBA7;
+}
+</style><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css"><script defer="" src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js"></script><script defer="" src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js" onload="// Copyright 2019 Google LLC
+//
+// Use of this source code is governed by a BSD-style
+// license that can be found in the LICENSE file or at
+// https://developers.google.com/open-source/licenses/bsd
+
+var katexOptions = {
+    delimiters: [
+        {left: &quot;$$&quot;, right: &quot;$$&quot;, display: true},
+        {left: &quot;\\[&quot;, right: &quot;\\]&quot;, display: true},
+        {left: &quot;$&quot;, right: &quot;$&quot;, display: false},
+        {left: &quot;\\(&quot;, right: &quot;\\)&quot;, display: false}
+    ],
+    // Enable commands that load resources or change HTML attributes
+    // (e.g. hyperlinks): https://katex.org/docs/security.html.
+    trust: true
+};
+
+var cells = {};
+
+function append_contents(key, contents) {
+    if (key in cells) {
+        var cur_cells = cells[key];
+    } else {
+        var cell = document.createElement(&quot;div&quot;);
+        cell.className = &quot;cell&quot;;
+        cells[key] = [cell];
+        var cur_cells = [cell];
+    }
+    for (var i = 0; i &lt; contents.length; i++) {
+        for (var j = 0; j &lt; cur_cells.length; j++) {
+            var node = lookup_address(cur_cells[j], contents[i][0])
+            node.innerHTML += contents[i][1];
+        }
+    }
+}
+
+function lookup_address(cell, address) {
+    var node = cell
+    for (i = 0; i &lt; address.length; i++) {
+        node = node.children[address[i]]
+    }
+    return node
+}
+
+function renderLaTeX() {
+    // Render LaTeX equations in prose blocks via KaTeX, if available.
+    // Skip rendering if KaTeX is unavailable.
+    if (typeof renderMathInElement == &#39;undefined&#39;) {
+        return;
+    }
+    // Render LaTeX equations in prose blocks via KaTeX.
+    var proseBlocks = document.querySelectorAll(&quot;.prose-block&quot;);
+    Array.from(proseBlocks).map((proseBlock) =&gt;
+        renderMathInElement(proseBlock, katexOptions)
+    );
+}
+
+/**
+ * Rendering the Table of Contents / Navigation Bar
+ * 2 key functions
+ *  - `updateNavigation()` which inserts/updates the navigation bar
+ *  - and it&#39;s helper `extractStructure()` which extracts the structure of the page
+ *    and adds ids to heading elements.
+*/
+function updateNavigation() {
+    function navItemList(struct) {
+        var listEle = document.createElement(&#39;ol&#39;)
+        struct.children.forEach(childStruct=&gt;
+            listEle.appendChild(navItem(childStruct))
+        );
+        return listEle;
+    }
+    function navItem(struct) {
+        var a = document.createElement(&#39;a&#39;);
+        a.appendChild(document.createTextNode(struct.text));
+        a.title = struct.text;
+        a.href = &quot;#&quot;+struct.id;
+
+        var ele = document.createElement(&#39;li&#39;)
+        ele.appendChild(a)
+        ele.appendChild(navItemList(struct));
+        return ele;
+    }
+
+    var navbarEle = document.getElementById(&quot;navbar&quot;)
+    if (navbarEle === null) {  // create it
+        navbarEle = document.createElement(&quot;div&quot;);
+        navbarEle.id=&quot;navbar&quot;;
+        navOuterEle = document.createElement(&quot;nav&quot;)
+        navOuterEle.appendChild(navbarEle);
+        document.body.prepend(navOuterEle);
+    }
+
+    navbarEle.innerHTML = &quot;&quot;
+    var structure = extractStructure()
+    navbarEle.appendChild(navItemList(structure));
+}
+
+function extractStructure() { // Also sets ids on h1,h2,...
+    var headingsNodes = document.querySelectorAll(&quot;h1, h2, h3, h4, h5, h6&quot;);
+    // For now we are just fulling going to regenerate the structure each time
+    // Might be better if we made minimal changes, but 🤷
+
+    // Extract the structure of the document
+    var structure = {children:[]}
+    var active = [structure.children];
+    headingsNodes.forEach(
+        function(currentValue, currentIndex) {
+            currentValue.id = &quot;s-&quot; + currentIndex;
+            var currentLevel = parseInt(currentValue.nodeName[1]);
+
+            // Insert dummy levels up for any levels that are skipped
+            for (var i=active.length; i &lt; currentLevel; i++) {
+                var dummy = {id: &quot;&quot;, text: &quot;&quot;, children: []}
+                active.push(dummy.children);
+                var parentList = active[i-1]
+                parentList.push(dummy);
+            }
+            // delete this level and everything after
+            active.splice(currentLevel, active.length);
+
+            var currentStructure = {
+                id: currentValue.id,
+                text: currentValue.textContent,
+                children: [],
+            };
+            active.push(currentStructure.children);
+
+            var parentList = active[active.length-2]
+            parentList.push(currentStructure);
+        },
+    );
+    return structure;
+}
+
+/**
+ * HTML rendering mode.
+ * Static rendering is used for static HTML pages.
+ * Dynamic rendering is used for dynamic HTML pages via `dex web`.
+ *
+ * @enum {string}
+ */
+var RENDER_MODE = Object.freeze({
+  STATIC: &quot;static&quot;,
+  DYNAMIC: &quot;dynamic&quot;,
+})
+
+/**
+ * Renders the webpage.
+ * @param {RENDER_MODE} renderMode The render mode, either static or dynamic.
+ */
+function render(renderMode) {
+    if (renderMode == RENDER_MODE.STATIC) {
+        // For static pages, simply call rendering functions once.
+        renderLaTeX();
+        updateNavigation();
+    } else {
+        // For dynamic pages (via `dex web`), listen to update events.
+        var source = new EventSource(&quot;/getnext&quot;);
+        source.onmessage = function(event) {
+            var body = document.getElementById(&quot;main-output&quot;);
+            var msg = JSON.parse(event.data);
+            if (msg == &quot;start&quot;) {
+                body.innerHTML = &quot;&quot;;
+                cells = {}
+                return
+            }
+            var order    = msg[0];
+            var contents = msg[1];
+            for (var i = 0; i &lt; contents.length; i++) {
+                append_contents(contents[i][0], contents[i][1]);
+            }
+            if (order != null) {
+                var new_cells = {};
+                body.innerHTML = &quot;&quot;;
+                for (var i = 0; i &lt; order.val.length; i++) {
+                    var key = order.val[i]
+                    var cur_cells = cells[key]
+                    if (cur_cells.length == 0) {
+                        var cur_cell = new_cells[key][0].cloneNode(true)
+                    } else {
+                        var cur_cell = cur_cells.pop()
+                        if (key in new_cells) {
+                            new_cells[key].push(cur_cell);
+                        } else {
+                            new_cells[key] = [cur_cell];
+                        }
+                    }
+                    body.appendChild(cur_cell);
+                }
+                Object.assign(cells, new_cells);
+            }
+            renderLaTeX();
+            updateNavigation();
+        };
+    }
+}
+render(RENDER_MODE.STATIC);"></script></head><body><div id="main-output"><div class="cell"><div class="code-block"></div></div><div class="cell"><div class="prose-block"><h1>Dex crash course</h1>
+<p>Start a Dex REPL by entering <code>dex repl</code> at your command prompt.</p>
+</div></div><div class="cell"><div class="prose-block"><h2>Immutability</h2>
+<p>Dex objects are immutable.</p>
+</div></div><div class="cell"><div class="code-block">x <span class="symbol">=</span> 5
+</div></div><div class="cell"><div class="code-block"><span class="command">:t</span> x
+</div><div class="result-block">Nat</div></div><div class="cell"><div class="code-block">
+</div></div><div class="cell"><div class="code-block">x <span class="symbol">=</span> x <span class="symbol">+</span> 1
+</div><div class="err-block">Error: variable already defined: x
+
+x = x + 1
+^^
+</div></div><div class="cell"><div class="code-block">
+</div></div><div class="cell"><div class="prose-block"><h2>Immutable collections</h2>
+<p>Dex, like JAX, has arrays/tensors as its main data structure, which are referred to as <em>tables</em>, and these are immutable.</p>
+</div></div><div class="cell"><div class="code-block">v <span class="symbol">=</span> [1<span class="symbol">.</span>0<span class="symbol">,</span> 2<span class="symbol">,</span> 4<span class="symbol">,</span> 5<span class="symbol">,</span> 7]
+</div></div><div class="cell"><div class="code-block">v
+</div><div class="result-block">[1., 2., 4., 5., 7.]</div></div><div class="cell"><div class="code-block"><span class="command">:t</span> v
+</div><div class="result-block">((Fin 5) =&gt; Float32)</div></div><div class="cell"><div class="code-block">
+</div></div><div class="cell"><div class="prose-block"><p>Dex has a strong static type system, including elements of dependent typing. Note how the length of an array (and in general, the dimensions of a tensor) is part of its type. This allows the detection of all kinds of dimension mismatch errors at compile time rather than runtime, and this is a very good thing! Notice that the type reflects the idea that conceptually, an array is essentially a function mapping from an index to a value.</p>
+</div></div><div class="cell"><div class="prose-block"><p>We can't just directly index into a table with an integer, since this isn't safe - we might violate the table index bounds. We need to cast our integer to a typed index using the <code>@</code> operator.</p>
+</div></div><div class="cell"><div class="code-block">v<span class="symbol">.</span>(2<span class="symbol">@</span><span class="type-name">Fin</span> 5)
+</div><div class="result-block">4.</div></div><div class="cell"><div class="code-block">
+</div></div><div class="cell"><div class="prose-block"><p>However, where things are unambiguous, we can use type inference.</p>
+</div></div><div class="cell"><div class="code-block">v<span class="symbol">.</span>(2<span class="symbol">@</span>_)
+</div><div class="result-block">4.</div></div><div class="cell"><div class="code-block">
+</div></div><div class="cell"><div class="prose-block"><p>It is relatively unusual to want to update a single element of a Dex table, but we can certaintly do it (immutably). Below we update the element with index 2 to be 9.0.</p>
+</div></div><div class="cell"><div class="code-block">vu <span class="symbol">=</span> <span class="keyword">for</span> i<span class="symbol">.</span> <span class="keyword">case</span> (i <span class="symbol">==</span> (2<span class="symbol">@</span>_)) <span class="keyword">of</span>
+  <span class="type-name">True</span>  <span class="symbol">-&gt;</span> 9<span class="symbol">.</span>0
+  <span class="type-name">False</span> <span class="symbol">-&gt;</span> v<span class="symbol">.</span>i
+</div></div><div class="cell"><div class="code-block">
+</div></div><div class="cell"><div class="code-block">vu
+</div><div class="result-block">[1., 2., 9., 5., 7.]</div></div><div class="cell"><div class="code-block">v
+</div><div class="result-block">[1., 2., 4., 5., 7.]</div></div><div class="cell"><div class="code-block">
+</div></div><div class="cell"><div class="prose-block"><p>This syntax will gradually become clear.</p>
+</div></div><div class="cell"><div class="prose-block"><h2>Manipulating collections</h2>
+<p>We can map and reduce.</p>
+</div></div><div class="cell"><div class="code-block">map (<span class="symbol">\</span>x<span class="symbol">.</span> 2<span class="symbol">*</span>x) v
+</div><div class="result-block">[2., 4., 8., 10., 14.]</div></div><div class="cell"><div class="code-block">
+</div></div><div class="cell"><div class="code-block">2<span class="symbol">.</span>0 <span class="symbol">.*</span> v
+</div><div class="result-block">[2., 4., 8., 10., 14.]</div></div><div class="cell"><div class="code-block">
+</div></div><div class="cell"><div class="code-block">sum v
+</div><div class="result-block">19.</div></div><div class="cell"><div class="code-block">
+</div></div><div class="cell"><div class="code-block">reduce 0<span class="symbol">.</span>0 (<span class="symbol">\</span>x y<span class="symbol">.</span> x<span class="symbol">+</span>y) v
+</div><div class="result-block">19.</div></div><div class="cell"><div class="code-block">
+</div></div><div class="cell"><div class="code-block">fold 0<span class="symbol">.</span>0 (<span class="symbol">\</span>i acc<span class="symbol">.</span> acc <span class="symbol">+</span> v<span class="symbol">.</span>i)
+</div><div class="result-block">19.</div></div><div class="cell"><div class="code-block">
+</div></div><div class="cell"><div class="prose-block"><p>The main way of creating and transforming tables is using <code>for</code>, which in Dex is more like a <em>for-comprehension</em> or <em>for-expression</em> in some languages than a traditional imperative for-loop. However, it is designed to allow the writing of index-based algorithms in a safe, pure functional way. For example, as an alternative to using <code>map</code> we could write.</p>
+</div></div><div class="cell"><div class="code-block"><span class="keyword">for</span> i<span class="symbol">.</span> 2<span class="symbol">*</span>v<span class="symbol">.</span>i
+</div><div class="result-block">[2., 4., 8., 10., 14.]</div></div><div class="cell"><div class="code-block">
+</div></div><div class="cell"><div class="prose-block"><p>We can create a table of given length filled with the same element</p>
+</div></div><div class="cell"><div class="code-block"><span class="keyword">for</span> i<span class="symbol">:</span>(<span class="type-name">Fin</span> 8)<span class="symbol">.</span> 2<span class="symbol">.</span>0
+</div><div class="result-block">[2., 2., 2., 2., 2., 2., 2., 2.]</div></div><div class="cell"><div class="code-block">
+</div></div><div class="cell"><div class="prose-block"><p>or different elements</p>
+</div></div><div class="cell"><div class="code-block"><span class="keyword">for</span> i<span class="symbol">:</span>(<span class="type-name">Fin</span> 6)<span class="symbol">.</span> n_to_f <span class="symbol">$</span> ordinal i
+</div><div class="result-block">[0., 1., 2., 3., 4., 5.]</div></div><div class="cell"><div class="code-block">
+</div></div><div class="cell"><div class="prose-block"><p>We can create 2d tables similarly.</p>
+</div></div><div class="cell"><div class="code-block"><span class="type-name">Height</span><span class="symbol">=</span><span class="type-name">Fin</span> 3
+</div></div><div class="cell"><div class="code-block"><span class="type-name">Width</span><span class="symbol">=</span><span class="type-name">Fin</span> 4
+</div></div><div class="cell"><div class="code-block">m <span class="symbol">=</span> <span class="keyword">for</span> i<span class="symbol">:</span><span class="type-name">Height</span> j<span class="symbol">:</span><span class="type-name">Width</span><span class="symbol">.</span> n_to_f <span class="symbol">$</span> ordinal i <span class="symbol">+</span> ordinal j
+</div></div><div class="cell"><div class="code-block">m
+</div><div class="result-block">[[0., 1., 2., 3.], [1., 2., 3., 4.], [2., 3., 4., 5.]]</div></div><div class="cell"><div class="code-block"><span class="command">:t</span> m
+</div><div class="result-block">((Fin 3) =&gt; (Fin 4) =&gt; Float32)</div></div><div class="cell"><div class="code-block">
+
+</div></div><div class="cell"><div class="prose-block"><h2>Writing functions</h2>
+<p>We can write a log-factorial function as follows.</p>
+</div></div><div class="cell"><div class="code-block"><span class="keyword">def</span> log_fact (n<span class="symbol">:</span> <span class="type-name">Nat</span>) <span class="symbol">:</span> <span class="type-name">Float</span> <span class="symbol">=</span>
+  sum <span class="symbol">$</span> <span class="keyword">for</span> i<span class="symbol">:</span>(<span class="type-name">Fin</span> n)<span class="symbol">.</span> log <span class="symbol">$</span> n_to_f (ordinal i <span class="symbol">+</span> 1)
+</div></div><div class="cell"><div class="code-block">
+</div></div><div class="cell"><div class="code-block"><span class="command">:t</span> log_fact
+</div><div class="result-block">(Nat -&gt; Float32)</div></div><div class="cell"><div class="code-block">
+</div></div><div class="cell"><div class="code-block">log_fact 3
+</div><div class="result-block">1.79176</div></div><div class="cell"><div class="code-block">log_fact 10
+</div><div class="result-block">15.104412</div></div><div class="cell"><div class="code-block">log_fact 100000
+</div><div class="result-block">1051299.6</div></div><div class="cell"><div class="code-block">
+</div></div><div class="cell"><div class="prose-block"><p>But this consumes heap. Dex, like JAX, is differentiable, so prohibits explicit recursion. However, it allows the creation of a mutable state variable that can be get and set via its algebraic effects system.</p>
+</div></div><div class="cell"><div class="code-block"><span class="keyword">def</span> log_fact_s (n<span class="symbol">:</span> <span class="type-name">Nat</span>) <span class="symbol">:</span> <span class="type-name">Float</span> <span class="symbol">=</span>
+  (lf<span class="symbol">,</span> _) <span class="symbol">=</span> yield_state (0<span class="symbol">.</span>0<span class="symbol">,</span> n_to_i n) <span class="symbol">\</span>state<span class="symbol">.</span>
+    while <span class="keyword">do</span>
+      (acc<span class="symbol">,</span> i) <span class="symbol">=</span> get state
+      <span class="keyword">if</span> (i <span class="symbol">&gt;</span> 0)
+        <span class="keyword">then</span>
+          state <span class="symbol">:=</span> (acc <span class="symbol">+</span> log (i_to_f i)<span class="symbol">,</span> i <span class="symbol">-</span> 1)
+          <span class="type-name">True</span>
+        <span class="keyword">else</span> <span class="type-name">False</span>
+  lf
+</div></div><div class="cell"><div class="code-block">
+</div></div><div class="cell"><div class="code-block">log_fact_s 3
+</div><div class="result-block">1.79176</div></div><div class="cell"><div class="code-block">log_fact_s 10
+</div><div class="result-block">15.104414</div></div><div class="cell"><div class="code-block">log_fact_s 100000
+</div><div class="result-block">1051309.6</div></div><div class="cell"><div class="code-block">
+</div></div><div class="cell"><div class="prose-block"><p>Note that for the final example, significant numerical error has accumulated in this naive sequential sum of 32 bit floats.</p>
+</div></div><div class="cell"><div class="prose-block"><h2>Curried functions</h2>
+<p>Note that, like Haskell, in Dex all functions are fully curried by default.</p>
+</div></div><div class="cell"><div class="code-block"><span class="keyword">def</span> lin_fun (m<span class="symbol">:</span> <span class="type-name">Float</span>) (c<span class="symbol">:</span> <span class="type-name">Float</span>) (x<span class="symbol">:</span> <span class="type-name">Float</span>) <span class="symbol">:</span> <span class="type-name">Float</span> <span class="symbol">=</span>
+  m<span class="symbol">*</span>x <span class="symbol">+</span> c
+</div></div><div class="cell"><div class="code-block">
+</div></div><div class="cell"><div class="code-block"><span class="command">:t</span> lin_fun
+</div><div class="result-block">(Float32 -&gt; Float32 -&gt; Float32 -&gt; Float32)</div></div><div class="cell"><div class="code-block">
+</div></div><div class="cell"><div class="code-block">f <span class="symbol">=</span> lin_fun 2 3
+</div></div><div class="cell"><div class="code-block">
+</div></div><div class="cell"><div class="code-block"><span class="command">:t</span> f
+</div><div class="result-block">(Float32 -&gt; Float32)</div></div><div class="cell"><div class="code-block">
+</div></div><div class="cell"><div class="code-block">f 0
+</div><div class="result-block">3.</div></div><div class="cell"><div class="code-block">f 1
+</div><div class="result-block">5.</div></div><div class="cell"><div class="code-block">f 2
+</div><div class="result-block">7.</div></div><div class="cell"><div class="code-block">
+
+</div></div></div></body></html>

@@ -1,4 +1,4 @@
-# JAX for Python (crash course)
+# JAX for Python crash course
 
 
 
@@ -35,6 +35,8 @@ jax.lax.map(lambda x: 2*x, v)
 We can also reduce them.
 ```python
 jax.lax.reduce(v, 0.0, lambda x,y: x+y, [0])
+
+jnp.sum(v)
 ```
 The reduction must be *monoidal* (the operation must be associative, and the initial value must be an identity wrt that operation), or the result is undefined.
 

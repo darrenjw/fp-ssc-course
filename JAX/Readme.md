@@ -15,7 +15,7 @@ import jax.numpy as jnp
 import jax.scipy as jsp
 import jax.lax as jl
 ```
-For most numpy and scipy functions, there is a JAX equivalent, so with the above imports, translating from regular python to JAX often involves replacing a call to `np.X` (for some `X`) with a call to `jnp.X`, and `sp.X` with `jsp.X`. But there are other issues to confront, due to the fact that JAX is a pure functional language and python most definitely isn't!
+If any of these imports fail, you probably don't have JAX installed correctly (in your current environment). For most numpy and scipy functions, there is a JAX equivalent, so with the above imports, translating from regular python to JAX often involves replacing a call to `np.X` (for some `X`) with a call to `jnp.X`, and `sp.X` with `jsp.X`. But there are other issues to confront, due to the fact that JAX is a pure functional language and python most definitely isn't!
 
 ## Immutable collections
 

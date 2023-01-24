@@ -1,3 +1,8 @@
+# Wrap-up
+
+**TODO: brief wrap-up**
+
+
 # Learning resources
 
 Below are some links for further information about the languages and libraries briefly introduced in this course. See my [logreg repo](https://github.com/darrenjw/logreg) for more example (MCMC) code using these languages and libraries.

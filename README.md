@@ -62,7 +62,7 @@ array processing.
 * [Haskell example and hands-on](Haskell/Example.md)
 * [JAX crash-course](JAX/Readme.md)
 * [JAX example and hands-on](JAX/Example.md)
-* Dex crash-course
+* [Dex crash-course](https://darrenjw.github.io/fp-ssc-course/DexCC.html)
 * [Dex example and hands-on](Dex/Example.md)
 * [Functional and parallel random numbers](Intro/Random.md)
 * Splittable random numbers hands-on

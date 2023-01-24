@@ -5,6 +5,7 @@ LIBPATH=BUILTIN_LIBRARIES:.
 FORCE:
 	make djwutils.html
 	make DexCC.html
+	make ml-ga.html
 	cp *.html ../docs/
 	make ml-ga
 

@@ -737,7 +737,9 @@ render(RENDER_MODE.STATIC);"></script></head><body><div id="main-output"><div cl
     while <span class="keyword">do</span>
       (b0<span class="symbol">,</span> its) <span class="symbol">=</span> get state
       b1 <span class="symbol">=</span> step b0
-      <span class="keyword">if</span> (its <span class="symbol">&gt;</span> 0)
+      diff <span class="symbol">=</span> b1<span class="symbol">-</span>b0
+      sz <span class="symbol">=</span> sqrt <span class="symbol">$</span> sum <span class="symbol">$</span> diff<span class="symbol">*</span>diff
+      <span class="keyword">if</span> ((its <span class="symbol">&gt;</span> 0) <span class="symbol">&amp;&amp;</span> (sz <span class="symbol">&gt;</span> 1<span class="symbol">.</span>0e<span class="symbol">-</span>8))
         <span class="keyword">then</span>
           state <span class="symbol">:=</span> (b1<span class="symbol">,</span> its <span class="symbol">-</span> 1)
           <span class="type-name">True</span>

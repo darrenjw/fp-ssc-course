@@ -4,13 +4,13 @@
 
 ### The Dex application
 
-A Dex implementation of our running example can be found in the file [ml-ga.dx](ml-ga.dx). Study this, and compare and contrast with the Scala, Haskell and Dex implementations.
+A Dex implementation of our running example can be found in the file [ml-ga.dx](ml-ga.dx) ([HTML rendering](https://darrenjw.github.io/fp-ssc-course/ml-ga.html)). Study this, and compare and contrast with the Scala, Haskell and Dex implementations.
 
 If you have installed Dex the script should run with something like
 ```bash
 dex --lib-path BUILTIN_LIBRARIES:. script ml-ga.dx
 ```
-Note that there is a [Makefile](Makefile) in the directory that you might want to take a quick look at. Make sure that you can build and run the application before proceeding.
+Setting the library path will allow the inclusion of some utility functions, [djwutils.dx](https://darrenjw.github.io/fp-ssc-course/djwutils.html). Note that there is a [Makefile](Makefile) in the directory that you might want to take a quick look at. Make sure that you can build and run the application before proceeding.
 
 ### Hands-on exercise
 

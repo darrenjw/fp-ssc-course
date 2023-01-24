@@ -10,13 +10,112 @@ x = 5
 x = x + 1
 
 '## Immutable collections
-Dex, like JAX, has arrays/tensors as its main data structure, and these are immutable.
+Dex, like JAX, has arrays/tensors as its main data structure, which are referred to as *tables*, and these are immutable.
 
 v = [1.0, 2, 4, 5, 7]
 v
 :t v
 
-'Dex has a strong static type system, including elements of dependent typing. Note how the length of an array (and in general, the dimensions of a tensor) is part of its type. Conceptually, an array is a function mapping from an index to a value.
+'Dex has a strong static type system, including elements of dependent typing. Note how the length of an array (and in general, the dimensions of a tensor) is part of its type. This allows the detection of all kinds of dimension mismatch errors at compile time rather than runtime, and this is a very good thing! Notice that the type reflects the idea that conceptually, an array is essentially a function mapping from an index to a value.
 
+'We can't just directly index into a table with an integer, since this isn't safe - we might violate the table index bounds. We need to cast our integer to a typed index using the `@` operator.
+
+v.(2@Fin 5)
+
+'However, where things are unambiguous, we can use type inference.
+
+v.(2@_)
+
+'It is relatively unusual to want to update a single element of a Dex table, but we can certaintly do it (immutably). Below we update the element with index 2 to be 9.0.
+
+vu = for i. case (i == (2@_)) of
+  True  -> 9.0
+  False -> v.i
+
+vu
+v
+
+'This syntax will gradually become clear.
+
+'## Manipulating collections
+We can map and reduce.
+
+map (\x. 2*x) v
+
+2.0 .* v
+
+sum v
+
+reduce 0.0 (\x y. x+y) v
+
+fold 0.0 (\i acc. acc + v.i)
+
+'The main way of creating and transforming tables is using `for`, which in Dex is more like a *for-comprehension* or *for-expression* in some languages than a traditional imperative for-loop. However, it is designed to allow the writing of index-based algorithms in a safe, pure functional way. For example, as an alternative to using `map` we could write.
+
+for i. 2*v.i
+
+'We can create a table of given length filled with the same element
+
+for i:(Fin 8). 2.0
+
+'or different elements
+
+for i:(Fin 6). n_to_f $ ordinal i
+
+'We can create 2d tables similarly.
+
+Height=Fin 3
+Width=Fin 4
+m = for i:Height j:Width. n_to_f $ ordinal i + ordinal j
+m
+:t m
+
+
+'## Writing functions
+We can write a log-factorial function as follows.
+
+def log_fact (n: Nat) : Float =
+  sum $ for i:(Fin n). log $ n_to_f (ordinal i + 1)
+
+:t log_fact
+
+log_fact 3
+log_fact 10
+log_fact 100000
+
+'But this consumes heap. Dex, like JAX, is differentiable, so prohibits explicit recursion. However, it allows the creation of a mutable state variable that can be get and set via its algebraic effects system.
+
+def log_fact_s (n: Nat) : Float =
+  (lf, _) = yield_state (0.0, n_to_i n) \state.
+    while do
+      (acc, i) = get state
+      if (i > 0)
+        then
+          state := (acc + log (i_to_f i), i - 1)
+          True
+        else False
+  lf
+
+log_fact_s 3
+log_fact_s 10
+log_fact_s 100000
+
+'Note that for the final example, significant numerical error has accumulated in this naive sequential sum of 32 bit floats.
+
+'## Curried functions
+Note that, like Haskell, in Dex all functions are fully curried by default.
+
+def lin_fun (m: Float) (c: Float) (x: Float) : Float =
+  m*x + c
+
+:t lin_fun
+
+f = lin_fun 2 3
+
+:t f
+
+f 0
+f 1
+f 2
 
 

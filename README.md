@@ -65,7 +65,7 @@ array processing.
 * [Dex crash-course](https://darrenjw.github.io/fp-ssc-course/DexCC.html)
 * [Dex example and hands-on](Dex/Example.md)
 * [Functional and parallel random numbers](Intro/Random.md)
-* Splittable random numbers hands-on
+* [Splittable random numbers hands-on](Intro/RandomHO.md)
 * [Wrap-up and next steps](Intro/Resources.md) (including additional learning resources)
 
 

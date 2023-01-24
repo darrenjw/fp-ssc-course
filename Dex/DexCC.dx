@@ -1,0 +1,22 @@
+'# Dex crash course
+Start a Dex REPL by entering `dex repl` at your command prompt.
+
+'## Immutability
+Dex objects are immutable.
+
+x = 5
+:t x
+
+x = x + 1
+
+'## Immutable collections
+Dex, like JAX, has arrays/tensors as its main data structure, and these are immutable.
+
+v = [1.0, 2, 4, 5, 7]
+v
+:t v
+
+'Dex has a strong static type system, including elements of dependent typing. Note how the length of an array (and in general, the dimensions of a tensor) is part of its type. Conceptually, an array is a function mapping from an index to a value.
+
+
+

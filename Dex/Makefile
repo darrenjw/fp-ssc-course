@@ -4,10 +4,11 @@ LIBPATH=BUILTIN_LIBRARIES:.
 
 FORCE:
 	make djwutils.html
+	make DexCC.html
 	make ml-ga
 
 %: %.dx djwutils.dx
-	time dex --lib-path $(LIBPATH) script $<
+	time dex --lib-path $(LIBPATH) -O script $<
 
 %.html: %.dx djwutils.dx
 	dex --lib-path $(LIBPATH) -O script $< --outfmt html > $@

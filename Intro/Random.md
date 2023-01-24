@@ -1,8 +1,18 @@
 # Functional and parallel random number generation
 
+## Introduction
 
 
-## Random numbers in JAX
+
+**TODO: GIVE AN INTRODUCTORY OVERVIEW**
+
+
+
+
+
+## Further reading on splittable random numbers
+
+### Random numbers in JAX
 
 * [Pseudo Random Numbers in JAX](https://jax.readthedocs.io/en/latest/jax-101/05-random-numbers.html)
     * [JAX Random numbers](https://jax.readthedocs.io/en/latest/notebooks/Common_Gotchas_in_JAX.html#random-numbers)
@@ -13,9 +23,7 @@
     * Claessen and Palka (2013) [Splittable pseudorandom number generators using cryptographic hashing](https://doi.org/10.1145/2578854.2503784), *Haskell '13: Proceedings of the 2013 ACM SIGPLAN symposium on Haskell*, 47-58. [PDF](https://publications.lib.chalmers.se/records/fulltext/183348/local_183348.pdf)
 
 
-
-
-## Splittable random numbers on the JVM
+### Splittable random numbers on the JVM
 
 * Steele at al (2014) [Fast splittable pseudorandom number generators](https://doi.org/10.1145/2660193.2660195), *ACM SIGPLAN Notices*, **49**(10):453-472. [PDF](https://gee.cs.oswego.edu/dl/papers/oopsla14.pdf)
 

@@ -383,32 +383,6 @@ render(RENDER_MODE.STATIC);"></script></head><body><div id="main-output"><div cl
   to_list <span class="symbol">$</span> map (words sep) lines
 </div></div><div class="cell"><div class="code-block">
 
-</div></div><div class="cell"><div class="code-block"><span class="comment">-- some Markov chain utilities
-</span></div></div><div class="cell"><div class="code-block">
-</div></div><div class="cell"><div class="code-block"><span class="keyword">def</span> step_n {s} (n<span class="symbol">:</span> <span class="type-name">Nat</span>) (kern<span class="symbol">:</span> s <span class="symbol">-&gt;</span> <span class="type-name">Key</span> <span class="symbol">-&gt;</span> s)
-    (state<span class="symbol">:</span> s) (k<span class="symbol">:</span> <span class="type-name">Key</span>) <span class="symbol">:</span> s <span class="symbol">=</span>
-  yield_state state <span class="symbol">\</span>st<span class="symbol">.</span>
-    <span class="keyword">for</span> i<span class="symbol">:</span>(<span class="type-name">Fin</span> n)<span class="symbol">.</span>
-      st <span class="symbol">:=</span> kern (get st) (ixkey k i)
-</div></div><div class="cell"><div class="code-block">
-</div></div><div class="cell"><div class="code-block"><span class="keyword">def</span> markov_chain {s} (init<span class="symbol">:</span> s) (kern<span class="symbol">:</span> s <span class="symbol">-&gt;</span> <span class="type-name">Key</span> <span class="symbol">-&gt;</span> s) (its<span class="symbol">:</span> <span class="type-name">Nat</span>)
-    (k<span class="symbol">:</span> <span class="type-name">Key</span>) <span class="symbol">:</span> <span class="type-name">Fin</span> its <span class="symbol">=&gt;</span> s <span class="symbol">=</span>
-  with_state init <span class="symbol">\</span>st<span class="symbol">.</span>
-    <span class="keyword">for</span> i<span class="symbol">:</span>(<span class="type-name">Fin</span> its)<span class="symbol">.</span>
-      x <span class="symbol">=</span> kern (get st) (ixkey k i)
-      st <span class="symbol">:=</span> x
-      x
-</div></div><div class="cell"><div class="code-block">
-
-</div></div><div class="cell"><div class="code-block"><span class="comment">-- from Dex example file, examples/mcmc.dx
-</span></div></div><div class="cell"><div class="code-block"><span class="keyword">def</span> meanAndCovariance {n d} (xs<span class="command">:n</span><span class="symbol">=&gt;</span>d<span class="symbol">=&gt;</span><span class="type-name">Float</span>) <span class="symbol">:</span> (d<span class="symbol">=&gt;</span><span class="type-name">Float</span> <span class="symbol">&amp;</span> d<span class="symbol">=&gt;</span>d<span class="symbol">=&gt;</span><span class="type-name">Float</span>) <span class="symbol">=</span>
-   xsMean <span class="symbol">:</span>    d<span class="symbol">=&gt;</span><span class="type-name">Float</span> <span class="symbol">=</span> (<span class="keyword">for</span> i<span class="symbol">.</span> sum <span class="keyword">for</span> j<span class="symbol">.</span> xs<span class="symbol">.</span>j<span class="symbol">.</span>i) <span class="symbol">/</span> n_to_f (size n)
-   xsCov  <span class="symbol">:</span> d<span class="symbol">=&gt;</span>d<span class="symbol">=&gt;</span><span class="type-name">Float</span> <span class="symbol">=</span> (<span class="keyword">for</span> i i&#39;<span class="symbol">.</span> sum <span class="keyword">for</span> j<span class="symbol">.</span>
-                           (xs<span class="symbol">.</span>j<span class="symbol">.</span>i&#39; <span class="symbol">-</span> xsMean<span class="symbol">.</span>i&#39;) <span class="symbol">*</span>
-                           (xs<span class="symbol">.</span>j<span class="symbol">.</span>i  <span class="symbol">-</span> xsMean<span class="symbol">.</span>i )   ) <span class="symbol">/</span> (n_to_f (size n) <span class="symbol">-</span> 1)
-   (xsMean<span class="symbol">,</span> xsCov)
-</div></div><div class="cell"><div class="code-block">
-
 
 
 </div></div><div class="cell"><div class="code-block"><span class="comment">-- eof

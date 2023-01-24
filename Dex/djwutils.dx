@@ -76,32 +76,6 @@ def parse_tsv (sep: Word8) (input: String): List (List String) =
   to_list $ map (words sep) lines
 
 
--- some Markov chain utilities
-
-def step_n {s} (n: Nat) (kern: s -> Key -> s)
-    (state: s) (k: Key) : s =
-  yield_state state \st.
-    for i:(Fin n).
-      st := kern (get st) (ixkey k i)
-
-def markov_chain {s} (init: s) (kern: s -> Key -> s) (its: Nat)
-    (k: Key) : Fin its => s =
-  with_state init \st.
-    for i:(Fin its).
-      x = kern (get st) (ixkey k i)
-      st := x
-      x
-
-
--- from Dex example file, examples/mcmc.dx
-def meanAndCovariance {n d} (xs:n=>d=>Float) : (d=>Float & d=>d=>Float) =
-   xsMean :    d=>Float = (for i. sum for j. xs.j.i) / n_to_f (size n)
-   xsCov  : d=>d=>Float = (for i i'. sum for j.
-                           (xs.j.i' - xsMean.i') *
-                           (xs.j.i  - xsMean.i )   ) / (n_to_f (size n) - 1)
-   (xsMean, xsCov)
-
-
 
 
 -- eof

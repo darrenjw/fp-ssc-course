@@ -76,5 +76,5 @@ my_rexp = rexp 20.0
 
 map my_rexp keys
 
-This is why you nearly always want to make the key the final input parameter.
+'This is why you nearly always want to make the key the final input parameter.
 

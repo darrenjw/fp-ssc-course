@@ -1,13 +1,80 @@
 '# Quick hands-on with splittable random numbers in Dex
 
+'## Basics
+Call up a Dex REPL (`dex repl`) and start messing around with splittable random numbers in Dex.
+
 k0 = new_key 42
 [k1, k2] = split_key k0
+
 k0
 k1
 k2
-random k0
-random k0
-random k0
-random k1
-random k2
+
+rand k0
+rand k0
+rand k0
+rand k1
+rand k2
+
+'Note that we don't just have to split the key into two.
+
+[k3, k4, k5] = split_key k2
+
+k3
+k4
+k5
+
+split_key k5 :: Fin 10=>Key
+
+keys = for i:(Fin 8). ixkey k5 i
+
+keys
+
+'It can sometimes be convenient to split a key into a *table* of keys and then *map* or *fold* a random function over the table.
+
+sum $ map rand keys
+
+'If we really just want to "advance" the key, we can do that too.
+
+split_key k5 :: Fin 1=>Key
+
+[k6] = split_key k5
+
+k6
+
+'## Probability distributions
+`rand` is used to generate a $U(0,1)$, and `randn` generates from a standard normal, $N(0,1)$.
+
+map randn keys
+
+'For more interesting probability distributions, you will want to use the [stats library](https://google-research.github.io/dex-lang/lib/stats.html).
+
+import stats
+
+draw (Exponential 2.0) k5 :: Float
+
+draw (Poisson 10.0) k6 :: Nat
+
+pd = draw (Poisson 10.0) :: Key -> Nat
+
+map pd keys
+
+'## Random functions
+Suppose that you want to define your own random function. Here we will define our own function for sampling exponentials.
+
+def rexp (rate: Float) (k: Key) : Float = log1p (-rand k) / -rate
+
+'Notice how the non-determinism is clearly signalled by the presence of the key in the type signature. Also notice how we have made the key the final input parameter. This is because of currying. We can call the function directly:
+
+rexp 10.0 k5
+
+'But we can also create a particular random variable:
+
+my_rexp = rexp 20.0
+
+'and then use this partially applied function with multiple keys.
+
+map my_rexp keys
+
+This is why you nearly always want to make the key the final input parameter.
 

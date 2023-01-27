@@ -10,6 +10,9 @@ FORCE:
 %.pdf: %.md
 	pandoc $< -t beamer -o $@
 
+%.html: %.md
+	pandoc $< -o $@
+
 
 view: $(TARGETS)
 	xdg-open $(TARGETS) &

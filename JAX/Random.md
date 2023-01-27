@@ -103,3 +103,8 @@ jl.map(my_rexp, keys)
 
 This is why you might want to make the key the final input parameter.
 
+## Exercise
+
+Write a function to simulate a 1d [random walk](https://en.wikipedia.org/wiki/Random_walk).
+
+

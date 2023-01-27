@@ -2,6 +2,15 @@
 
 ## Introduction
 
+Since current computers are essentially deterministic, random number generators used for stochastic simulation aren't truly random at all, and so are more correctly referred to as *pseudo-random number generators*.
+
+Random number generators typically consist of three components:
+* An internal state
+* A function for transforming the internal state
+* A function for turning the current internal state into a pseudo-random number (say, a realisation of a $U(0,1)$ random variable)
+
+
+
 
 
 **TODO: GIVE AN INTRODUCTORY OVERVIEW**

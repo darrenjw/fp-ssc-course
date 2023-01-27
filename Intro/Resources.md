@@ -1,6 +1,6 @@
 # Wrap-up
 
-**TODO: brief wrap-up**
+We have just begun to cover the bare essentials of each of the languages/libraries considered. Hopefully it has been just enough to get a feel for why they exist and are interesting. But there is a lot more to know about all of this stuff. To start with I recommend picking just one of the languages considered here and spending some time diving a little deeper into the language and library ecosystem associated with it. Suggested further information is detailed below. Don't be in too much of a rush to understand everything. Learning (functional) programming is a life-long journey.
 
 
 # Learning resources

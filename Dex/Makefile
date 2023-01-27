@@ -2,10 +2,10 @@
 
 LIBPATH=BUILTIN_LIBRARIES:.
 
+HTML=djwutils.html DexCC.html ml-ga.html DexRandom.html
+
 FORCE:
-	make djwutils.html
-	make DexCC.html
-	make ml-ga.html
+	make $(HTML)
 	cp *.html ../docs/
 	make ml-ga
 

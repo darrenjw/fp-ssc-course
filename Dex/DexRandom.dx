@@ -1,0 +1,13 @@
+'# Quick hands-on with splittable random numbers in Dex
+
+k0 = new_key 42
+[k1, k2] = split_key k0
+k0
+k1
+k2
+random k0
+random k0
+random k0
+random k1
+random k2
+

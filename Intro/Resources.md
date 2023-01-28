@@ -14,6 +14,7 @@ Below are some links for further information about the languages and libraries b
 	* [Scastie](https://scastie.scala-lang.org/) - try Scala in the browser
 * [Scala exercises](https://www.scala-exercises.org/) - learn Scala in the browswer
 * [sbt](https://www.scala-sbt.org/) - the Scala build tool
+    * [An introduction to sbt](https://blog.rockthejvm.com/sbt-tutorial/) - a nice, recent tutorial
 * [Functional Programming in Scala](https://www.manning.com/books/functional-programming-in-scala) - unfortunately this book is not free, but remains one of the best introductions to functional programming (in any language)
     * [Chapter notes](https://github.com/fpinscala/fpinscala)
 * [Typelevel](https://typelevel.org/) - libraries for functional programming in Scala

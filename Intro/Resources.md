@@ -47,6 +47,10 @@ Below are some links for further information about the languages and libraries b
 * [Haskell wiki](https://wiki.haskell.org/Haskell)
     * [Typeclassopedia](https://wiki.haskell.org/Typeclassopedia)
 * [dataHaskell](https://www.datahaskell.org/) - a project for data science with Haskell
+* [Deep Learning From The First Principles](https://penkovsky.com/neural-networks/) - series of blog posts on neural networks with Haskell
+* [backprop](https://backprop.jle.im/) - backprop/autodiff library
+* [hmatrix-backprop](https://hackage.haskell.org/package/hmatrix-backprop) - autodiff with linear algebra
+* [massiv](https://hackage.haskell.org/package/massiv) - (parallel) multi-dimensional arrays
 * [Hasktorch](http://hasktorch.org/) - Torch bindings for Haskell
 
 
@@ -59,6 +63,8 @@ Below are some links for further information about the languages and libraries b
 	* [Tutorial: JAX 101](https://jax.readthedocs.io/en/latest/jax-101/)
 	    * [Random numbers](https://jax.readthedocs.io/en/latest/jax-101/05-random-numbers.html)
 	* [Autodiff cookbook](https://jax.readthedocs.io/en/latest/notebooks/autodiff_cookbook.html)
+* [Flax](https://flax.readthedocs.io/en/latest/guides/flax_basics.html) - neural networks with JAX
+* [BlackJAX](https://blackjax-devs.github.io/blackjax/) - MCMC sampling with JAX
 
 
 ## Dex

@@ -12,6 +12,9 @@ edit:
 	emacs Makefile *.qmd *.py &
 
 
+clean:
+	rm -f *~ $(TARGETS)
+
 
 # eof
 

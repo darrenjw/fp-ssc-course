@@ -1,5 +1,6 @@
-
-# Quick hands-on with splittable random numbers in JAX
+Splittable random numbers hands on
+================
+Darren Wilkinson
 
 ## Basics
 

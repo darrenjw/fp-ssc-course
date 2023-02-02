@@ -1,4 +1,8 @@
-# Quick hands-on with splittable random numbers in JAX
+---
+title: "Splittable random numbers hands on"
+author: "Darren Wilkinson"
+jupyter: python3
+---
 
 ## Basics
 Call Python REPL (`python` or `python3`) and start messing around with splittable random numbers in JAX.

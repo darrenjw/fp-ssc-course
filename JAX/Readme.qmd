@@ -4,8 +4,6 @@ author: "Darren Wilkinson"
 jupyter: python3
 ---
 
-# JAX for Python crash course
-
 JAX is a pure functional language embedded in python, but designed to feel as much like python as practical. From a `python` prompt, first do some imports.
 ```{python}
 import os
@@ -28,7 +26,6 @@ v = jnp.array([2, 4, 6, 3]).astype(jnp.float32)
 ```
 Note that the type of the array has been set to `float32`, since these are fast and efficient, especially on GPUs. JAX arrays are immutable.
 ```{python}
-#| panel: center
 v[2]
 vu = v.at[2].set(7)
 vu

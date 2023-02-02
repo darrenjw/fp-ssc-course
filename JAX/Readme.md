@@ -2,8 +2,6 @@ JAX for Python crash course
 ================
 Darren Wilkinson
 
-# JAX for Python crash course
-
 JAX is a pure functional language embedded in python, but designed to
 feel as much like python as practical. From a `python` prompt, first do
 some imports.
@@ -34,6 +32,8 @@ JAX is a pure functional language and python most definitely isn’t!
 ``` python
 v = jnp.array([2, 4, 6, 3]).astype(jnp.float32)
 ```
+
+    No GPU/TPU found, falling back to CPU. (Set TF_CPP_MIN_LOG_LEVEL=0 and rerun for more info.)
 
 Note that the type of the array has been set to `float32`, since these
 are fast and efficient, especially on GPUs. JAX arrays are immutable.

@@ -62,8 +62,8 @@ jr.split(k5, 1)
 
 ## Probability distributions
 
-`jr.uniform` is used to generate a *U*(0,1), and `jr.normal` generates
-from a standard normal, *N*(0,1).
+`jr.uniform` is used to generate a $U(0,1)$, and `jr.normal` generates
+from a standard normal, $N(0,1)$.
 
 ``` python
 jl.map(jr.normal, keys)

@@ -91,7 +91,12 @@ These resources are of generic interest for any serious functional programmer. H
     * [YouTube](https://www.youtube.com/channel/UC8BtBl8PNgd3vWKtm2yJ7aA) - Video lectures accompany the blog posts (and book)
 	    * [Series 1](https://www.youtube.com/playlist?list=PLbgaMIhjbmEnaH_LTkxLI7FMa2HsnawM_), [Series 2](https://www.youtube.com/playlist?list=PLbgaMIhjbmElia1eCEZNvsVscFef9m0dm), [Series 3](https://www.youtube.com/playlist?list=PLbgaMIhjbmEn64WVX4B08B4h2rOtueWIL)
     * **New book!**: [The Dao of FP](https://github.com/BartoszMilewski/Publications/raw/master/TheDaoOfFP/DaoFP.pdf) - Bartosz decided to write a proper book - this is probably the best introduction to category theory in the context of functional programming
-	
+
+### FP and CT for ML
+
+* [Category theory for ML papers](https://github.com/bgavran/Category_Theory_Machine_Learning) - includes a [section on AD](https://github.com/bgavran/Category_Theory_Machine_Learning#differentiable-programming--automatic-differentiation)
+* [You only linearize once](https://arxiv.org/abs/2204.10923) - the functional AD approach used by JAX and Dex
+
 ### Data structures
 	
 * [Purely functional data structures](https://books.google.co.uk/books?id=IV8hAwAAQBAJ) - book on immutable data structures, with examples in SML (and Haskell) ([PDF](https://doc.lagout.org/programmation/Functional%20Programming/Chris_Okasaki-Purely_Functional_Data_Structures-Cambridge_University_Press%281998%29.pdf))

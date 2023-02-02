@@ -1,4 +1,4 @@
-Splittable random numbers hands on
+JAX splittable random numbers hands on
 ================
 Darren Wilkinson
 

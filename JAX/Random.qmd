@@ -1,5 +1,5 @@
 ---
-title: "Splittable random numbers hands on"
+title: "JAX splittable random numbers hands on"
 author: "Darren Wilkinson"
 jupyter: python3
 ---

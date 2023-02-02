@@ -28,14 +28,15 @@ v = jnp.array([2, 4, 6, 3]).astype(jnp.float32)
 ```
 Note that the type of the array has been set to `float32`, since these are fast and efficient, especially on GPUs. JAX arrays are immutable.
 ```{python}
-#| panel: sidebar
 v[2]
 vu = v.at[2].set(7)
 vu
 ```
+
 ```{python}
 v
 ```
+
 We can map JAX arrays.
 ```{python}
 jl.map(lambda x: 2*x, v)

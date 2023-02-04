@@ -58,6 +58,7 @@ res2 = my_random2 k2
 ```
 Since the functions are pure and there is no dependence between them, there is no reason why `my_random` and `my_random2` cannot be executed in parallel. But this argument works at every level of the program. Arbitrary concurrency and parallelism can be employed throughout. From a type safety viewpoint, there is also the added bonus that the intended randomness of any function is clearly indicated in its type signature, since it must take a state/key as input. In languages with support for currying, it is most convenient to always have the random key as the *final* input parameter.
 
+The downside of splittable generators is that the programmer is responsible for ensuring that no key is ever reused. But it is quite easy to accidentally re-use a key, leading to incorrect behaviour, and bugs in Monte Carlo codes are hard to track down. Smart people are thinking about ways to address this drawback, but for now you just have to be careful!
 
 ## Further reading on splittable random numbers
 

@@ -26,6 +26,8 @@ k0 = jr.PRNGKey(42)
 k0
 ```
 
+    No GPU/TPU found, falling back to CPU. (Set TF_CPP_MIN_LOG_LEVEL=0 and rerun for more info.)
+
     Array([ 0, 42], dtype=uint32)
 
 ``` python

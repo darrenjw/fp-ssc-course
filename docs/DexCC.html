@@ -306,7 +306,8 @@ function render(renderMode) {
     }
 }
 render(RENDER_MODE.STATIC);"></script></head><body><div id="main-output"><div class="cell"><div class="code-block"></div></div><div class="cell"><div class="prose-block"><h1>Dex crash course</h1>
-<p>Start a Dex REPL by entering <code>dex repl</code> at your command prompt.</p>
+<p>Dex is a pure functional differentiable array processing language, designed with scientific computing and machine learning applications in mind. It is well-suited to statistical computing applications, and like JAX, can exploit a GPU if available.</p>
+</div></div><div class="cell"><div class="prose-block"><p>Start a Dex REPL by entering <code>dex repl</code> at your command prompt.</p>
 </div></div><div class="cell"><div class="prose-block"><h2>Immutability</h2>
 <p>Dex objects are immutable.</p>
 </div></div><div class="cell"><div class="code-block">x <span class="symbol">=</span> 5
@@ -377,9 +378,9 @@ x = x + 1
 </div></div><div class="cell"><div class="code-block"><span class="command">:t</span> log_fact
 </div><div class="result-block">(Nat -&gt; Float32)</div></div><div class="cell"><div class="code-block">
 </div></div><div class="cell"><div class="code-block">log_fact 3
-</div><div class="result-block">1.79176</div></div><div class="cell"><div class="code-block">log_fact 10
-</div><div class="result-block">15.104412</div></div><div class="cell"><div class="code-block">log_fact 100000
-</div><div class="result-block">1051299.6</div></div><div class="cell"><div class="code-block">
+</div><div class="result-block">1.791759</div></div><div class="cell"><div class="code-block">log_fact 10
+</div><div class="result-block">15.10441</div></div><div class="cell"><div class="code-block">log_fact 100000
+</div><div class="result-block">1051300.</div></div><div class="cell"><div class="code-block">
 </div></div><div class="cell"><div class="prose-block"><p>But this consumes heap. Dex, like JAX, is differentiable, so prohibits explicit recursion. However, it allows the creation of a mutable state variable that can be get and set via its algebraic effects system.</p>
 </div></div><div class="cell"><div class="code-block"><span class="keyword">def</span> log_fact_s (n<span class="symbol">:</span> <span class="type-name">Nat</span>) <span class="symbol">:</span> <span class="type-name">Float</span> <span class="symbol">=</span>
   (lf<span class="symbol">,</span> _) <span class="symbol">=</span> yield_state (0<span class="symbol">.</span>0<span class="symbol">,</span> n_to_i n) <span class="symbol">\</span>state<span class="symbol">.</span>
@@ -393,9 +394,9 @@ x = x + 1
   lf
 </div></div><div class="cell"><div class="code-block">
 </div></div><div class="cell"><div class="code-block">log_fact_s 3
-</div><div class="result-block">1.79176</div></div><div class="cell"><div class="code-block">log_fact_s 10
-</div><div class="result-block">15.104414</div></div><div class="cell"><div class="code-block">log_fact_s 100000
-</div><div class="result-block">1051309.6</div></div><div class="cell"><div class="code-block">
+</div><div class="result-block">1.791759</div></div><div class="cell"><div class="code-block">log_fact_s 10
+</div><div class="result-block">15.10441</div></div><div class="cell"><div class="code-block">log_fact_s 100000
+</div><div class="result-block">1051310.</div></div><div class="cell"><div class="code-block">
 </div></div><div class="cell"><div class="prose-block"><p>Note that for the final example, significant numerical error has accumulated in this naive sequential sum of 32 bit floats.</p>
 </div></div><div class="cell"><div class="prose-block"><h2>Curried functions</h2>
 <p>Note that, like Haskell, in Dex all functions are fully curried by default.</p>

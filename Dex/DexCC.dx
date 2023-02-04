@@ -1,5 +1,5 @@
 '# Dex crash course
-Dex is a pure functional differentiable array processing language, designed with scientific computing and machine learning applications in mind. It is well-suited to statistical computing applications, and like JAX, can exploit a GPU if available.
+Dex is a strongly typed pure functional differentiable array processing language, designed with scientific computing and machine learning applications in mind. It is well-suited to statistical computing applications, and like JAX, can exploit a GPU if available.
 
 'Start a Dex REPL by entering `dex repl` at your command prompt.
 

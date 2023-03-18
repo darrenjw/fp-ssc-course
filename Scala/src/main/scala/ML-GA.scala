@@ -38,7 +38,7 @@ object GradientAscent:
     def gll(beta: DVD): DVD =
       (X.t)*(y - ones/:/(ones + exp(-X*beta)))
 
-    println("Now define a functions for gradient ascent")
+    println("Now define functions for gradient ascent")
     def oneStep(learningRate: Double)(b0: DVD): DVD =
       b0 + learningRate*gll(b0)
     def ascend(step: DVD => DVD, init: DVD, maxIts: Int = 10000,

@@ -53,12 +53,11 @@ import stats
 
 draw(Exponential.new(2.0), k5) :: Float
 
-draw(Poisson.new(10.0), k6) :: Nat
+pd = Poisson.new(10.0)
 
-def pd(k: Key) -> Nat =
-  draw(Poisson.new(10.0), k)
+draw(pd, k6) :: Nat
 
-map pd keys
+map (\k. draw(pd, k)) keys :: _=>Nat
 
 '## Random functions
 Suppose that you want to define your own random function. Here we will define our own function for sampling exponentials.

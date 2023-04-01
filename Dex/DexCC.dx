@@ -48,7 +48,11 @@ map (\x. 2*x) v
 
 sum v
 
+sum(v)
+
 reduce 0.0 (\x y. x+y) v
+
+reduce(0.0, \x y. x+y, v)
 
 fold 0.0 (\i acc. acc + v[i])
 
@@ -82,7 +86,7 @@ def log_fact(n: Nat) -> Float =
 :t log_fact
 
 log_fact 3
-log_fact 10
+log_fact(10)
 log_fact 100000
 
 'But this consumes heap. Dex, like JAX, is differentiable, so prohibits explicit recursion. However, it allows the creation of a mutable state variable that can be get and set via its algebraic effects system.
@@ -117,7 +121,7 @@ f = lin_fun 2 3
 :t f
 
 f 0
-f 1
+f(1)
 f 2
 
 

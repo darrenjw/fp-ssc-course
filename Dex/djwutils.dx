@@ -2,7 +2,7 @@
 -- Some generic utility functions
 -- some of which should probably be added to the standard Dex prelude
 
-def iterate {a} (n: Nat) (step: a -> a) (init: a) : Fin n => a =
+def iterate(n: Nat, step: (a) -> a, init: a) -> Fin n => a given (a|Data) =
   with_state init \st.
     for i:(Fin n).
       old = get st
@@ -10,70 +10,70 @@ def iterate {a} (n: Nat) (step: a -> a) (init: a) : Fin n => a =
       st := next
       old
 
-def unfold {a b} (n: Nat) (advance: a -> (b & a)) (init: a) : Fin n => b =
+def unfold(n: Nat, advance: (a) -> (b, a), init: a) -> Fin n => b given (a|Data, b) =
   with_state init \st.
     for i:(Fin n).
       (b, a) = advance (get st)
       st := a
       b
 
-def length {a n} [Ix n] (arr: n=>a): Nat =
+def length(arr: n=>a) -> Nat given (a, n|Ix) =
   size n
 
-def last_dumb {a n} [Ix n] (arr: n=>a): a =
+def last_dumb(arr: n=>a) -> a given (a, n|Ix) =
   head $ reverse arr
 
-def last {a n} [Ix n] (arr: n=>a): a =
+def last(arr: n=>a) -> a given (a, n|Ix) =
   nind = unsafe_nat_diff (size n) 1
-  arr.(asidx nind)
+  arr[asidx nind]
 
 -- Not ideal instance, since likely loss of precision...
-instance Parse Float64
-  parseString = \str.
+instance Parse(Float64)
+  def parseString(str) =
     mf : Maybe Float = parseString str
     case mf of
       Nothing -> Nothing
       Just f -> Just $ f_to_f64 f
 
-def clipv {a} (x: a=>Float) (c: Float): a=>Float =
+def clipv(x: a=>Float, c: Float) -> (a)=>Float given (a|Ix) =
   map (\xi. clip (-c, c) xi) x
 
-def nanclip {a} (x: a=>Float): a=>Float =
+def nanclip(x: a=>Float) -> (a)=>Float given (a|Ix) =
   map (\xi. if (isnan xi) then 0.0 else xi) x
 
-def to_tsv {n p} (mat: n=>p=>Float) : String =
-  ms = for i j. show mat.i.j <> "\t"
+def to_tsv(mat: (n)=>(p)=>Float) -> String given (n|Ix, p|Ix) =
+  ms = for i j. show mat[i,j] <> "\t"
   concat (map (\l. l <> "\n") (map concat ms))
 
 -- based on "lines" from the prelude...
-def words (sep: Word8) (source: String): List String =
-  (AsList _ s) = source <> (to_list [sep])
-  (AsList num_words space_ixs) = cat_maybes for i_char.
-    if (s.i_char == sep)
+def words(sep: Word8, source: String) -> List String =
+  AsList(_, s) = source <> (to_list [sep])
+  AsList(num_words, space_ixs) = cat_maybes for i_char.
+    if (s[i_char] == sep)
       then Just i_char
       else Nothing
   to_list for i_word:(Fin num_words).
     start = case prev_ix i_word of
       Nothing -> first_ix
-      Just i -> right_post space_ixs.i
-    end = left_post space_ixs.i_word
+      Just i -> right_post space_ixs[i]
+    end = left_post space_ixs[i_word]
     post_slice s start end
 
-def cons {a} (x: a) (xs: List a): List a =
-  (AsList on xt) = xs
+def cons(x: a, xs: List a) -> List a given (a) =
+  AsList(on, xt) = xs
   n = on + 1
   nxt = for i:(Fin n). case (ordinal i == 0) of
     True -> x
-    False -> xt.(asidx (unsafe_nat_diff (ordinal i) 1))
+    False -> xt[asidx (unsafe_nat_diff (ordinal i) 1)]
   to_list nxt
 
-def list2tab {n a} [Ix n] (l: List a): n=>a =
-  (AsList ll t) = l
-  unsafe_cast_table n t
+def list2tab(l: List a) -> (n)=>a given (a, n|Ix) =
+  AsList(ll, t) = l
+  unsafe_cast_table t
 
-def parse_tsv (sep: Word8) (input: String): List (List String) =
-  (AsList _ lines) = lines input
-  to_list $ map (words sep) lines
+def parse_tsv(sep: Word8, input: String) -> List (List String) =
+  AsList(_, lines) = lines input
+  to_list $ map (\l. words sep l) lines
 
 
 

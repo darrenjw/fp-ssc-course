@@ -327,15 +327,15 @@ x = x + 1
 </div><div class="result-block">((Fin 5) =&gt; Float32)</div></div><div class="cell"><div class="code-block">
 </div></div><div class="cell"><div class="prose-block"><p>Dex has a strong static type system, including elements of dependent typing. Note how the length of an array (and in general, the dimensions of a tensor) is part of its type. This allows the detection of all kinds of dimension mismatch errors at compile time rather than runtime, and this is a very good thing! Notice that the type reflects the idea that conceptually, an array is essentially a function mapping from an index to a value.</p>
 </div></div><div class="cell"><div class="prose-block"><p>We can't just directly index into a table with an integer, since this isn't safe - we might violate the table index bounds. We need to cast our integer to a typed index using the <code>@</code> operator.</p>
-</div></div><div class="cell"><div class="code-block">v<span class="symbol">.</span>(2<span class="symbol">@</span><span class="type-name">Fin</span> 5)
+</div></div><div class="cell"><div class="code-block">v[2<span class="symbol">@</span><span class="type-name">Fin</span> 5]
 </div><div class="result-block">4.</div></div><div class="cell"><div class="code-block">
 </div></div><div class="cell"><div class="prose-block"><p>However, where things are unambiguous, we can use type inference.</p>
-</div></div><div class="cell"><div class="code-block">v<span class="symbol">.</span>(2<span class="symbol">@</span>_)
+</div></div><div class="cell"><div class="code-block">v[2<span class="symbol">@</span>_]
 </div><div class="result-block">4.</div></div><div class="cell"><div class="code-block">
 </div></div><div class="cell"><div class="prose-block"><p>It is relatively unusual to want to update a single element of a Dex table, but we can certaintly do it (immutably). Below we update the element with index 2 to be 9.0.</p>
 </div></div><div class="cell"><div class="code-block">vu <span class="symbol">=</span> <span class="keyword">for</span> i<span class="symbol">.</span> <span class="keyword">case</span> (i <span class="symbol">==</span> (2<span class="symbol">@</span>_)) <span class="keyword">of</span>
   <span class="type-name">True</span>  <span class="symbol">-&gt;</span> 9<span class="symbol">.</span>0
-  <span class="type-name">False</span> <span class="symbol">-&gt;</span> v<span class="symbol">.</span>i
+  <span class="type-name">False</span> <span class="symbol">-&gt;</span> v[i]
 </div></div><div class="cell"><div class="code-block">
 </div></div><div class="cell"><div class="code-block">vu
 </div><div class="result-block">[1., 2., 9., 5., 7.]</div></div><div class="cell"><div class="code-block">v
@@ -351,10 +351,10 @@ x = x + 1
 </div><div class="result-block">19.</div></div><div class="cell"><div class="code-block">
 </div></div><div class="cell"><div class="code-block">reduce 0<span class="symbol">.</span>0 (<span class="symbol">\</span>x y<span class="symbol">.</span> x<span class="symbol">+</span>y) v
 </div><div class="result-block">19.</div></div><div class="cell"><div class="code-block">
-</div></div><div class="cell"><div class="code-block">fold 0<span class="symbol">.</span>0 (<span class="symbol">\</span>i acc<span class="symbol">.</span> acc <span class="symbol">+</span> v<span class="symbol">.</span>i)
+</div></div><div class="cell"><div class="code-block">fold 0<span class="symbol">.</span>0 (<span class="symbol">\</span>i acc<span class="symbol">.</span> acc <span class="symbol">+</span> v[i])
 </div><div class="result-block">19.</div></div><div class="cell"><div class="code-block">
 </div></div><div class="cell"><div class="prose-block"><p>The main way of creating and transforming tables is using <code>for</code>, which in Dex is more like a <em>for-comprehension</em> or <em>for-expression</em> in some languages than a traditional imperative for-loop. However, it is designed to allow the writing of index-based algorithms in a safe, pure functional way. For example, as an alternative to using <code>map</code> we could write.</p>
-</div></div><div class="cell"><div class="code-block"><span class="keyword">for</span> i<span class="symbol">.</span> 2<span class="symbol">*</span>v<span class="symbol">.</span>i
+</div></div><div class="cell"><div class="code-block"><span class="keyword">for</span> i<span class="symbol">.</span> 2<span class="symbol">*</span>v[i]
 </div><div class="result-block">[2., 4., 8., 10., 14.]</div></div><div class="cell"><div class="code-block">
 </div></div><div class="cell"><div class="prose-block"><p>We can create a table of given length filled with the same element</p>
 </div></div><div class="cell"><div class="code-block"><span class="keyword">for</span> i<span class="symbol">:</span>(<span class="type-name">Fin</span> 8)<span class="symbol">.</span> 2<span class="symbol">.</span>0
@@ -372,19 +372,19 @@ x = x + 1
 
 </div></div><div class="cell"><div class="prose-block"><h2>Writing functions</h2>
 <p>We can write a log-factorial function as follows.</p>
-</div></div><div class="cell"><div class="code-block"><span class="keyword">def</span> log_fact (n<span class="symbol">:</span> <span class="type-name">Nat</span>) <span class="symbol">:</span> <span class="type-name">Float</span> <span class="symbol">=</span>
+</div></div><div class="cell"><div class="code-block"><span class="keyword">def</span> log_fact(n<span class="symbol">:</span> <span class="type-name">Nat</span>) <span class="symbol">-&gt;</span> <span class="type-name">Float</span> <span class="symbol">=</span>
   sum <span class="symbol">$</span> <span class="keyword">for</span> i<span class="symbol">:</span>(<span class="type-name">Fin</span> n)<span class="symbol">.</span> log <span class="symbol">$</span> n_to_f (ordinal i <span class="symbol">+</span> 1)
 </div></div><div class="cell"><div class="code-block">
 </div></div><div class="cell"><div class="code-block"><span class="command">:t</span> log_fact
-</div><div class="result-block">(Nat -&gt; Float32)</div></div><div class="cell"><div class="code-block">
+</div><div class="result-block">((n:Nat) -&gt; Float32)</div></div><div class="cell"><div class="code-block">
 </div></div><div class="cell"><div class="code-block">log_fact 3
 </div><div class="result-block">1.791759</div></div><div class="cell"><div class="code-block">log_fact 10
 </div><div class="result-block">15.10441</div></div><div class="cell"><div class="code-block">log_fact 100000
 </div><div class="result-block">1051300.</div></div><div class="cell"><div class="code-block">
 </div></div><div class="cell"><div class="prose-block"><p>But this consumes heap. Dex, like JAX, is differentiable, so prohibits explicit recursion. However, it allows the creation of a mutable state variable that can be get and set via its algebraic effects system.</p>
-</div></div><div class="cell"><div class="code-block"><span class="keyword">def</span> log_fact_s (n<span class="symbol">:</span> <span class="type-name">Nat</span>) <span class="symbol">:</span> <span class="type-name">Float</span> <span class="symbol">=</span>
+</div></div><div class="cell"><div class="code-block"><span class="keyword">def</span> log_fact_s(n<span class="symbol">:</span> <span class="type-name">Nat</span>) <span class="symbol">-&gt;</span> <span class="type-name">Float</span> <span class="symbol">=</span>
   (lf<span class="symbol">,</span> _) <span class="symbol">=</span> yield_state (0<span class="symbol">.</span>0<span class="symbol">,</span> n_to_i n) <span class="symbol">\</span>state<span class="symbol">.</span>
-    while <span class="keyword">do</span>
+    while <span class="symbol">\.</span>
       (acc<span class="symbol">,</span> i) <span class="symbol">=</span> get state
       <span class="keyword">if</span> (i <span class="symbol">&gt;</span> 0)
         <span class="keyword">then</span>
@@ -399,16 +399,16 @@ x = x + 1
 </div><div class="result-block">1051310.</div></div><div class="cell"><div class="code-block">
 </div></div><div class="cell"><div class="prose-block"><p>Note that for the final example, significant numerical error has accumulated in this naive sequential sum of 32 bit floats.</p>
 </div></div><div class="cell"><div class="prose-block"><h2>Curried functions</h2>
-<p>Note that, like Haskell, in Dex all functions are fully curried by default.</p>
-</div></div><div class="cell"><div class="code-block"><span class="keyword">def</span> lin_fun (m<span class="symbol">:</span> <span class="type-name">Float</span>) (c<span class="symbol">:</span> <span class="type-name">Float</span>) (x<span class="symbol">:</span> <span class="type-name">Float</span>) <span class="symbol">:</span> <span class="type-name">Float</span> <span class="symbol">=</span>
-  m<span class="symbol">*</span>x <span class="symbol">+</span> c
+<p>Note that we can curry functions as appropriate, using lambdas.</p>
+</div></div><div class="cell"><div class="code-block"><span class="keyword">def</span> lin_fun(m<span class="symbol">:</span> <span class="type-name">Float</span><span class="symbol">,</span> c<span class="symbol">:</span> <span class="type-name">Float</span>) <span class="symbol">-&gt;</span> (<span class="type-name">Float</span>) <span class="symbol">-&gt;</span> <span class="type-name">Float</span> <span class="symbol">=</span>
+  <span class="symbol">\</span>x<span class="symbol">.</span> m<span class="symbol">*</span>x <span class="symbol">+</span> c
 </div></div><div class="cell"><div class="code-block">
 </div></div><div class="cell"><div class="code-block"><span class="command">:t</span> lin_fun
-</div><div class="result-block">(Float32 -&gt; Float32 -&gt; Float32 -&gt; Float32)</div></div><div class="cell"><div class="code-block">
+</div><div class="result-block">((m:Float32,c:Float32) -&gt; ((x:Float32) -&gt; Float32))</div></div><div class="cell"><div class="code-block">
 </div></div><div class="cell"><div class="code-block">f <span class="symbol">=</span> lin_fun 2 3
 </div></div><div class="cell"><div class="code-block">
 </div></div><div class="cell"><div class="code-block"><span class="command">:t</span> f
-</div><div class="result-block">(Float32 -&gt; Float32)</div></div><div class="cell"><div class="code-block">
+</div><div class="result-block">((x:Float32) -&gt; Float32)</div></div><div class="cell"><div class="code-block">
 </div></div><div class="cell"><div class="code-block">f 0
 </div><div class="result-block">3.</div></div><div class="cell"><div class="code-block">f 1
 </div><div class="result-block">5.</div></div><div class="cell"><div class="code-block">f 2

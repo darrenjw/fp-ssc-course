@@ -22,17 +22,17 @@ v
 
 'We can't just directly index into a table with an integer, since this isn't safe - we might violate the table index bounds. We need to cast our integer to a typed index using the `@` operator.
 
-v.(2@Fin 5)
+v[2@Fin 5]
 
 'However, where things are unambiguous, we can use type inference.
 
-v.(2@_)
+v[2@_]
 
 'It is relatively unusual to want to update a single element of a Dex table, but we can certaintly do it (immutably). Below we update the element with index 2 to be 9.0.
 
 vu = for i. case (i == (2@_)) of
   True  -> 9.0
-  False -> v.i
+  False -> v[i]
 
 vu
 v
@@ -50,11 +50,11 @@ sum v
 
 reduce 0.0 (\x y. x+y) v
 
-fold 0.0 (\i acc. acc + v.i)
+fold 0.0 (\i acc. acc + v[i])
 
 'The main way of creating and transforming tables is using `for`, which in Dex is more like a *for-comprehension* or *for-expression* in some languages than a traditional imperative for-loop. However, it is designed to allow the writing of index-based algorithms in a safe, pure functional way. For example, as an alternative to using `map` we could write.
 
-for i. 2*v.i
+for i. 2*v[i]
 
 'We can create a table of given length filled with the same element
 
@@ -76,7 +76,7 @@ m
 '## Writing functions
 We can write a log-factorial function as follows.
 
-def log_fact (n: Nat) : Float =
+def log_fact(n: Nat) -> Float =
   sum $ for i:(Fin n). log $ n_to_f (ordinal i + 1)
 
 :t log_fact
@@ -87,9 +87,9 @@ log_fact 100000
 
 'But this consumes heap. Dex, like JAX, is differentiable, so prohibits explicit recursion. However, it allows the creation of a mutable state variable that can be get and set via its algebraic effects system.
 
-def log_fact_s (n: Nat) : Float =
+def log_fact_s(n: Nat) -> Float =
   (lf, _) = yield_state (0.0, n_to_i n) \state.
-    while do
+    while \.
       (acc, i) = get state
       if (i > 0)
         then
@@ -105,10 +105,10 @@ log_fact_s 100000
 'Note that for the final example, significant numerical error has accumulated in this naive sequential sum of 32 bit floats.
 
 '## Curried functions
-Note that, like Haskell, in Dex all functions are fully curried by default.
+Note that we can curry functions as appropriate, using lambdas.
 
-def lin_fun (m: Float) (c: Float) (x: Float) : Float =
-  m*x + c
+def lin_fun(m: Float, c: Float) -> (Float) -> Float =
+  \x. m*x + c
 
 :t lin_fun
 

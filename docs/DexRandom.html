@@ -319,8 +319,8 @@ render(RENDER_MODE.STATIC);"></script></head><body><div id="main-output"><div cl
 </div><div class="result-block">0.286863</div></div><div class="cell"><div class="code-block">rand k0
 </div><div class="result-block">0.286863</div></div><div class="cell"><div class="code-block">rand k0
 </div><div class="result-block">0.286863</div></div><div class="cell"><div class="code-block">rand k1
-</div><div class="result-block">0.329207</div></div><div class="cell"><div class="code-block">rand k2
-</div><div class="result-block">0.54071</div></div><div class="cell"><div class="code-block">
+</div><div class="result-block">0.3292074</div></div><div class="cell"><div class="code-block">rand k2
+</div><div class="result-block">0.5407103</div></div><div class="cell"><div class="code-block">
 </div></div><div class="cell"><div class="prose-block"><p>Note that we don't just have to split the key into two.</p>
 </div></div><div class="cell"><div class="code-block">[k3<span class="symbol">,</span> k4<span class="symbol">,</span> k5] <span class="symbol">=</span> split_key k2
 </div></div><div class="cell"><div class="code-block">
@@ -329,27 +329,11 @@ render(RENDER_MODE.STATIC);"></script></head><body><div id="main-output"><div cl
 </div><div class="result-block">0xd4d38cabd70ddf36</div></div><div class="cell"><div class="code-block">k5
 </div><div class="result-block">0xd5ea3af45c4e3336</div></div><div class="cell"><div class="code-block">
 </div></div><div class="cell"><div class="code-block">split_key k5 <span class="symbol">::</span> <span class="type-name">Fin</span> 10<span class="symbol">=&gt;</span><span class="type-name">Key</span>
-</div><div class="result-block">[ 0x3756f7d71ec688b1
-, 0x3424338e5f824c0d
-, 0xb91c292bccac2b94
-, 0xa97c48b43810c84b
-, 0xe692ecd5716afebc
-, 0xe8e48f98eec6e2e9
-, 0xfe0889dd3b046666
-, 0x318bdcd2d4005d37
-, 0x93c8c08271e014c9
-, 0x9a5111caec8ab195 ]</div></div><div class="cell"><div class="code-block">
+</div><div class="result-block">[0x3756f7d71ec688b1, 0x3424338e5f824c0d, 0xb91c292bccac2b94, 0xa97c48b43810c84b, 0xe692ecd5716afebc, 0xe8e48f98eec6e2e9, 0xfe0889dd3b046666, 0x318bdcd2d4005d37, 0x93c8c08271e014c9, 0x9a5111caec8ab195]</div></div><div class="cell"><div class="code-block">
 </div></div><div class="cell"><div class="code-block">keys <span class="symbol">=</span> <span class="keyword">for</span> i<span class="symbol">:</span>(<span class="type-name">Fin</span> 8)<span class="symbol">.</span> ixkey k5 i
 </div></div><div class="cell"><div class="code-block">
 </div></div><div class="cell"><div class="code-block">keys
-</div><div class="result-block">[ 0x3756f7d71ec688b1
-, 0x3424338e5f824c0d
-, 0xb91c292bccac2b94
-, 0xa97c48b43810c84b
-, 0xe692ecd5716afebc
-, 0xe8e48f98eec6e2e9
-, 0xfe0889dd3b046666
-, 0x318bdcd2d4005d37 ]</div></div><div class="cell"><div class="code-block">
+</div><div class="result-block">[0x3756f7d71ec688b1, 0x3424338e5f824c0d, 0xb91c292bccac2b94, 0xa97c48b43810c84b, 0xe692ecd5716afebc, 0xe8e48f98eec6e2e9, 0xfe0889dd3b046666, 0x318bdcd2d4005d37]</div></div><div class="cell"><div class="code-block">
 </div></div><div class="cell"><div class="prose-block"><p>It can sometimes be convenient to split a key into a <em>table</em> of keys and then <em>map</em> or <em>fold</em> a random function over the table.</p>
 </div></div><div class="cell"><div class="code-block">sum <span class="symbol">$</span> map rand keys
 </div><div class="result-block">2.472103</div></div><div class="cell"><div class="code-block">
@@ -363,39 +347,33 @@ render(RENDER_MODE.STATIC);"></script></head><body><div id="main-output"><div cl
 </div></div><div class="cell"><div class="prose-block"><h2>Probability distributions</h2>
 <p><code>rand</code> is used to generate a $U(0,1)$, and <code>randn</code> generates from a standard normal, $N(0,1)$.</p>
 </div></div><div class="cell"><div class="code-block">map randn keys
-</div><div class="result-block">[ 0.151103
-, 0.435553
-, -0.455288
-, -2.912428
-, 0.984364
-, -0.788946
-, 1.424858
-, -0.501525 ]</div></div><div class="cell"><div class="code-block">
+</div><div class="result-block">[0.151103, 0.4355534, -0.4552877, -2.912428, 0.9843643, -0.7889465, 1.424858, -0.5015252]</div></div><div class="cell"><div class="code-block">
 </div></div><div class="cell"><div class="prose-block"><p>For more interesting probability distributions, you will want to use the <a href="https://google-research.github.io/dex-lang/lib/stats.html">stats library</a>.</p>
 </div></div><div class="cell"><div class="code-block"><span class="keyword">import</span> stats
 </div></div><div class="cell"><div class="code-block">
-</div></div><div class="cell"><div class="code-block">draw (<span class="type-name">Exponential</span> 2<span class="symbol">.</span>0) k5 <span class="symbol">::</span> <span class="type-name">Float</span>
+</div></div><div class="cell"><div class="code-block">draw(<span class="type-name">Exponential</span><span class="symbol">.</span>new(2<span class="symbol">.</span>0)<span class="symbol">,</span> k5) <span class="symbol">::</span> <span class="type-name">Float</span>
 </div><div class="result-block">0.472008</div></div><div class="cell"><div class="code-block">
-</div></div><div class="cell"><div class="code-block">draw (<span class="type-name">Poisson</span> 10<span class="symbol">.</span>0) k6 <span class="symbol">::</span> <span class="type-name">Nat</span>
+</div></div><div class="cell"><div class="code-block">draw(<span class="type-name">Poisson</span><span class="symbol">.</span>new(10<span class="symbol">.</span>0)<span class="symbol">,</span> k6) <span class="symbol">::</span> <span class="type-name">Nat</span>
 </div><div class="result-block">6</div></div><div class="cell"><div class="code-block">
-</div></div><div class="cell"><div class="code-block">pd <span class="symbol">=</span> draw (<span class="type-name">Poisson</span> 10<span class="symbol">.</span>0) <span class="symbol">::</span> <span class="type-name">Key</span> <span class="symbol">-&gt;</span> <span class="type-name">Nat</span>
+</div></div><div class="cell"><div class="code-block"><span class="keyword">def</span> pd(k<span class="symbol">:</span> <span class="type-name">Key</span>) <span class="symbol">-&gt;</span> <span class="type-name">Nat</span> <span class="symbol">=</span>
+  draw(<span class="type-name">Poisson</span><span class="symbol">.</span>new(10<span class="symbol">.</span>0)<span class="symbol">,</span> k)
 </div></div><div class="cell"><div class="code-block">
 </div></div><div class="cell"><div class="code-block">map pd keys
 </div><div class="result-block">[6, 7, 11, 13, 15, 8, 13, 11]</div></div><div class="cell"><div class="code-block">
 </div></div><div class="cell"><div class="prose-block"><h2>Random functions</h2>
 <p>Suppose that you want to define your own random function. Here we will define our own function for sampling exponentials.</p>
-</div></div><div class="cell"><div class="code-block"><span class="keyword">def</span> rexp (rate<span class="symbol">:</span> <span class="type-name">Float</span>) (k<span class="symbol">:</span> <span class="type-name">Key</span>) <span class="symbol">:</span> <span class="type-name">Float</span> <span class="symbol">=</span> log1p (<span class="symbol">-</span>rand k) <span class="symbol">/</span> <span class="symbol">-</span>rate
+</div></div><div class="cell"><div class="code-block"><span class="keyword">def</span> rexp(rate<span class="symbol">:</span> <span class="type-name">Float</span>) <span class="symbol">-&gt;</span> (<span class="type-name">Key</span>) <span class="symbol">-&gt;</span> <span class="type-name">Float</span> <span class="symbol">=</span> <span class="symbol">\</span>k<span class="symbol">.</span> log1p (<span class="symbol">-</span>rand k) <span class="symbol">/</span> <span class="symbol">-</span>rate
 </div></div><div class="cell"><div class="code-block">
 </div></div><div class="cell"><div class="prose-block"><p>Notice how the non-determinism is clearly signalled by the presence of the key in the type signature. Also notice how we have made the key the final input parameter. This is because of currying. We can call the function directly:</p>
-</div></div><div class="cell"><div class="code-block">rexp 10<span class="symbol">.</span>0 k5
-</div><div class="result-block">0.094402</div></div><div class="cell"><div class="code-block">
+</div></div><div class="cell"><div class="code-block">rexp(10<span class="symbol">.</span>0)(k5)
+</div><div class="result-block">0.09440161</div></div><div class="cell"><div class="code-block">
 </div></div><div class="cell"><div class="prose-block"><p>But we can also create a particular random variable:</p>
 </div></div><div class="cell"><div class="code-block">my_rexp <span class="symbol">=</span> rexp 20<span class="symbol">.</span>0
 </div></div><div class="cell"><div class="code-block">
 </div></div><div class="cell"><div class="prose-block"><p>and then use this partially applied function with multiple keys.</p>
 </div></div><div class="cell"><div class="code-block">map my_rexp keys
-</div><div class="result-block">[0.040042, 0.000905, 0.021162, 0.007027, 0.090364, 0.040349, 0.001749, 0.000142]</div></div><div class="cell"><div class="code-block">
-</div></div><div class="cell"><div class="prose-block"><p>This is why you nearly always want to make the key the final input parameter.</p>
+</div><div class="result-block">[0.0400418, 0.0009054433, 0.0211621, 0.007027078, 0.09036362, 0.04034937, 0.001748984, 0.0001424373]</div></div><div class="cell"><div class="code-block">
+</div></div><div class="cell"><div class="prose-block"><p>This is why you nearly always want to make the key the final input parameter, and why you might want to curry it separately.</p>
 </div></div><div class="cell"><div class="prose-block"><h2>Exercise</h2>
 <p>Write a function to simulate a 1d <a href="https://en.wikipedia.org/wiki/Random_walk">random walk</a>.</p>
 </div></div></div></body></html>

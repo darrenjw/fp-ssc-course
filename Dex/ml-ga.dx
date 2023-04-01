@@ -5,15 +5,15 @@ import djwutils
 
 '## Read and process the data
 
-dat = unsafe_io do read_file "../pima.data"
-(AsList _ tab) = parse_tsv ' ' dat
-atab = map (cons "1.0") tab
+dat = unsafe_io \. read_file "../pima.data"
+AsList(_, tab) = parse_tsv ' ' dat
+atab = map (\l. cons "1.0" l) tab
 att = map (\r. list2tab r :: (Fin 9)=>String) atab
 xStr = map (\r. slice r 0 (Fin 8)) att
-xmb = map (\r. map parseString r) xStr :: (Fin 200)=>(Fin 8)=>(Maybe Float)
-x = map (\r. map from_just r) xmb :: (Fin 200)=>(Fin 8)=>Float
+xmb = map (\r. map parseString r) xStr :: _=>(Fin 8)=>(Maybe Float)
+x = map (\r. map from_just r) xmb :: _=>(Fin 8)=>Float
 yStrM = map (\r. slice r 8 (Fin 1)) att
-yStr = (transpose yStrM).(0@_)
+yStr = (transpose yStrM)[0@_]
 y = map (\s. select (s == "Yes") 1.0 0.0) yStr
 
 x
@@ -21,18 +21,18 @@ y
 
 '## Gradient ascent
 
-def ll (b: (Fin 8)=>Float) : Float =
+def ll(b: (Fin 8)=>Float) -> Float =
   neg $ sum (log (map (\ x. (exp x) + 1) ((map (\ yi. 1 - 2*yi) y)*(x **. b))))
 
-gll = grad ll -- use auto-diff for the gradient
+gll = \x. grad ll x -- use auto-diff for the gradient
 
-def one_step (learning_rate: Float) (b0: (Fin 8)=>Float) : (Fin 8)=>Float =
+def one_step(learning_rate: Float, b0: (Fin 8)=>Float) -> (Fin 8)=>Float =
   b0 + learning_rate .* gll b0
 
-def ascend (step: (Fin 8)=>Float -> (Fin 8)=>Float) (init: (Fin 8)=>Float) (max_its: Float) :
+def ascend(step: (Fin 8=>Float) -> (Fin 8)=>Float, init: (Fin 8)=>Float, max_its: Float) ->
     (Fin 8)=>Float =
   (b_opt, its_left) = yield_state (init, max_its) \state.
-    while do
+    while \.
       (b0, its) = get state
       b1 = step b0
       diff = b1-b0
@@ -47,7 +47,7 @@ def ascend (step: (Fin 8)=>Float -> (Fin 8)=>Float) (init: (Fin 8)=>Float) (max_
 init = [-9.8, 0.1, 0, 0, 0, 0, 1.8, 0]
 ll init
 
-opt = ascend (one_step 1.0e-6) init 10000
+opt = ascend (\x. one_step 1.0e-6 x) init 10000
 opt
 ll opt
 

@@ -309,7 +309,7 @@ render(RENDER_MODE.STATIC);"></script></head><body><div id="main-output"><div cl
 </span></div></div><div class="cell"><div class="code-block"><span class="comment">-- Some generic utility functions
 </span></div></div><div class="cell"><div class="code-block"><span class="comment">-- some of which should probably be added to the standard Dex prelude
 </span></div></div><div class="cell"><div class="code-block">
-</div></div><div class="cell"><div class="code-block"><span class="keyword">def</span> iterate {a} (n<span class="symbol">:</span> <span class="type-name">Nat</span>) (step<span class="symbol">:</span> a <span class="symbol">-&gt;</span> a) (init<span class="symbol">:</span> a) <span class="symbol">:</span> <span class="type-name">Fin</span> n <span class="symbol">=&gt;</span> a <span class="symbol">=</span>
+</div></div><div class="cell"><div class="code-block"><span class="keyword">def</span> iterate(n<span class="symbol">:</span> <span class="type-name">Nat</span><span class="symbol">,</span> step<span class="symbol">:</span> (a) <span class="symbol">-&gt;</span> a<span class="symbol">,</span> init<span class="symbol">:</span> a) <span class="symbol">-&gt;</span> <span class="type-name">Fin</span> n <span class="symbol">=&gt;</span> a <span class="keyword">given</span> (a<span class="symbol">|</span><span class="type-name">Data</span>) <span class="symbol">=</span>
   with_state init <span class="symbol">\</span>st<span class="symbol">.</span>
     <span class="keyword">for</span> i<span class="symbol">:</span>(<span class="type-name">Fin</span> n)<span class="symbol">.</span>
       old <span class="symbol">=</span> get st
@@ -317,70 +317,70 @@ render(RENDER_MODE.STATIC);"></script></head><body><div id="main-output"><div cl
       st <span class="symbol">:=</span> next
       old
 </div></div><div class="cell"><div class="code-block">
-</div></div><div class="cell"><div class="code-block"><span class="keyword">def</span> unfold {a b} (n<span class="symbol">:</span> <span class="type-name">Nat</span>) (advance<span class="symbol">:</span> a <span class="symbol">-&gt;</span> (b <span class="symbol">&amp;</span> a)) (init<span class="symbol">:</span> a) <span class="symbol">:</span> <span class="type-name">Fin</span> n <span class="symbol">=&gt;</span> b <span class="symbol">=</span>
+</div></div><div class="cell"><div class="code-block"><span class="keyword">def</span> unfold(n<span class="symbol">:</span> <span class="type-name">Nat</span><span class="symbol">,</span> advance<span class="symbol">:</span> (a) <span class="symbol">-&gt;</span> (b<span class="symbol">,</span> a)<span class="symbol">,</span> init<span class="symbol">:</span> a) <span class="symbol">-&gt;</span> <span class="type-name">Fin</span> n <span class="symbol">=&gt;</span> b <span class="keyword">given</span> (a<span class="symbol">|</span><span class="type-name">Data</span><span class="symbol">,</span> b) <span class="symbol">=</span>
   with_state init <span class="symbol">\</span>st<span class="symbol">.</span>
     <span class="keyword">for</span> i<span class="symbol">:</span>(<span class="type-name">Fin</span> n)<span class="symbol">.</span>
       (b<span class="symbol">,</span> a) <span class="symbol">=</span> advance (get st)
       st <span class="symbol">:=</span> a
       b
 </div></div><div class="cell"><div class="code-block">
-</div></div><div class="cell"><div class="code-block"><span class="keyword">def</span> length {a n} [<span class="type-name">Ix</span> n] (arr<span class="symbol">:</span> n<span class="symbol">=&gt;</span>a)<span class="symbol">:</span> <span class="type-name">Nat</span> <span class="symbol">=</span>
+</div></div><div class="cell"><div class="code-block"><span class="keyword">def</span> length(arr<span class="symbol">:</span> n<span class="symbol">=&gt;</span>a) <span class="symbol">-&gt;</span> <span class="type-name">Nat</span> <span class="keyword">given</span> (a<span class="symbol">,</span> n<span class="symbol">|</span><span class="type-name">Ix</span>) <span class="symbol">=</span>
   size n
 </div></div><div class="cell"><div class="code-block">
-</div></div><div class="cell"><div class="code-block"><span class="keyword">def</span> last_dumb {a n} [<span class="type-name">Ix</span> n] (arr<span class="symbol">:</span> n<span class="symbol">=&gt;</span>a)<span class="symbol">:</span> a <span class="symbol">=</span>
+</div></div><div class="cell"><div class="code-block"><span class="keyword">def</span> last_dumb(arr<span class="symbol">:</span> n<span class="symbol">=&gt;</span>a) <span class="symbol">-&gt;</span> a <span class="keyword">given</span> (a<span class="symbol">,</span> n<span class="symbol">|</span><span class="type-name">Ix</span>) <span class="symbol">=</span>
   head <span class="symbol">$</span> reverse arr
 </div></div><div class="cell"><div class="code-block">
-</div></div><div class="cell"><div class="code-block"><span class="keyword">def</span> last {a n} [<span class="type-name">Ix</span> n] (arr<span class="symbol">:</span> n<span class="symbol">=&gt;</span>a)<span class="symbol">:</span> a <span class="symbol">=</span>
+</div></div><div class="cell"><div class="code-block"><span class="keyword">def</span> last(arr<span class="symbol">:</span> n<span class="symbol">=&gt;</span>a) <span class="symbol">-&gt;</span> a <span class="keyword">given</span> (a<span class="symbol">,</span> n<span class="symbol">|</span><span class="type-name">Ix</span>) <span class="symbol">=</span>
   nind <span class="symbol">=</span> unsafe_nat_diff (size n) 1
-  arr<span class="symbol">.</span>(asidx nind)
+  arr[asidx nind]
 </div></div><div class="cell"><div class="code-block">
 </div></div><div class="cell"><div class="code-block"><span class="comment">-- Not ideal instance, since likely loss of precision...
-</span></div></div><div class="cell"><div class="code-block"><span class="keyword">instance</span> <span class="type-name">Parse</span> <span class="type-name">Float64</span>
-  parseString <span class="symbol">=</span> <span class="symbol">\</span>str<span class="symbol">.</span>
+</span></div></div><div class="cell"><div class="code-block"><span class="keyword">instance</span> <span class="type-name">Parse</span>(<span class="type-name">Float64</span>)
+  <span class="keyword">def</span> parseString(str) <span class="symbol">=</span>
     mf <span class="symbol">:</span> <span class="type-name">Maybe</span> <span class="type-name">Float</span> <span class="symbol">=</span> parseString str
     <span class="keyword">case</span> mf <span class="keyword">of</span>
       <span class="type-name">Nothing</span> <span class="symbol">-&gt;</span> <span class="type-name">Nothing</span>
       <span class="type-name">Just</span> f <span class="symbol">-&gt;</span> <span class="type-name">Just</span> <span class="symbol">$</span> f_to_f64 f
 </div></div><div class="cell"><div class="code-block">
-</div></div><div class="cell"><div class="code-block"><span class="keyword">def</span> clipv {a} (x<span class="symbol">:</span> a<span class="symbol">=&gt;</span><span class="type-name">Float</span>) (c<span class="symbol">:</span> <span class="type-name">Float</span>)<span class="symbol">:</span> a<span class="symbol">=&gt;</span><span class="type-name">Float</span> <span class="symbol">=</span>
+</div></div><div class="cell"><div class="code-block"><span class="keyword">def</span> clipv(x<span class="symbol">:</span> a<span class="symbol">=&gt;</span><span class="type-name">Float</span><span class="symbol">,</span> c<span class="symbol">:</span> <span class="type-name">Float</span>) <span class="symbol">-&gt;</span> (a)<span class="symbol">=&gt;</span><span class="type-name">Float</span> <span class="keyword">given</span> (a<span class="symbol">|</span><span class="type-name">Ix</span>) <span class="symbol">=</span>
   map (<span class="symbol">\</span>xi<span class="symbol">.</span> clip (<span class="symbol">-</span>c<span class="symbol">,</span> c) xi) x
 </div></div><div class="cell"><div class="code-block">
-</div></div><div class="cell"><div class="code-block"><span class="keyword">def</span> nanclip {a} (x<span class="symbol">:</span> a<span class="symbol">=&gt;</span><span class="type-name">Float</span>)<span class="symbol">:</span> a<span class="symbol">=&gt;</span><span class="type-name">Float</span> <span class="symbol">=</span>
+</div></div><div class="cell"><div class="code-block"><span class="keyword">def</span> nanclip(x<span class="symbol">:</span> a<span class="symbol">=&gt;</span><span class="type-name">Float</span>) <span class="symbol">-&gt;</span> (a)<span class="symbol">=&gt;</span><span class="type-name">Float</span> <span class="keyword">given</span> (a<span class="symbol">|</span><span class="type-name">Ix</span>) <span class="symbol">=</span>
   map (<span class="symbol">\</span>xi<span class="symbol">.</span> <span class="keyword">if</span> (isnan xi) <span class="keyword">then</span> 0<span class="symbol">.</span>0 <span class="keyword">else</span> xi) x
 </div></div><div class="cell"><div class="code-block">
-</div></div><div class="cell"><div class="code-block"><span class="keyword">def</span> to_tsv {n p} (mat<span class="symbol">:</span> n<span class="symbol">=&gt;</span>p<span class="symbol">=&gt;</span><span class="type-name">Float</span>) <span class="symbol">:</span> <span class="type-name">String</span> <span class="symbol">=</span>
-  ms <span class="symbol">=</span> <span class="keyword">for</span> i j<span class="symbol">.</span> show mat<span class="symbol">.</span>i<span class="symbol">.</span>j <span class="symbol">&lt;&gt;</span> &quot;<span class="symbol">\</span>t&quot;
+</div></div><div class="cell"><div class="code-block"><span class="keyword">def</span> to_tsv(mat<span class="symbol">:</span> (n)<span class="symbol">=&gt;</span>(p)<span class="symbol">=&gt;</span><span class="type-name">Float</span>) <span class="symbol">-&gt;</span> <span class="type-name">String</span> <span class="keyword">given</span> (n<span class="symbol">|</span><span class="type-name">Ix</span><span class="symbol">,</span> p<span class="symbol">|</span><span class="type-name">Ix</span>) <span class="symbol">=</span>
+  ms <span class="symbol">=</span> <span class="keyword">for</span> i j<span class="symbol">.</span> show mat[i<span class="symbol">,</span>j] <span class="symbol">&lt;&gt;</span> &quot;<span class="symbol">\</span>t&quot;
   concat (map (<span class="symbol">\</span>l<span class="symbol">.</span> l <span class="symbol">&lt;&gt;</span> &quot;<span class="symbol">\</span>n&quot;) (map concat ms))
 </div></div><div class="cell"><div class="code-block">
 </div></div><div class="cell"><div class="code-block"><span class="comment">-- based on &quot;lines&quot; from the prelude...
-</span></div></div><div class="cell"><div class="code-block"><span class="keyword">def</span> words (sep<span class="symbol">:</span> <span class="type-name">Word8</span>) (source<span class="symbol">:</span> <span class="type-name">String</span>)<span class="symbol">:</span> <span class="type-name">List</span> <span class="type-name">String</span> <span class="symbol">=</span>
-  (<span class="type-name">AsList</span> _ s) <span class="symbol">=</span> source <span class="symbol">&lt;&gt;</span> (to_list [sep])
-  (<span class="type-name">AsList</span> num_words space_ixs) <span class="symbol">=</span> cat_maybes <span class="keyword">for</span> i_char<span class="symbol">.</span>
-    <span class="keyword">if</span> (s<span class="symbol">.</span>i_char <span class="symbol">==</span> sep)
+</span></div></div><div class="cell"><div class="code-block"><span class="keyword">def</span> words(sep<span class="symbol">:</span> <span class="type-name">Word8</span><span class="symbol">,</span> source<span class="symbol">:</span> <span class="type-name">String</span>) <span class="symbol">-&gt;</span> <span class="type-name">List</span> <span class="type-name">String</span> <span class="symbol">=</span>
+  <span class="type-name">AsList</span>(_<span class="symbol">,</span> s) <span class="symbol">=</span> source <span class="symbol">&lt;&gt;</span> (to_list [sep])
+  <span class="type-name">AsList</span>(num_words<span class="symbol">,</span> space_ixs) <span class="symbol">=</span> cat_maybes <span class="keyword">for</span> i_char<span class="symbol">.</span>
+    <span class="keyword">if</span> (s[i_char] <span class="symbol">==</span> sep)
       <span class="keyword">then</span> <span class="type-name">Just</span> i_char
       <span class="keyword">else</span> <span class="type-name">Nothing</span>
   to_list <span class="keyword">for</span> i_word<span class="symbol">:</span>(<span class="type-name">Fin</span> num_words)<span class="symbol">.</span>
     start <span class="symbol">=</span> <span class="keyword">case</span> prev_ix i_word <span class="keyword">of</span>
       <span class="type-name">Nothing</span> <span class="symbol">-&gt;</span> first_ix
-      <span class="type-name">Just</span> i <span class="symbol">-&gt;</span> right_post space_ixs<span class="symbol">.</span>i
-    end <span class="symbol">=</span> left_post space_ixs<span class="symbol">.</span>i_word
+      <span class="type-name">Just</span> i <span class="symbol">-&gt;</span> right_post space_ixs[i]
+    end <span class="symbol">=</span> left_post space_ixs[i_word]
     post_slice s start end
 </div></div><div class="cell"><div class="code-block">
-</div></div><div class="cell"><div class="code-block"><span class="keyword">def</span> cons {a} (x<span class="symbol">:</span> a) (xs<span class="symbol">:</span> <span class="type-name">List</span> a)<span class="symbol">:</span> <span class="type-name">List</span> a <span class="symbol">=</span>
-  (<span class="type-name">AsList</span> on xt) <span class="symbol">=</span> xs
+</div></div><div class="cell"><div class="code-block"><span class="keyword">def</span> cons(x<span class="symbol">:</span> a<span class="symbol">,</span> xs<span class="symbol">:</span> <span class="type-name">List</span> a) <span class="symbol">-&gt;</span> <span class="type-name">List</span> a <span class="keyword">given</span> (a) <span class="symbol">=</span>
+  <span class="type-name">AsList</span>(on<span class="symbol">,</span> xt) <span class="symbol">=</span> xs
   n <span class="symbol">=</span> on <span class="symbol">+</span> 1
   nxt <span class="symbol">=</span> <span class="keyword">for</span> i<span class="symbol">:</span>(<span class="type-name">Fin</span> n)<span class="symbol">.</span> <span class="keyword">case</span> (ordinal i <span class="symbol">==</span> 0) <span class="keyword">of</span>
     <span class="type-name">True</span> <span class="symbol">-&gt;</span> x
-    <span class="type-name">False</span> <span class="symbol">-&gt;</span> xt<span class="symbol">.</span>(asidx (unsafe_nat_diff (ordinal i) 1))
+    <span class="type-name">False</span> <span class="symbol">-&gt;</span> xt[asidx (unsafe_nat_diff (ordinal i) 1)]
   to_list nxt
 </div></div><div class="cell"><div class="code-block">
-</div></div><div class="cell"><div class="code-block"><span class="keyword">def</span> list2tab {n a} [<span class="type-name">Ix</span> n] (l<span class="symbol">:</span> <span class="type-name">List</span> a)<span class="symbol">:</span> n<span class="symbol">=&gt;</span>a <span class="symbol">=</span>
-  (<span class="type-name">AsList</span> ll t) <span class="symbol">=</span> l
-  unsafe_cast_table n t
+</div></div><div class="cell"><div class="code-block"><span class="keyword">def</span> list2tab(l<span class="symbol">:</span> <span class="type-name">List</span> a) <span class="symbol">-&gt;</span> (n)<span class="symbol">=&gt;</span>a <span class="keyword">given</span> (a<span class="symbol">,</span> n<span class="symbol">|</span><span class="type-name">Ix</span>) <span class="symbol">=</span>
+  <span class="type-name">AsList</span>(ll<span class="symbol">,</span> t) <span class="symbol">=</span> l
+  unsafe_cast_table t
 </div></div><div class="cell"><div class="code-block">
-</div></div><div class="cell"><div class="code-block"><span class="keyword">def</span> parse_tsv (sep<span class="symbol">:</span> <span class="type-name">Word8</span>) (input<span class="symbol">:</span> <span class="type-name">String</span>)<span class="symbol">:</span> <span class="type-name">List</span> (<span class="type-name">List</span> <span class="type-name">String</span>) <span class="symbol">=</span>
-  (<span class="type-name">AsList</span> _ lines) <span class="symbol">=</span> lines input
-  to_list <span class="symbol">$</span> map (words sep) lines
+</div></div><div class="cell"><div class="code-block"><span class="keyword">def</span> parse_tsv(sep<span class="symbol">:</span> <span class="type-name">Word8</span><span class="symbol">,</span> input<span class="symbol">:</span> <span class="type-name">String</span>) <span class="symbol">-&gt;</span> <span class="type-name">List</span> (<span class="type-name">List</span> <span class="type-name">String</span>) <span class="symbol">=</span>
+  <span class="type-name">AsList</span>(_<span class="symbol">,</span> lines) <span class="symbol">=</span> lines input
+  to_list <span class="symbol">$</span> map (<span class="symbol">\</span>l<span class="symbol">.</span> words sep l) lines
 </div></div><div class="cell"><div class="code-block">
 
 

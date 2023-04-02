@@ -26,7 +26,8 @@ Below are some links for further information about the languages and libraries b
 * [Smile](https://haifengl.github.io/) - Statistical machine learning library (like scikit-learn for Scala)
 * [Apache Spark](https://spark.apache.org/) - library for parallel and distributed big data processing
 * Bindings for (python) ML libraries:
-    * [storch](https://storch.dev/) - Scala 3 bindings for Torch
+	* [lamp](https://pityka.github.io/lamp/) - Scala tensor library built on Torch
+	* [storch](https://storch.dev/) - Scala 3 bindings for Torch
 	* [scala_torch](https://github.com/microsoft/scala_torch) - Microsoft's Torch bindings
 	* [tensorflow_scala](http://platanios.org/tensorflow_scala/) - TensorFlow bindings for Scala (possibly abandoned?)
 * [GeoTrellis](https://geotrellis.io/) - Geographic data processing library for Scala

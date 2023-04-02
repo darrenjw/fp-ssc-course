@@ -26,8 +26,8 @@ def ll(b: (Fin 8)=>Float) -> Float =
 
 gll = \x. grad ll x -- use auto-diff for the gradient
 
-def one_step(learning_rate: Float, b0: (Fin 8)=>Float) -> (Fin 8)=>Float =
-  b0 + learning_rate .* gll b0
+def one_step(learning_rate: Float) -> (Fin 8=>Float) -> (Fin 8)=>Float =
+  \b0. b0 + learning_rate .* gll b0
 
 def ascend(step: (Fin 8=>Float) -> (Fin 8)=>Float, init: (Fin 8)=>Float, max_its: Float) ->
     (Fin 8)=>Float =
@@ -47,7 +47,7 @@ def ascend(step: (Fin 8=>Float) -> (Fin 8)=>Float, init: (Fin 8)=>Float, max_its
 init = [-9.8, 0.1, 0, 0, 0, 0, 1.8, 0]
 ll init
 
-opt = ascend (\x. one_step 1.0e-6 x) init 10000
+opt = ascend (one_step 1.0e-6) init 10000
 opt
 ll opt
 

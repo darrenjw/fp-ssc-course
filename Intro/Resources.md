@@ -66,7 +66,7 @@ Below are some links for further information about the languages and libraries b
 	* [Autodiff cookbook](https://jax.readthedocs.io/en/latest/notebooks/autodiff_cookbook.html)
 * [Flax](https://flax.readthedocs.io/en/latest/guides/flax_basics.html) - neural networks with JAX
 * [BlackJAX](https://blackjax-devs.github.io/blackjax/) - MCMC sampling with JAX
-
+* [Deepmind JAX ecosystem](https://www.deepmind.com/blog/using-jax-to-accelerate-our-research)
 
 ## Dex
 

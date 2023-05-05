@@ -6,6 +6,8 @@
 
 The languages that will be covered in the course are Scala, Haskell, JAX and Dex. Ideally, you will install all of these on your laptop in advance of the course. However, it is *not necessary* to install/use *all* of these languages for the course to be useful. Installing, say, Scala and at least one other (depending on your interests), will be fine.
 
+In addition to installing some software, you should also download a copy of [this repo](https://github.com/darrenjw/fp-ssc-course/archive/refs/heads/main.zip) the day before the course.
+
 ### Scala
 
 The easiest way to install all necessary Scala tools on your system is by using a tool called Coursier. See the [getting started](https://docs.scala-lang.org/getting-started/) instructions on the [Scala](https://www.scala-lang.org/) website for how to install this. Once you have Coursier installed, doing `cs setup` should install everything else that you need, including [sbt](https://www.scala-sbt.org/), which is the main tool we will be relying on for this course.

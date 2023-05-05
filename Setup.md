@@ -4,7 +4,7 @@
 
 **In order to get the most benefit from the course, it is necessary to install some software in advance**
 
-The languages that will be covered in the course are Scala, Haskell, JAX and Dex. Ideally, you will install all of these on your laptop in advance of the course. However, it is *not necessary* to install/use *all* of these languages for the couse to be useful. Installing, say, Scala and at least one other (depending on your interests), will be fine.
+The languages that will be covered in the course are Scala, Haskell, JAX and Dex. Ideally, you will install all of these on your laptop in advance of the course. However, it is *not necessary* to install/use *all* of these languages for the course to be useful. Installing, say, Scala and at least one other (depending on your interests), will be fine.
 
 ### Scala
 

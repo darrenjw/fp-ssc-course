@@ -6,7 +6,7 @@ It will be useful to have a running example for the course.
 
 ## The model and likelihood
 
-Here we will conduct inference for a [logistic regression](https://en.wikipedia.org/wiki/Logistic_regression) model for a binary outcome based on some covariates. The *i*th observation will be 1 with probability $p_i$, and the [logit](https://en.wikipedia.org/wiki/Logit) of $p_i$ will depend linearly on predictors. This leads to a log-likelihood function
+Here we will conduct inference for a [logistic regression](https://en.wikipedia.org/wiki/Logistic_regression) model for a binary outcome based on some covariates. Observation $i$ will be 1 with probability $p_i$, and the [logit](https://en.wikipedia.org/wiki/Logit) of $p_i$ will depend linearly on predictors. This leads to a log-likelihood function
 
 $$\ell(b; y) = -\mathbf{1}'[\log(\mathbf{1} + \exp[-(2y - \mathbf{1})\circ(Xb)])]$$
 

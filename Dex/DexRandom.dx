@@ -51,9 +51,9 @@ map randn keys
 
 import stats
 
-draw(Exponential.new(2.0), k5) :: Float
+draw(Exponential(2.0), k5) :: Float
 
-pd = Poisson.new(10.0)
+pd = Poisson(10.0)
 
 draw(pd, k6) :: Nat
 

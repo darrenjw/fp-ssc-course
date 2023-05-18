@@ -4,7 +4,7 @@
 
 ### The Dex application
 
-A Dex implementation of our running example can be found in the file [ml-ga.dx](ml-ga.dx) ([HTML rendering](https://darrenjw.github.io/fp-ssc-course/ml-ga.html)). Study this, and compare and contrast with the Scala, Haskell and Dex implementations.
+A Dex implementation of our running example can be found in the file [ml-ga.dx](ml-ga.dx) ([HTML rendering](https://darrenjw.github.io/fp-ssc-course/ml-ga.html)). Study this, and compare and contrast with the Scala, Haskell and JAX implementations.
 
 If you have installed Dex the script should run with something like
 ```bash

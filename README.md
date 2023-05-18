@@ -16,7 +16,7 @@ Python, and [Dex](https://github.com/google-research/dex-lang) is a
 new experimental strongly typed functional language for differentiable
 array processing.
 
-This course is still subject to minor revision, but is now essentially complete. The first iteration will be delivered to [StatML](https://statml.io/) PhD students on 2023-05-18. Note that all materials are freely available, and the course is quite suitable for self-study. If you are self-studying, you should probably allow a full day (including laptop setup).
+This course is still subject to ongoing minor updates and revisions, but is now complete. This is the first iteration of the course, as delivered to [StatML](https://statml.io/) PhD students on 2023-05-18. Note that all materials are freely available, and the course is quite suitable for self-study. If you are self-studying, you should probably allow a full day (including laptop setup).
 
 *Please note that you need to install some software on your system **in advance** of the course.* See the [Setup](Setup.md) guide for details.
 

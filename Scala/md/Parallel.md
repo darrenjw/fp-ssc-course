@@ -4,10 +4,10 @@
 
 This simplest (but by no means the only) way to get started with parallel programming in Scala is using [parallel collections](https://docs.scala-lang.org/overviews/parallel-collections/overview.html).
 
-Let's create some random data
+Let's create some random data:
 ```scala
 val rng = scala.util.Random(42)
-// rng: Random = scala.util.Random@4129ef67
+// rng: Random = scala.util.Random@6cb0b87a
 val v = Vector.fill(10)(rng.nextGaussian)
 // v: Vector[Double] = Vector(
 //   1.1419053154730547,
@@ -47,9 +47,22 @@ val vp = v.par // convert v to a ParVector
 (vp map ll(0.0)) reduce (_+_)
 // res1: Double = -4.844171665682075
 ```
-the likelihood evaluation will be much quicker, since the map operation parallelises perfectly, and the reduce operation can be evaluated in parallel with tree reduction.
+the likelihood evaluation will be much quicker, since the `map` operation parallelises "perfectly", and the `reduce` operation can be evaluated in parallel with tree reduction. Scala automatically implements these parallelisations on parallel collections. Note that no change is required to the code - you just switch a regular (serial) collection to a parallel collection, and the library takes care of the rest.
+
 
 ## Futures
+
+Many, if not most, parallel computation operations that arise in statistical computing and machine learning can be formulated in terms of operations on parallel collections. However, we sometimes need more control over the way that computations are evaluated and combined in parallel. A standard approach to this problem in many functional programming languages is to use some kind of `Future` monad. Here we will illustrate how to use Scala's built-in `Future` to do the same parallel computation as above, but without relying on parallel collections.
+
+We start with a few imports.
+```scala
+import cats.*
+import cats.syntax.all.*
+import scala.concurrent.*
+import scala.util.Success
+import ExecutionContext.Implicits.global
+import scala.concurrent.duration.*
+```
 
 
 

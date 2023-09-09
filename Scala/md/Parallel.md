@@ -7,7 +7,7 @@ This simplest (but by no means the only) way to get started with parallel progra
 Let's create some random data:
 ```scala
 val rng = scala.util.Random(42)
-// rng: Random = scala.util.Random@6cb0b87a
+// rng: Random = scala.util.Random@3411f3fa
 val v = Vector.fill(10)(rng.nextGaussian)
 // v: Vector[Double] = Vector(
 //   1.1419053154730547,
@@ -63,9 +63,42 @@ import scala.util.Success
 import ExecutionContext.Implicits.global
 import scala.concurrent.duration.*
 ```
-
-
-
+A `Future` evaluates a computation on another thread while returning immediately with a "wrapper" that will eventually contain the desired value (when the computation is finished). So while
+```scala
+ll(0.0)(1.0)
+// res2: Double = -0.5
+```
+will take at least half a second to return a value,
+```scala
+Future(ll(0.0)(1.0))
+// res3: Future[Double] = Future(<not completed>)
+```
+will return immediately, but the return type will be `Future[Double]`, not `Double`. The `Future` object has many methods, including those to map another computation over the result, and to ask whether the computation is completed. `Futures` make it easy to run many computations concurrently. For example
+```scala
+val vf = v map (x => Future(ll(0.0)(x)))
+// vf: Vector[Future[Double]] = Vector(
+//   Future(<not completed>),
+//   Future(<not completed>),
+//   Future(<not completed>),
+//   Future(<not completed>),
+//   Future(<not completed>),
+//   Future(<not completed>),
+//   Future(<not completed>),
+//   Future(<not completed>),
+//   Future(<not completed>),
+//   Future(<not completed>)
+// )
+```
+will return immediately, with type `Vector[Future[Double]]`. Each of the `Futures` inside the vector will run concurrently. We can use `sequence` to change the `Vector[Future[Double]]` into a `Future[Vector[Double]]` and then `map` a `reduce` operation to get a `Future[Double]`. We can then extract the value we want from this.
+```scala
+val lf = vf.sequence map (_ reduce (_+_))
+// lf: Future[Double] = Future(<not completed>)
+lf.onComplete {
+  case Success(l) => println(l)
+  case _ => println("Computation failed")
+  }
+```
+Crucially, this runs much faster than the corresponding sequential code.
 
 ## Effects
 

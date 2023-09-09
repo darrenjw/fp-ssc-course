@@ -62,14 +62,8 @@ val vf = v map (x => Future(ll(0.0)(x)))
 will return immediately, with type `Vector[Future[Double]]`. Each of the `Futures` inside the vector will run concurrently. We can use `sequence` to change the `Vector[Future[Double]]` into a `Future[Vector[Double]]` and then `map` a `reduce` operation to get a `Future[Double]`. We can then extract the value we want from this.
 ```scala mdoc
 val lf = vf.sequence map (_ reduce (_+_))
-
-lf.onComplete {
-  case Success(l) => println(l)
-  case _ => println("Computation failed")
-  }
-  
-Await.result(lf, 2.seconds)
-Thread.sleep(1000)  
+val l = Await.result(lf, 2.seconds)
+println(l)
 ```
 Crucially, this runs much faster than the corresponding sequential code.
 

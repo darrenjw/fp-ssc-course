@@ -7,6 +7,7 @@
 * Hands on with Scala - Scastie and sbt (25)
 * Running example - gradient-based opt of a logreg likelihood (10)
 * Example in Scala then Run example in Scala (15)
+* Scala parallel programming (10)
 * (EVENING BREAK?)
 * Quick intro to Haskell (10)
 * Example in Haskell then Hands-on with Haskell (15)
@@ -18,5 +19,5 @@
 * Functional and parallel random numbers (10)
 * Hands-on with splittable random numbers (choice of language) (15)
 * Wrap-up and next steps (logreg repo and learning resources) (5)
-* (185 minutes, excluding Breaks)
+* (195 minutes, excluding Breaks)
 

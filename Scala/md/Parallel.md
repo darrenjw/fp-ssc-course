@@ -7,7 +7,7 @@ This simplest (but by no means the only) way to get started with parallel progra
 Let's create some random data:
 ```scala
 val rng = scala.util.Random(42)
-// rng: Random = scala.util.Random@43e6426c
+// rng: Random = scala.util.Random@596bb6f9
 val v = Vector.fill(10)(rng.nextGaussian)
 // v: Vector[Double] = Vector(
 //   1.1419053154730547,
@@ -93,15 +93,10 @@ will return immediately, with type `Vector[Future[Double]]`. Each of the `Future
 ```scala
 val lf = vf.sequence map (_ reduce (_+_))
 // lf: Future[Double] = Future(Success(-4.844171665682075))
-lf.onComplete {
-  case Success(l) => println(l)
-  case _ => println("Computation failed")
-  }
-  
-Await.result(lf, 2.seconds)
+val l = Await.result(lf, 2.seconds)
+// l: Double = -4.844171665682075
+println(l)
 // -4.844171665682075
-// res5: Double = -4.844171665682075
-Thread.sleep(1000)
 ```
 Crucially, this runs much faster than the corresponding sequential code.
 

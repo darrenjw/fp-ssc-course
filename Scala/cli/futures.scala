@@ -31,9 +31,6 @@ object FuturesApp:
     println("Evalulating ll using Futures")
     val vf = v map (x => Future(ll(0.0)(x)))
     val lf = vf.sequence map (_ reduce (_+_))
-    lf.onComplete {
-      case Success(l) => println(l)
-      case _ => println("Computation failed")
-    }
-    Await.result(lf, 2.seconds)
-    Thread.sleep(1000)
+    val l = Await.result(lf, 2.seconds)
+    println(l)
+

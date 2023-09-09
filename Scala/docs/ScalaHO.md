@@ -39,6 +39,8 @@ scala-cli logFact.scala -- 10000
 scala-cli ML-GA.scala
 ```
 
+Make sure that you are able to run these scripts before proceeding.
+
 `scala-cli` can also be used to build multi-file applications, but for any non-trivial project, it is probably better to use `sbt`.
 
 ## sbt
@@ -65,7 +67,7 @@ sbt new darrenjw/breeze.g8
 ```
 will create a new project in a new directory inside the current directory, using the template provided in the `breeze.g8` repo in the GitHub account of `darrenjw`. This is a template for a project with fairly minimal dependencies on the [Breeze](https://github.com/scalanlp/breeze) library for numerical computing. I have some other templates. eg. `fps.g8` contains dependencies on libraries commonly used for pure functional programming in Scala, `scala-glm.g8` has a dependency on my regression modelling library, etc.
 
-Create a new project using one of the templates mentioned, and explore it.
+Create a new `sbt` project using one of the templates mentioned, and explore it.
 
-Create an application that prints to the console the log-factorial of 10000.
+Create an `sbt` application that prints to the console the log-factorial of 10000.
 

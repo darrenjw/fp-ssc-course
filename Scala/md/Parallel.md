@@ -7,7 +7,7 @@ This simplest (but by no means the only) way to get started with parallel progra
 Let's create some random data:
 ```scala
 val rng = scala.util.Random(42)
-// rng: Random = scala.util.Random@596bb6f9
+// rng: Random = scala.util.Random@18877d
 val v = Vector.fill(10)(rng.nextGaussian)
 // v: Vector[Double] = Vector(
 //   1.1419053154730547,

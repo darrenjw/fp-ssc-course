@@ -139,7 +139,7 @@ def linFun(m: Double, c: Double)(x: Double): Double =
   m*x + c
 
 val f = linFun(2, 3)
-// f: Function1[Double, Double] = repl.MdocSession$MdocApp$$Lambda$8131/0x000000080215de08@5e9d4957
+// f: Function1[Double, Double] = repl.MdocSession$MdocApp$$Lambda$8163/0x00000008020d8208@445113d1
 
 f(0)
 // res22: Double = 3.0

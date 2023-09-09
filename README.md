@@ -58,7 +58,7 @@ array processing.
 * [Scala hands-on](Scala/md/ScalaHO.md)
 * [*Running example*](Intro/Example.md)
 * [Scala example and hands-on](Scala/md/Example.md)
-* [Scala parallel crash course](Scala/md/Parallel.md)
+* [Scala parallel programming crash course](Scala/md/Parallel.md)
 * [Haskell crash-course](Haskell/README.md)
 * [Haskell example and hands-on](Haskell/Example.md)
 * [JAX crash-course](JAX/Readme.md)

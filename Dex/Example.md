@@ -14,7 +14,7 @@ Setting the library path will allow the inclusion of some utility functions, [dj
 
 ### Hands-on exercise
 
-Do either of both of these exercises (or go back to previous exercises) as your interests dictate and time permits.
+Do either or both of these exercises (or go back to previous exercises) as your interests dictate and time permits.
 
 * Try manually tweaking the initial guess, the learning rate, the convergence tolerance and the maximum number of iterations to see how robust (or otherwise) this naive gradient ascent algorithm is to these tuning parameters.
 * Improve on the naive descent algorithm somewhow, perhaps by implementing line search for choosing the step size.

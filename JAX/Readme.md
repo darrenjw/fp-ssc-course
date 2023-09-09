@@ -60,7 +60,8 @@ jl.map(lambda x: 2*x, v)
 
     Array([ 4.,  8., 12.,  6.], dtype=float32)
 
-We can also reduce them.
+Mapping can be parallelised, and JAX will do this automatically. We can
+also reduce them.
 
 ``` python
 jl.reduce(v, 0.0, lambda x,y: x+y, [0])
@@ -76,7 +77,8 @@ jnp.sum(v)
 
 The reduction must be *monoidal* (the operation must be associative, and
 the initial value must be an identity wrt that operation), or the result
-is undefined.
+is undefined. Since the reduction is monoidal, it can be parallised via
+tree reduction, and JAX will do this automatically.
 
 ## Functions
 

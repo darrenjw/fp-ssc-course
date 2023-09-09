@@ -7,7 +7,7 @@ This simplest (but by no means the only) way to get started with parallel progra
 Let's create some random data:
 ```scala
 val rng = scala.util.Random(42)
-// rng: Random = scala.util.Random@3411f3fa
+// rng: Random = scala.util.Random@43e6426c
 val v = Vector.fill(10)(rng.nextGaussian)
 // v: Vector[Double] = Vector(
 //   1.1419053154730547,
@@ -71,32 +71,37 @@ ll(0.0)(1.0)
 will take at least half a second to return a value,
 ```scala
 Future(ll(0.0)(1.0))
-// res3: Future[Double] = Future(<not completed>)
+// res3: Future[Double] = Future(Success(-0.5))
 ```
 will return immediately, but the return type will be `Future[Double]`, not `Double`. The `Future` object has many methods, including those to map another computation over the result, and to ask whether the computation is completed. `Futures` make it easy to run many computations concurrently. For example
 ```scala
 val vf = v map (x => Future(ll(0.0)(x)))
 // vf: Vector[Future[Double]] = Vector(
-//   Future(<not completed>),
-//   Future(<not completed>),
-//   Future(<not completed>),
-//   Future(<not completed>),
-//   Future(<not completed>),
-//   Future(<not completed>),
-//   Future(<not completed>),
-//   Future(<not completed>),
-//   Future(<not completed>),
-//   Future(<not completed>)
+//   Future(Success(-0.6519738747528083)),
+//   Future(Success(-0.42265548832636834)),
+//   Future(Success(-0.4511233139392105)),
+//   Future(Success(-0.6127137470912438)),
+//   Future(Success(-0.03947421654847893)),
+//   Future(Success(-0.2343541861499363)),
+//   Future(Success(-0.3339254143553779)),
+//   Future(Success(-0.9753063971220517)),
+//   Future(Success(-0.0182299035359368)),
+//   Future(Success(-1.1044151238606623))
 // )
 ```
 will return immediately, with type `Vector[Future[Double]]`. Each of the `Futures` inside the vector will run concurrently. We can use `sequence` to change the `Vector[Future[Double]]` into a `Future[Vector[Double]]` and then `map` a `reduce` operation to get a `Future[Double]`. We can then extract the value we want from this.
 ```scala
 val lf = vf.sequence map (_ reduce (_+_))
-// lf: Future[Double] = Future(<not completed>)
+// lf: Future[Double] = Future(Success(-4.844171665682075))
 lf.onComplete {
   case Success(l) => println(l)
   case _ => println("Computation failed")
   }
+  
+Await.result(lf, 2.seconds)
+// -4.844171665682075
+// res5: Double = -4.844171665682075
+Thread.sleep(1000)
 ```
 Crucially, this runs much faster than the corresponding sequential code.
 

@@ -34,7 +34,7 @@ If you have `scala-cli` installed, you can use this to build and run small (typi
 scala-cli logFact.scala -- 10000
 ```
 
-[ML-GA.scala](../cli/ML-GA.scala) is the gradient-ascent example. Note the external dependencies specified at the start of the script. It can be run with
+[ML-GA.scala](../cli/ML-GA.scala) is a gradient-ascent example (to be discussed imminently). Don't worry about the details of this program yet, but note the external dependencies specified at the start of the script. It can be run with
 ```bash
 scala-cli ML-GA.scala
 ```

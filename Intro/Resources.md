@@ -13,8 +13,11 @@ Below are some links for further information about the languages and libraries b
     * [Learning resources](https://docs.scala-lang.org/)
 	* [Scastie](https://scastie.scala-lang.org/) - try Scala in the browser
 * [Scala exercises](https://www.scala-exercises.org/) - learn Scala in the browswer
+* [Coursier](https://get-coursier.io/) - Scala tool and artifact manager
+* [scala-cli](https://scala-cli.virtuslab.org/) - Scala command-line tool
 * [sbt](https://www.scala-sbt.org/) - the Scala build tool
     * [An introduction to sbt](https://blog.rockthejvm.com/sbt-tutorial/) - a nice, recent tutorial
+* [Scala examples](https://github.com/darrenjw/code-examples/blob/main/Scala/Readme.md) - some Scala 3 examples I've written, with a STEM focus
 * [Functional Programming in Scala, second edition](https://www.manning.com/books/functional-programming-in-scala-second-edition) - unfortunately this book is not free, but remains one of the best introductions to functional programming (in any language)
     * [Chapter notes](https://github.com/fpinscala/fpinscala)
 * [Typelevel](https://typelevel.org/) - libraries for functional programming in Scala

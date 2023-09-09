@@ -18,12 +18,28 @@ In the crash course we glossed over the different styles of Scala syntax. Prior 
 ```scala
 def logFactTRB(n: Int, acc: Double = 0.0): Double = {
   if (n <= 1) acc else
-  logFactTR(n - 1, math.log(n) + acc)
+  logFactTRB(n - 1, math.log(n) + acc)
 }
   
 logFactTRB(100000)
 ```
 I prefer the new braceless syntax, but a lot of existing tooling works better with the old braced syntax. It's really just a matter of preference, but it's best to stick with one style or the other as far as possible.
+
+## scala-cli
+
+If you have `scala-cli` installed, you can use this to build and run small (typically one file) Scala applications. Required dependencies can be specified in the header of the script.
+
+[logFact.scala](cli/logFact.scala) is a simple stand-alone application to compute a log-factorial. It can be run with
+```bash
+scala-cli logFact.scala -- 10000
+```
+
+[ML-GA.scala](cli/ML-GA.scala) is the gradient-ascent example. Note the external dependencies specified at the start of the script. It can be run with
+```bash
+scala-cli ML-GA.scala
+```
+
+`scala-cli` can also be used to build multi-file applications, but for any non-trivial project, it is probably better to use `sbt`.
 
 ## sbt
 

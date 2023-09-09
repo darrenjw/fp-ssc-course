@@ -4,9 +4,10 @@
 
 This simplest (but by no means the only) way to get started with parallel programming in Scala is using Scala [parallel collections](https://docs.scala-lang.org/overviews/parallel-collections/overview.html).
 
+Let's create some random data
 ```scala
 val rng = scala.util.Random(42)
-// rng: Random = scala.util.Random@1af7e100
+// rng: Random = scala.util.Random@76c3caba
 val v = Vector.fill(10)(rng.nextGaussian)
 // v: Vector[Double] = Vector(
 //   1.1419053154730547,
@@ -21,7 +22,7 @@ val v = Vector.fill(10)(rng.nextGaussian)
 //   1.4862133923906502
 // )
 ```
-
+and pretend that we don't know the true mean. 
 
 
 ## Futures

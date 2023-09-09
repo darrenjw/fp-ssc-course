@@ -23,6 +23,7 @@ Below are some links for further information about the languages and libraries b
 * [Typelevel](https://typelevel.org/) - libraries for functional programming in Scala
     * [Spire](https://typelevel.org/spire/) - numerics library
 	* [Cats](https://typelevel.org/cats/) - category theory abstractions for pure functional programming
+	    * [Cats effect](https://typelevel.org/cats-effect/) - functional parallel and concurrent effects system
 	* [Monocle](https://www.optics.dev/Monocle/) - lens/optics library
 	* [FS2](https://fs2.io/) - pure functional streaming data library
 * [Breeze](https://github.com/scalanlp/breeze/) - numerical linear algebra and scientific computing (like numpy/scipy for Scala)

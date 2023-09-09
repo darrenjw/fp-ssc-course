@@ -7,8 +7,6 @@ This simplest (but by no means the only) way to get started with parallel progra
 ```scala mdoc
 val rng = scala.util.Random(42)
 val v = Vector.fill(10)(rng.nextGaussian)
-v
-
 ```
 
 

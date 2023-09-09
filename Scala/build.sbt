@@ -26,27 +26,6 @@ libraryDependencies  ++= Seq(
   "org.typelevel" %% "discipline-core" % "1.1.5"
 )
 
-val monocleVersion = "3.0.0"
-libraryDependencies ++= Seq(
-  "dev.optics" %%  "monocle-core"  % monocleVersion,
-  "dev.optics" %%  "monocle-law"   % monocleVersion % "test"
-)
-
-val circeVersion = "0.14.1"
-libraryDependencies ++= Seq(
-  "io.circe" %% "circe-core",
-  "io.circe" %% "circe-generic",
-  "io.circe" %% "circe-parser"
-).map(_ % circeVersion)
-
-
-resolvers ++= Seq(
-  "Sonatype Snapshots" at
-    "https://oss.sonatype.org/content/repositories/snapshots/",
-  "Sonatype Releases" at
-    "https://oss.sonatype.org/content/repositories/releases/"
-)
-
 scalaVersion := "3.1.2"
 
 

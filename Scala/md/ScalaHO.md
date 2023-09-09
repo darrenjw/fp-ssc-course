@@ -29,12 +29,12 @@ I prefer the new braceless syntax, but a lot of existing tooling works better wi
 
 If you have `scala-cli` installed, you can use this to build and run small (typically one file) Scala applications. Required dependencies can be specified in the header of the script.
 
-[logFact.scala](cli/logFact.scala) is a simple stand-alone application to compute a log-factorial. It can be run with
+[logFact.scala](../cli/logFact.scala) is a simple stand-alone application to compute a log-factorial. It can be run with
 ```bash
 scala-cli logFact.scala -- 10000
 ```
 
-[ML-GA.scala](cli/ML-GA.scala) is the gradient-ascent example. Note the external dependencies specified at the start of the script. It can be run with
+[ML-GA.scala](../cli/ML-GA.scala) is the gradient-ascent example. Note the external dependencies specified at the start of the script. It can be run with
 ```bash
 scala-cli ML-GA.scala
 ```

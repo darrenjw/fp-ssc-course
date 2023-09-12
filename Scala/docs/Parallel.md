@@ -65,9 +65,9 @@ val lf = vf.sequence map (_ reduce (_+_))
 val l = Await.result(lf, 2.seconds)
 println(l)
 ```
-Crucially, this runs much faster than the corresponding sequential code.
+Crucially, this runs much faster than the corresponding sequential code. However, it's still not as good as using parallel collections, since `map` and `reduce` are still the standard sequential versions, which are still $\mathcal{O}(n)$ operations. We could write our own `parMap` and `parReduce` methods, which use binary splitting to evaluate in parallel, but this is a bit beyond the scope of this very short course.
 
 ## Effects
 
-Futures are a powerful and flexible way to construct parallel and concurrent applications. However, they aren't a perfect fit to a pure functional approach to programming. The fact that futures "fire" as soon as they are created means that they have a *side-effect* (such as creating a thread), and that is potentially problematic. People have developed more principled functional effects systems for Scala, such as [Cats effect](https://typelevel.org/cats-effect/) with its IO monad. These provide better mechanisms for parallel and concurrent programming in Scala. They are, however, (well) beyond the scope of this course. 
+Futures are a powerful and flexible way to construct parallel and concurrent applications. However, they aren't a perfect fit to a pure functional approach to programming. The fact that futures "fire" as soon as they are created means that they have a *side-effect* (such as creating a thread), and that is potentially problematic. People have developed more principled functional effects systems for Scala, such as [Cats effect](https://typelevel.org/cats-effect/) with its `IO` monad. These provide better mechanisms for parallel and concurrent programming in Scala. They are, however, (well) beyond the scope of this course. 
 

@@ -12,7 +12,7 @@ In addition to installing some software, you should also download a copy of [thi
 
 The easiest way to install all necessary Scala tools on your system is by using a tool called Coursier. See the [getting started](https://docs.scala-lang.org/getting-started/) instructions on the [Scala](https://www.scala-lang.org/) website for how to install this. Once you have Coursier installed, doing `cs setup` should install everything else that you need, including [sbt](https://www.scala-sbt.org/), which is the main tool we will be relying on for this course.
 
-Scala editing modes are available for most programmer code editing tools. If you want a full-featured IDE, then [IntelliJ](https://www.jetbrains.com/idea/download/) is typically recommended. The free community edition is fine. Be sure to install the Scala plugin for IntelliJ during the installation process.
+Scala editing modes are available for most programmer code editing tools (including Emacs and Vim). If you want a full-featured IDE, then [IntelliJ Idea](https://www.jetbrains.com/idea/) is typically recommended. The free community edition is fine. Be sure to install the Scala plugin for IntelliJ during the installation process.
 
 ### Haskell
 

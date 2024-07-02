@@ -20,6 +20,7 @@ Below are some links for further information about the languages and libraries b
 * [Scala examples](https://github.com/darrenjw/code-examples/blob/main/Scala/Readme.md) - some Scala 3 examples I've written, with a STEM focus
 * [Functional Programming in Scala, second edition](https://www.manning.com/books/functional-programming-in-scala-second-edition) - unfortunately this book is not free, but remains one of the best introductions to functional programming (in any language)
     * [Chapter notes](https://github.com/fpinscala/fpinscala)
+* [The Science of Functional Programming](https://github.com/winitzki/sofp) - huge, free book, covering functional programming and its relationship to category theory, using Scala 2 to illustrate the ideas
 * [Typelevel](https://typelevel.org/) - libraries for functional programming in Scala
     * [Spire](https://typelevel.org/spire/) - numerics library
 	* [Cats](https://typelevel.org/cats/) - category theory abstractions for pure functional programming
@@ -95,7 +96,7 @@ These resources are of generic interest for any serious functional programmer. H
 	    * [Scala edition](https://github.com/hmemcpy/milewski-ctfp-pdf/releases/tag/v1.3.0) - a Scala edition of the book was produced
     * [YouTube](https://www.youtube.com/channel/UC8BtBl8PNgd3vWKtm2yJ7aA) - Video lectures accompany the blog posts (and book)
 	    * [Series 1](https://www.youtube.com/playlist?list=PLbgaMIhjbmEnaH_LTkxLI7FMa2HsnawM_), [Series 2](https://www.youtube.com/playlist?list=PLbgaMIhjbmElia1eCEZNvsVscFef9m0dm), [Series 3](https://www.youtube.com/playlist?list=PLbgaMIhjbmEn64WVX4B08B4h2rOtueWIL)
-    * [The Dao of FP](https://github.com/BartoszMilewski/Publications/raw/master/TheDaoOfFP/DaoFP.pdf) - Bartosz decided to write a proper book - this is probably the best introduction to category theory in the context of functional programming
+    * [The Dao of FP](https://github.com/BartoszMilewski/Publications/raw/master/TheDaoOfFP/DaoFP.pdf) - Bartosz decided to write a proper book - this is a more comprehensive introduction to category theory in the context of functional programming
 
 ### FP and CT for ML
 
